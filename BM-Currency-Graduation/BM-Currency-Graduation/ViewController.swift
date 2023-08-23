@@ -17,7 +17,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 //        self.view.bringSubviewToFront(convertSegmentView)
         convertSegmentView.superview?.bringSubviewToFront(convertSegmentView)
-
     }
 
     @IBAction func segementAction(_ sender: UISegmentedControl) {

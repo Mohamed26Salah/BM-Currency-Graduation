@@ -13,6 +13,8 @@
 		AB0FD1322A9667EE00E75270 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0FD1302A9667EE00E75270 /* Main.storyboard */; };
 		AB0FD1342A9667EE00E75270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB0FD1332A9667EE00E75270 /* Assets.xcassets */; };
 		AB0FD1372A9667EE00E75270 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0FD1352A9667EE00E75270 /* LaunchScreen.storyboard */; };
+		AB0FD1452A9699BE00E75270 /* ConvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD1442A9699BE00E75270 /* ConvertViewController.swift */; };
+		AB0FD1472A9699CA00E75270 /* CompareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD1462A9699CA00E75270 /* CompareViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,10 @@
 		AB0FD1332A9667EE00E75270 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB0FD1362A9667EE00E75270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB0FD1382A9667EE00E75270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB0FD1422A966FF500E75270 /* Montserrat-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		AB0FD1432A9673EE00E75270 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		AB0FD1442A9699BE00E75270 /* ConvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertViewController.swift; sourceTree = "<group>"; };
+		AB0FD1462A9699CA00E75270 /* CompareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +62,12 @@
 		AB0FD1292A9667EE00E75270 /* BM-Currency-Graduation */ = {
 			isa = PBXGroup;
 			children = (
+				AB0FD1412A966FE000E75270 /* Resources */,
 				AB0FD12A2A9667EE00E75270 /* AppDelegate.swift */,
 				AB0FD12C2A9667EE00E75270 /* SceneDelegate.swift */,
+				AB0FD13E2A96680A00E75270 /* Model */,
+				AB0FD13F2A96680F00E75270 /* VIewModel */,
+				AB0FD1402A96681500E75270 /* View */,
 				AB0FD12E2A9667EE00E75270 /* ViewController.swift */,
 				AB0FD1302A9667EE00E75270 /* Main.storyboard */,
 				AB0FD1332A9667EE00E75270 /* Assets.xcassets */,
@@ -65,6 +75,38 @@
 				AB0FD1382A9667EE00E75270 /* Info.plist */,
 			);
 			path = "BM-Currency-Graduation";
+			sourceTree = "<group>";
+		};
+		AB0FD13E2A96680A00E75270 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AB0FD13F2A96680F00E75270 /* VIewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VIewModel;
+			sourceTree = "<group>";
+		};
+		AB0FD1402A96681500E75270 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB0FD1442A9699BE00E75270 /* ConvertViewController.swift */,
+				AB0FD1462A9699CA00E75270 /* CompareViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB0FD1412A966FE000E75270 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AB0FD1432A9673EE00E75270 /* Poppins-Regular.ttf */,
+				AB0FD1422A966FF500E75270 /* Montserrat-VariableFont_wght.ttf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +182,8 @@
 			files = (
 				AB0FD12F2A9667EE00E75270 /* ViewController.swift in Sources */,
 				AB0FD12B2A9667EE00E75270 /* AppDelegate.swift in Sources */,
+				AB0FD1472A9699CA00E75270 /* CompareViewController.swift in Sources */,
+				AB0FD1452A9699BE00E75270 /* ConvertViewController.swift in Sources */,
 				AB0FD12D2A9667EE00E75270 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

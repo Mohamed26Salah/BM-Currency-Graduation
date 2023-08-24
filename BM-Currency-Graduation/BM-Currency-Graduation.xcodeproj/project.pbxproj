@@ -20,6 +20,7 @@
 		AB49F7B92A97CE1B001A7F15 /* InSideFTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB49F7B72A97CE1B001A7F15 /* InSideFTVCell.swift */; };
 		AB49F7BA2A97CE1B001A7F15 /* InSideFTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB49F7B82A97CE1B001A7F15 /* InSideFTVCell.xib */; };
 		AB49F7BC2A97D974001A7F15 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB49F7BB2A97D974001A7F15 /* RadioButton.swift */; };
+		AB49F7BF2A98000B001A7F15 /* iOSDropDown in Frameworks */ = {isa = PBXBuildFile; productRef = AB49F7BE2A98000B001A7F15 /* iOSDropDown */; };
 		ABE8D6992A97A54100ED898C /* OutSideFTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE8D6972A97A54100ED898C /* OutSideFTVCell.swift */; };
 		ABE8D69A2A97A54100ED898C /* OutSideFTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE8D6982A97A54100ED898C /* OutSideFTVCell.xib */; };
 		ABE8D69C2A97ABE600ED898C /* CurrencyTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE8D69B2A97ABE600ED898C /* CurrencyTemp.swift */; };
@@ -55,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB49F7BF2A98000B001A7F15 /* iOSDropDown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +195,9 @@
 			dependencies = (
 			);
 			name = "BM-Currency-Graduation";
+			packageProductDependencies = (
+				AB49F7BE2A98000B001A7F15 /* iOSDropDown */,
+			);
 			productName = "BM-Currency-Graduation";
 			productReference = AB0FD1272A9667EE00E75270 /* BM-Currency-Graduation.app */;
 			productType = "com.apple.product-type.application";
@@ -221,6 +226,9 @@
 				Base,
 			);
 			mainGroup = AB0FD11E2A9667ED00E75270;
+			packageReferences = (
+				AB49F7BD2A98000B001A7F15 /* XCRemoteSwiftPackageReference "iOSDropDown" */,
+			);
 			productRefGroup = AB0FD1282A9667EE00E75270 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -478,6 +486,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AB49F7BD2A98000B001A7F15 /* XCRemoteSwiftPackageReference "iOSDropDown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jriosdev/iOSDropDown";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AB49F7BE2A98000B001A7F15 /* iOSDropDown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB49F7BD2A98000B001A7F15 /* XCRemoteSwiftPackageReference "iOSDropDown" */;
+			productName = iOSDropDown;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AB0FD11F2A9667ED00E75270 /* Project object */;
 }

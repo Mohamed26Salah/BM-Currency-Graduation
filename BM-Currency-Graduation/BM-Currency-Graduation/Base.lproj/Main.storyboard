@@ -217,6 +217,12 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <integer key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="arrowColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="arrowSize">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                 </subviews>
@@ -531,11 +537,19 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eRU-pY-TMq">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    Select" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eRU-pY-TMq" customClass="JRDropDown">
                                         <rect key="frame" x="177" y="0.0" width="156" height="48"/>
                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="arrowColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="arrowSize">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -610,7 +624,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXY-cK-HdW">
-                                <rect key="frame" x="30" y="300.66666666666669" width="333" height="48"/>
+                                <rect key="frame" x="30" y="299.66666666666669" width="333" height="48"/>
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.21176470589999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="cAq-3d-Jkr"/>
@@ -653,7 +667,7 @@
                             <constraint firstItem="vHO-Y8-Z6D" firstAttribute="top" secondItem="JcF-4W-M8i" secondAttribute="bottom" constant="14" id="ktP-a9-wn1"/>
                             <constraint firstItem="3Pd-9Q-f6c" firstAttribute="leading" secondItem="f0X-KC-6YL" secondAttribute="leading" constant="30" id="m6T-uo-DXY"/>
                             <constraint firstItem="dy3-HF-Ql5" firstAttribute="leading" secondItem="f0X-KC-6YL" secondAttribute="leading" constant="30" id="qgu-Ir-IZQ"/>
-                            <constraint firstItem="fXY-cK-HdW" firstAttribute="top" secondItem="yg3-oG-UgI" secondAttribute="bottom" constant="38" id="ybF-de-ByH"/>
+                            <constraint firstItem="fXY-cK-HdW" firstAttribute="top" secondItem="yg3-oG-UgI" secondAttribute="bottom" constant="37" id="ybF-de-ByH"/>
                         </constraints>
                     </view>
                     <connections>

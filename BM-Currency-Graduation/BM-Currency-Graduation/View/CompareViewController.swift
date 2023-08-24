@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import iOSDropDown
 
 class CompareViewController: UIViewController {
     
     
     @IBOutlet weak var fromAmountTextField: UITextField!
-    @IBOutlet weak var fromCurrency: UITextField!
+    @IBOutlet weak var fromCurrency: DropDown!
     @IBOutlet weak var firstToCurrency: UITextField!
     @IBOutlet weak var secoundToCurrency: UITextField!
     @IBOutlet weak var firstToAmountTextField: UITextField!
@@ -20,6 +21,8 @@ class CompareViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fromCurrency.text = "1"
+        fromCurrency.optionArray = ["1", "2", "3"]
         setupUI()
         // Do any additional setup after loading the view.
     }

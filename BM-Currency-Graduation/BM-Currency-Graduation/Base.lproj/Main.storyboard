@@ -25,14 +25,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BM_Currency_Graduation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbw-vF-lmx">
-                                <rect key="frame" x="0.0" y="59" width="393" height="1407"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="1007"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPD-tL-J5e">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1407"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1045"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="glowing-chart-shows-successful-financial-growth-generated-by-ai 1" translatesAutoresizingMaskIntoConstraints="NO" id="sW6-Uq-UKI">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="239"/>
@@ -118,7 +118,7 @@
                                             <constraint firstItem="TaE-pj-TBR" firstAttribute="top" secondItem="H5l-Iq-zbp" secondAttribute="bottom" id="Pne-e6-Ai5"/>
                                             <constraint firstItem="tCB-vN-R0H" firstAttribute="top" secondItem="NPD-tL-J5e" secondAttribute="top" constant="124" id="UG9-Vm-1QP"/>
                                             <constraint firstAttribute="trailing" secondItem="TaE-pj-TBR" secondAttribute="trailing" id="dmc-ih-tLE"/>
-                                            <constraint firstItem="sW6-Uq-UKI" firstAttribute="height" secondItem="NPD-tL-J5e" secondAttribute="height" multiplier="0.314888" constant="-204.047416" id="mRk-y6-Bb2"/>
+                                            <constraint firstItem="sW6-Uq-UKI" firstAttribute="height" secondItem="NPD-tL-J5e" secondAttribute="height" multiplier="0.314888" constant="-90.05795999999998" id="mRk-y6-Bb2"/>
                                             <constraint firstItem="H5l-Iq-zbp" firstAttribute="top" secondItem="gkf-r7-P9M" secondAttribute="bottom" constant="41.700000000000003" id="qIe-6H-2Qa"/>
                                             <constraint firstItem="1JN-49-1xk" firstAttribute="top" secondItem="NPD-tL-J5e" secondAttribute="top" constant="50" id="re7-iR-xt5"/>
                                             <constraint firstItem="sW6-Uq-UKI" firstAttribute="leading" secondItem="NPD-tL-J5e" secondAttribute="leading" id="uZz-F0-SQX"/>
@@ -129,9 +129,9 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="NPD-tL-J5e" firstAttribute="centerX" secondItem="nbw-vF-lmx" secondAttribute="centerX" id="1S7-oa-xFg"/>
-                                    <constraint firstItem="NPD-tL-J5e" firstAttribute="height" secondItem="nbw-vF-lmx" secondAttribute="height" multiplier="0.539446" priority="250" constant="647.99999999999989" id="Ik4-6w-jeq"/>
+                                    <constraint firstItem="NPD-tL-J5e" firstAttribute="height" secondItem="nbw-vF-lmx" secondAttribute="height" multiplier="0.539446" priority="250" constant="501.7782515991471" id="Ik4-6w-jeq"/>
                                     <constraint firstItem="NPD-tL-J5e" firstAttribute="width" secondItem="nbw-vF-lmx" secondAttribute="width" id="Kf4-qS-Ru9"/>
-                                    <constraint firstAttribute="bottom" secondItem="NPD-tL-J5e" secondAttribute="bottom" id="NFx-wk-flj"/>
+                                    <constraint firstAttribute="bottom" secondItem="NPD-tL-J5e" secondAttribute="bottom" constant="-38" id="NFx-wk-flj"/>
                                     <constraint firstAttribute="trailing" secondItem="NPD-tL-J5e" secondAttribute="trailing" id="WOP-MI-Hot"/>
                                     <constraint firstItem="NPD-tL-J5e" firstAttribute="top" secondItem="nbw-vF-lmx" secondAttribute="top" id="Y0r-e9-Dv3"/>
                                     <constraint firstItem="NPD-tL-J5e" firstAttribute="leading" secondItem="nbw-vF-lmx" secondAttribute="leading" id="uo1-fT-Cdo"/>
@@ -147,7 +147,7 @@
                             <constraint firstItem="nbw-vF-lmx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xwY-3b-Cuj"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="393" height="1500"/>
+                    <size key="freeformSize" width="393" height="1100"/>
                     <connections>
                         <outlet property="compareSegmentView" destination="oof-pQ-0tc" id="i21-Bf-Hau"/>
                         <outlet property="convertSegmentView" destination="TaE-pj-TBR" id="VDT-pc-Jdy"/>

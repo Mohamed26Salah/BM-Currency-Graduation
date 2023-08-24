@@ -13,6 +13,17 @@ class ConvertViewController: UIViewController {
     @IBOutlet weak var fromCurrency: UITextField!
     @IBOutlet weak var toAmountTextField: UITextField!
     @IBOutlet weak var toCurrency: UITextField!
+  
+    @IBOutlet weak var favouritesTableView: UITableView!
+    
+    //Temp Values
+    let arr = [CurrencyTemp(image: UIImage(named: "USD")!, name: "USD", amount: "1"),
+               CurrencyTemp(image: UIImage(named: "USD")!, name: "EGB", amount: "12"),
+               CurrencyTemp(image: UIImage(named: "USD")!, name: "EUR", amount: "123"),
+               CurrencyTemp(image: UIImage(named: "USD")!, name: "FUK", amount: "1234"),
+               CurrencyTemp(image: UIImage(named: "USD")!, name: "KSA", amount: "12345"),
+               CurrencyTemp(image: UIImage(named: "USD")!, name: "MSA", amount: "123456")]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +35,24 @@ class ConvertViewController: UIViewController {
     }
     
 }
+extension ConvertViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        arr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OutSideFTVCell", for: indexPath) as! OutSideFTVCell
+        cell.currencyImage.image = arr[indexPath.row].image
+        cell.currencyNameLabel.text = arr[indexPath.row].name
+        cell.currencyAmountLabel.text = arr[indexPath.row].amount
+        return cell
+    }
+    
+    
+}
 extension ConvertViewController {
     func setupUI() {
+        favouritesTableView.register(UINib(nibName: "OutSideFTVCell", bundle: nil), forCellReuseIdentifier: "OutSideFTVCell")
         fromAmountTextField.layer.borderWidth = 0.5
         fromAmountTextField.layer.cornerRadius = 20
         fromAmountTextField.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor

@@ -16,6 +16,9 @@
 		AB0FD1452A9699BE00E75270 /* ConvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD1442A9699BE00E75270 /* ConvertViewController.swift */; };
 		AB0FD1472A9699CA00E75270 /* CompareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD1462A9699CA00E75270 /* CompareViewController.swift */; };
 		AB0FD14D2A96A76900E75270 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD14C2A96A76900E75270 /* CustomSegmentedControl.swift */; };
+		ABE8D6992A97A54100ED898C /* OutSideFTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE8D6972A97A54100ED898C /* OutSideFTVCell.swift */; };
+		ABE8D69A2A97A54100ED898C /* OutSideFTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE8D6982A97A54100ED898C /* OutSideFTVCell.xib */; };
+		ABE8D69C2A97ABE600ED898C /* CurrencyTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE8D69B2A97ABE600ED898C /* CurrencyTemp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,10 @@
 		AB0FD1462A9699CA00E75270 /* CompareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareViewController.swift; sourceTree = "<group>"; };
 		AB0FD14C2A96A76900E75270 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		ABE8D6932A976B7000ED898C /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		ABE8D6942A979FC000ED898C /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		ABE8D6972A97A54100ED898C /* OutSideFTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutSideFTVCell.swift; sourceTree = "<group>"; };
+		ABE8D6982A97A54100ED898C /* OutSideFTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutSideFTVCell.xib; sourceTree = "<group>"; };
+		ABE8D69B2A97ABE600ED898C /* CurrencyTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTemp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +91,7 @@
 		AB0FD13E2A96680A00E75270 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ABE8D69B2A97ABE600ED898C /* CurrencyTemp.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -98,6 +106,7 @@
 		AB0FD1402A96681500E75270 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ABE8D6952A97A4E800ED898C /* Cells */,
 				AB0FD14B2A96A75800E75270 /* Customs */,
 				AB0FD1442A9699BE00E75270 /* ConvertViewController.swift */,
 				AB0FD1462A9699CA00E75270 /* CompareViewController.swift */,
@@ -109,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0FD1432A9673EE00E75270 /* Poppins-Regular.ttf */,
+				ABE8D6942A979FC000ED898C /* Poppins-SemiBold.ttf */,
 				ABE8D6932A976B7000ED898C /* Poppins-Medium.ttf */,
 				AB0FD1422A966FF500E75270 /* Montserrat-VariableFont_wght.ttf */,
 			);
@@ -128,6 +138,23 @@
 				AB0FD14C2A96A76900E75270 /* CustomSegmentedControl.swift */,
 			);
 			path = Customs;
+			sourceTree = "<group>";
+		};
+		ABE8D6952A97A4E800ED898C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ABE8D6962A97A51300ED898C /* OutSide Cell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		ABE8D6962A97A51300ED898C /* OutSide Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ABE8D6972A97A54100ED898C /* OutSideFTVCell.swift */,
+				ABE8D6982A97A54100ED898C /* OutSideFTVCell.xib */,
+			);
+			path = "OutSide Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE8D69A2A97A54100ED898C /* OutSideFTVCell.xib in Resources */,
 				AB0FD1372A9667EE00E75270 /* LaunchScreen.storyboard in Resources */,
 				AB0FD1342A9667EE00E75270 /* Assets.xcassets in Resources */,
 				AB0FD1322A9667EE00E75270 /* Main.storyboard in Resources */,
@@ -201,11 +229,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE8D6992A97A54100ED898C /* OutSideFTVCell.swift in Sources */,
 				AB0FD14D2A96A76900E75270 /* CustomSegmentedControl.swift in Sources */,
 				AB0FD12F2A9667EE00E75270 /* ViewController.swift in Sources */,
 				AB0FD12B2A9667EE00E75270 /* AppDelegate.swift in Sources */,
 				AB0FD1472A9699CA00E75270 /* CompareViewController.swift in Sources */,
 				AB0FD1452A9699BE00E75270 /* ConvertViewController.swift in Sources */,
+				ABE8D69C2A97ABE600ED898C /* CurrencyTemp.swift in Sources */,
 				AB0FD12D2A9667EE00E75270 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

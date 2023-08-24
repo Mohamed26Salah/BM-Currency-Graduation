@@ -16,6 +16,10 @@
 		AB0FD1452A9699BE00E75270 /* ConvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD1442A9699BE00E75270 /* ConvertViewController.swift */; };
 		AB0FD1472A9699CA00E75270 /* CompareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD1462A9699CA00E75270 /* CompareViewController.swift */; };
 		AB0FD14D2A96A76900E75270 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD14C2A96A76900E75270 /* CustomSegmentedControl.swift */; };
+		AB49F7B52A97C147001A7F15 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB49F7B42A97C147001A7F15 /* FavouritesViewController.swift */; };
+		AB49F7B92A97CE1B001A7F15 /* InSideFTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB49F7B72A97CE1B001A7F15 /* InSideFTVCell.swift */; };
+		AB49F7BA2A97CE1B001A7F15 /* InSideFTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB49F7B82A97CE1B001A7F15 /* InSideFTVCell.xib */; };
+		AB49F7BC2A97D974001A7F15 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB49F7BB2A97D974001A7F15 /* RadioButton.swift */; };
 		ABE8D6992A97A54100ED898C /* OutSideFTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE8D6972A97A54100ED898C /* OutSideFTVCell.swift */; };
 		ABE8D69A2A97A54100ED898C /* OutSideFTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE8D6982A97A54100ED898C /* OutSideFTVCell.xib */; };
 		ABE8D69C2A97ABE600ED898C /* CurrencyTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE8D69B2A97ABE600ED898C /* CurrencyTemp.swift */; };
@@ -35,6 +39,10 @@
 		AB0FD1442A9699BE00E75270 /* ConvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertViewController.swift; sourceTree = "<group>"; };
 		AB0FD1462A9699CA00E75270 /* CompareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareViewController.swift; sourceTree = "<group>"; };
 		AB0FD14C2A96A76900E75270 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		AB49F7B42A97C147001A7F15 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
+		AB49F7B72A97CE1B001A7F15 /* InSideFTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InSideFTVCell.swift; sourceTree = "<group>"; };
+		AB49F7B82A97CE1B001A7F15 /* InSideFTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InSideFTVCell.xib; sourceTree = "<group>"; };
+		AB49F7BB2A97D974001A7F15 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		ABE8D6932A976B7000ED898C /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		ABE8D6942A979FC000ED898C /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		ABE8D6972A97A54100ED898C /* OutSideFTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutSideFTVCell.swift; sourceTree = "<group>"; };
@@ -79,7 +87,6 @@
 				AB0FD13E2A96680A00E75270 /* Model */,
 				AB0FD13F2A96680F00E75270 /* VIewModel */,
 				AB0FD1402A96681500E75270 /* View */,
-				AB0FD12E2A9667EE00E75270 /* ViewController.swift */,
 				AB0FD1302A9667EE00E75270 /* Main.storyboard */,
 				AB0FD1332A9667EE00E75270 /* Assets.xcassets */,
 				AB0FD1352A9667EE00E75270 /* LaunchScreen.storyboard */,
@@ -110,6 +117,8 @@
 				AB0FD14B2A96A75800E75270 /* Customs */,
 				AB0FD1442A9699BE00E75270 /* ConvertViewController.swift */,
 				AB0FD1462A9699CA00E75270 /* CompareViewController.swift */,
+				AB0FD12E2A9667EE00E75270 /* ViewController.swift */,
+				AB49F7B42A97C147001A7F15 /* FavouritesViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -136,13 +145,24 @@
 			isa = PBXGroup;
 			children = (
 				AB0FD14C2A96A76900E75270 /* CustomSegmentedControl.swift */,
+				AB49F7BB2A97D974001A7F15 /* RadioButton.swift */,
 			);
 			path = Customs;
+			sourceTree = "<group>";
+		};
+		AB49F7B62A97CDE5001A7F15 /* InSide Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AB49F7B72A97CE1B001A7F15 /* InSideFTVCell.swift */,
+				AB49F7B82A97CE1B001A7F15 /* InSideFTVCell.xib */,
+			);
+			path = "InSide Cell";
 			sourceTree = "<group>";
 		};
 		ABE8D6952A97A4E800ED898C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				AB49F7B62A97CDE5001A7F15 /* InSide Cell */,
 				ABE8D6962A97A51300ED898C /* OutSide Cell */,
 			);
 			path = Cells;
@@ -218,6 +238,7 @@
 				ABE8D69A2A97A54100ED898C /* OutSideFTVCell.xib in Resources */,
 				AB0FD1372A9667EE00E75270 /* LaunchScreen.storyboard in Resources */,
 				AB0FD1342A9667EE00E75270 /* Assets.xcassets in Resources */,
+				AB49F7BA2A97CE1B001A7F15 /* InSideFTVCell.xib in Resources */,
 				AB0FD1322A9667EE00E75270 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,6 +250,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB49F7BC2A97D974001A7F15 /* RadioButton.swift in Sources */,
+				AB49F7B92A97CE1B001A7F15 /* InSideFTVCell.swift in Sources */,
+				AB49F7B52A97C147001A7F15 /* FavouritesViewController.swift in Sources */,
 				ABE8D6992A97A54100ED898C /* OutSideFTVCell.swift in Sources */,
 				AB0FD14D2A96A76900E75270 /* CustomSegmentedControl.swift in Sources */,
 				AB0FD12F2A9667EE00E75270 /* ViewController.swift in Sources */,

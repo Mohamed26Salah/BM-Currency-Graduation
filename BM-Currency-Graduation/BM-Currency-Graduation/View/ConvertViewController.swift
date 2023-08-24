@@ -55,7 +55,9 @@ extension ConvertViewController: UITableViewDelegate, UITableViewDataSource {
 }
 extension ConvertViewController {
     func setupUI() {
+        
         favouritesTableView.register(UINib(nibName: "OutSideFTVCell", bundle: nil), forCellReuseIdentifier: "OutSideFTVCell")
+        
         fromAmountTextField.layer.borderWidth = 0.5
         fromAmountTextField.layer.cornerRadius = 20
         fromAmountTextField.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor

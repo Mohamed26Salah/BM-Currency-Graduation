@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="1407"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPD-tL-J5e">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1407"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="glowing-chart-shows-successful-financial-growth-generated-by-ai 1" translatesAutoresizingMaskIntoConstraints="NO" id="sW6-Uq-UKI">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="239"/>
@@ -118,7 +118,7 @@
                                             <constraint firstItem="TaE-pj-TBR" firstAttribute="top" secondItem="H5l-Iq-zbp" secondAttribute="bottom" id="Pne-e6-Ai5"/>
                                             <constraint firstItem="tCB-vN-R0H" firstAttribute="top" secondItem="NPD-tL-J5e" secondAttribute="top" constant="124" id="UG9-Vm-1QP"/>
                                             <constraint firstAttribute="trailing" secondItem="TaE-pj-TBR" secondAttribute="trailing" id="dmc-ih-tLE"/>
-                                            <constraint firstItem="sW6-Uq-UKI" firstAttribute="height" secondItem="NPD-tL-J5e" secondAttribute="height" multiplier="0.314888" id="mRk-y6-Bb2"/>
+                                            <constraint firstItem="sW6-Uq-UKI" firstAttribute="height" secondItem="NPD-tL-J5e" secondAttribute="height" multiplier="0.314888" constant="-204.047416" id="mRk-y6-Bb2"/>
                                             <constraint firstItem="H5l-Iq-zbp" firstAttribute="top" secondItem="gkf-r7-P9M" secondAttribute="bottom" constant="41.700000000000003" id="qIe-6H-2Qa"/>
                                             <constraint firstItem="1JN-49-1xk" firstAttribute="top" secondItem="NPD-tL-J5e" secondAttribute="top" constant="50" id="re7-iR-xt5"/>
                                             <constraint firstItem="sW6-Uq-UKI" firstAttribute="leading" secondItem="NPD-tL-J5e" secondAttribute="leading" id="uZz-F0-SQX"/>
@@ -129,12 +129,12 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="NPD-tL-J5e" firstAttribute="centerX" secondItem="nbw-vF-lmx" secondAttribute="centerX" id="1S7-oa-xFg"/>
+                                    <constraint firstItem="NPD-tL-J5e" firstAttribute="height" secondItem="nbw-vF-lmx" secondAttribute="height" multiplier="0.539446" priority="250" constant="647.99999999999989" id="Ik4-6w-jeq"/>
                                     <constraint firstItem="NPD-tL-J5e" firstAttribute="width" secondItem="nbw-vF-lmx" secondAttribute="width" id="Kf4-qS-Ru9"/>
                                     <constraint firstAttribute="bottom" secondItem="NPD-tL-J5e" secondAttribute="bottom" id="NFx-wk-flj"/>
                                     <constraint firstAttribute="trailing" secondItem="NPD-tL-J5e" secondAttribute="trailing" id="WOP-MI-Hot"/>
                                     <constraint firstItem="NPD-tL-J5e" firstAttribute="top" secondItem="nbw-vF-lmx" secondAttribute="top" id="Y0r-e9-Dv3"/>
                                     <constraint firstItem="NPD-tL-J5e" firstAttribute="leading" secondItem="nbw-vF-lmx" secondAttribute="leading" id="uo1-fT-Cdo"/>
-                                    <constraint firstItem="NPD-tL-J5e" firstAttribute="height" secondItem="nbw-vF-lmx" secondAttribute="height" priority="250" id="xjP-mD-gsu"/>
                                 </constraints>
                             </scrollView>
                         </subviews>

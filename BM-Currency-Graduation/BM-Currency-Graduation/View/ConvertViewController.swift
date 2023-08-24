@@ -13,9 +13,8 @@ class ConvertViewController: UIViewController {
     @IBOutlet weak var fromCurrency: UITextField!
     @IBOutlet weak var toAmountTextField: UITextField!
     @IBOutlet weak var toCurrency: UITextField!
-  
     @IBOutlet weak var favouritesTableView: UITableView!
-    
+    @IBOutlet weak var addToFavourites: UIButton!
     //Temp Values
     let arr = [CurrencyTemp(image: UIImage(named: "USD")!, name: "USD", amount: "1"),
                CurrencyTemp(image: UIImage(named: "USD")!, name: "EGB", amount: "12"),
@@ -32,6 +31,10 @@ class ConvertViewController: UIViewController {
     
     @IBAction func convertButtonTapped(_ sender: UIButton) {
         print("Convert Button Tapped...")
+    }
+    
+    @IBAction func addToFavouritesTapped(_ sender: UIButton) {
+        print("Add To Favourites Button Tapped...")
     }
     
 }
@@ -68,5 +71,9 @@ extension ConvertViewController {
         toCurrency.layer.borderWidth = 0.5
         toCurrency.layer.cornerRadius = 20
         toCurrency.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor
+        
+        addToFavourites.layer.borderWidth = 0.91
+        addToFavourites.layer.cornerRadius = 18.12
+        addToFavourites.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0).cgColor
     }
 }

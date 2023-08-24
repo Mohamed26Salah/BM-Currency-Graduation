@@ -304,22 +304,29 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="live exchange rates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2t1-CF-YMf">
-                                <rect key="frame" x="24" y="366.66666666666669" width="167.33333333333334" height="25"/>
+                                <rect key="frame" x="24" y="366.66666666666669" width="167" height="25"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="ufZ-Ly-39Y"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16.840000152587891"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16.799999237060547"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cd0-ud-NFG">
-                                <rect key="frame" x="219.33333333333337" y="363.33333333333331" width="179" height="35.333333333333314"/>
+                                <rect key="frame" x="219" y="363.33333333333331" width="179" height="35.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35.340000000000003" id="PoY-17-876"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="plus 1" title=" Add to Favourites"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus 1" title=" Add to Favourites">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addToFavouritesTapped:" destination="gcA-dK-8jI" eventType="touchUpInside" id="Nlo-ul-ob5"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Favourites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5z-sE-gPs">
                                 <rect key="frame" x="23.999999999999993" y="413.66666666666669" width="123.33333333333331" height="24"/>
@@ -375,6 +382,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addToFavourites" destination="Cd0-ud-NFG" id="ChG-15-vaa"/>
                         <outlet property="favouritesTableView" destination="hVB-lB-smy" id="lpL-Zv-Axa"/>
                         <outlet property="fromAmountTextField" destination="uwY-em-H7l" id="EGP-Uk-Nhv"/>
                         <outlet property="fromCurrency" destination="OE6-HG-ceQ" id="EHa-tu-dnG"/>
@@ -527,13 +535,13 @@
                             <constraint firstItem="yg3-oG-UgI" firstAttribute="top" secondItem="3Pd-9Q-f6c" secondAttribute="bottom" constant="16" id="VBe-S2-e9P"/>
                             <constraint firstItem="f0X-KC-6YL" firstAttribute="trailing" secondItem="yg3-oG-UgI" secondAttribute="trailing" constant="30" id="XAM-n9-o5x"/>
                             <constraint firstItem="JcF-4W-M8i" firstAttribute="top" secondItem="hF3-oH-5HP" secondAttribute="bottom" constant="19" id="YT8-OK-4Be"/>
+                            <constraint firstAttribute="bottom" secondItem="fXY-cK-HdW" secondAttribute="bottom" id="bFr-IZ-tmX"/>
                             <constraint firstItem="dy3-HF-Ql5" firstAttribute="top" secondItem="JcF-4W-M8i" secondAttribute="bottom" constant="14" id="dDD-WW-Wej"/>
                             <constraint firstItem="hF3-oH-5HP" firstAttribute="top" secondItem="QIC-R6-Meu" secondAttribute="top" constant="21.539999999999999" id="hDd-Oa-v2t"/>
                             <constraint firstItem="JcF-4W-M8i" firstAttribute="leading" secondItem="f0X-KC-6YL" secondAttribute="leading" constant="30" id="kYs-jc-Zln"/>
                             <constraint firstItem="vHO-Y8-Z6D" firstAttribute="top" secondItem="JcF-4W-M8i" secondAttribute="bottom" constant="14" id="ktP-a9-wn1"/>
                             <constraint firstItem="3Pd-9Q-f6c" firstAttribute="leading" secondItem="f0X-KC-6YL" secondAttribute="leading" constant="30" id="m6T-uo-DXY"/>
                             <constraint firstItem="dy3-HF-Ql5" firstAttribute="leading" secondItem="f0X-KC-6YL" secondAttribute="leading" constant="30" id="qgu-Ir-IZQ"/>
-                            <constraint firstAttribute="bottom" secondItem="fXY-cK-HdW" secondAttribute="bottom" constant="1" id="stu-jp-AKQ"/>
                             <constraint firstItem="fXY-cK-HdW" firstAttribute="top" secondItem="yg3-oG-UgI" secondAttribute="bottom" constant="38" id="ybF-de-ByH"/>
                         </constraints>
                     </view>

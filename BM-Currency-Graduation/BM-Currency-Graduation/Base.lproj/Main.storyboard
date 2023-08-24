@@ -375,6 +375,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="favouritesTableView" destination="hVB-lB-smy" id="lpL-Zv-Axa"/>
                         <outlet property="fromAmountTextField" destination="uwY-em-H7l" id="EGP-Uk-Nhv"/>
                         <outlet property="fromCurrency" destination="OE6-HG-ceQ" id="EHa-tu-dnG"/>
                         <outlet property="toAmountTextField" destination="HNp-4o-Nr4" id="2vi-pE-c3g"/>

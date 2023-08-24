@@ -6,6 +6,7 @@
 	<array>
 		<string>Poppins-Regular.ttf</string>
 		<string>Montserrat-VariableFont_wght.ttf</string>
+		<string>Poppins-Medium.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

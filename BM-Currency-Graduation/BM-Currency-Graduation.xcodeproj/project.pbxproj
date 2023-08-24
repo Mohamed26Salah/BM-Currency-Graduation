@@ -32,6 +32,7 @@
 		AB0FD1442A9699BE00E75270 /* ConvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertViewController.swift; sourceTree = "<group>"; };
 		AB0FD1462A9699CA00E75270 /* CompareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareViewController.swift; sourceTree = "<group>"; };
 		AB0FD14C2A96A76900E75270 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		ABE8D6932A976B7000ED898C /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0FD1432A9673EE00E75270 /* Poppins-Regular.ttf */,
+				ABE8D6932A976B7000ED898C /* Poppins-Medium.ttf */,
 				AB0FD1422A966FF500E75270 /* Montserrat-VariableFont_wght.ttf */,
 			);
 			path = Resources;

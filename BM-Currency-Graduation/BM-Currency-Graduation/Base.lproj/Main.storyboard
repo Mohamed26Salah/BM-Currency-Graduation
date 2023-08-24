@@ -19,7 +19,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BM_Currency_Graduation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbw-vF-lmx">
@@ -28,7 +28,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPD-tL-J5e">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="sW6-Uq-UKI">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="glowing-chart-shows-successful-financial-growth-generated-by-ai 1" translatesAutoresizingMaskIntoConstraints="NO" id="sW6-Uq-UKI">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="239"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="239" id="AMw-dX-wLt"/>
@@ -140,6 +140,7 @@
                             <constraint firstItem="nbw-vF-lmx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xwY-3b-Cuj"/>
                         </constraints>
                     </view>
+                    <size key="freeformSize" width="393" height="1500"/>
                     <connections>
                         <outlet property="compareSegmentView" destination="oof-pQ-0tc" id="i21-Bf-Hau"/>
                         <outlet property="convertSegmentView" destination="TaE-pj-TBR" id="VDT-pc-Jdy"/>
@@ -499,7 +500,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backgroundImage" width="375" height="239"/>
+        <image name="glowing-chart-shows-successful-financial-growth-generated-by-ai 1" width="1728" height="1111"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

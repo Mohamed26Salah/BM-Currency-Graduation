@@ -340,7 +340,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hVB-lB-smy">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hVB-lB-smy">
                                 <rect key="frame" x="24" y="453.66666666666669" width="345" height="230.33333333333331"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
@@ -400,7 +400,7 @@
         <!--Favourites View Controller-->
         <scene sceneID="hbC-3L-cdu">
             <objects>
-                <viewController id="TKj-Vv-SEv" customClass="FavouritesViewController" customModule="BM_Currency_Graduation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavouritesViewController" id="TKj-Vv-SEv" customClass="FavouritesViewController" customModule="BM_Currency_Graduation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bQS-Wn-aHr">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -420,6 +420,9 @@
                                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                                <connections>
+                                                    <action selector="xButtonTapped:" destination="TKj-Vv-SEv" eventType="touchUpInside" id="GaN-Tc-Y2N"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4q-BV-8bG">
                                                 <rect key="frame" x="20" y="96" width="353" height="551"/>
@@ -433,12 +436,16 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lhz-HN-Rfy">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lhz-HN-Rfy">
                                                         <rect key="frame" x="10" y="53.000000000000028" width="333" height="452.66666666666674"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="452.58999999999997" id="0Su-fs-735"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="TKj-Vv-SEv" id="1Ul-hz-5aJ"/>
+                                                            <outlet property="delegate" destination="TKj-Vv-SEv" id="EjW-vb-gYy"/>
+                                                        </connections>
                                                     </tableView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -450,9 +457,14 @@
                                                     <constraint firstItem="3pQ-1U-XO3" firstAttribute="leading" secondItem="H4q-BV-8bG" secondAttribute="leading" constant="10" id="r0W-Yw-bet"/>
                                                     <constraint firstItem="lhz-HN-Rfy" firstAttribute="top" secondItem="3pQ-1U-XO3" secondAttribute="bottom" id="voZ-bX-tJq"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="H4q-BV-8bG" secondAttribute="trailing" constant="20" id="1WJ-2w-0NA"/>
                                             <constraint firstItem="H4q-BV-8bG" firstAttribute="leading" secondItem="Sua-2y-z5f" secondAttribute="leading" constant="20" id="7zI-VD-9zc"/>
@@ -476,7 +488,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UMR-EI-lB7"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="UMR-EI-lB7" firstAttribute="bottom" secondItem="n5n-PG-03N" secondAttribute="bottom" id="Dh4-uG-fqp"/>
                             <constraint firstItem="n5n-PG-03N" firstAttribute="top" secondItem="UMR-EI-lB7" secondAttribute="top" id="NrT-tD-khu"/>
@@ -484,6 +496,10 @@
                             <constraint firstItem="UMR-EI-lB7" firstAttribute="trailing" secondItem="n5n-PG-03N" secondAttribute="trailing" id="zG6-y8-V7P"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="Sua-2y-z5f" id="9O5-fE-sta"/>
+                        <outlet property="favTableView" destination="lhz-HN-Rfy" id="PXw-Zo-bhN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yJR-Qp-kme" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

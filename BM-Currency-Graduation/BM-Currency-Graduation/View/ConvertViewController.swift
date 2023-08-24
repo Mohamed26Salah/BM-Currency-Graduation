@@ -35,6 +35,11 @@ class ConvertViewController: UIViewController {
     
     @IBAction func addToFavouritesTapped(_ sender: UIButton) {
         print("Add To Favourites Button Tapped...")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil) // Replace "Main" with your storyboard name
+        let nameSelectionVC = storyboard.instantiateViewController(withIdentifier: "FavouritesViewController") as! FavouritesViewController
+       nameSelectionVC.modalPresentationStyle = .overCurrentContext // Make the background transparent
+        
+        present(nameSelectionVC, animated: true, completion: nil)
     }
     
 }

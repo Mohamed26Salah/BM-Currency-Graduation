@@ -9,6 +9,11 @@ import UIKit
 
 class InSideFTVCell: UITableViewCell {
 
+    @IBOutlet weak var currencyImage: UIImageView!
+    @IBOutlet weak var currencyNameLabel: UILabel!
+    @IBOutlet weak var favRadioButton: RadioButton!
+    var onFavButtonTapped: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,6 +23,10 @@ class InSideFTVCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func favButtonTapped(_ sender: RadioButton) {
+        onFavButtonTapped?()
     }
     
 }

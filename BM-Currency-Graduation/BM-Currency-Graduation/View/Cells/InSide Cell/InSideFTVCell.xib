@@ -29,7 +29,7 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="bpP-gm-qhX">
-                        <rect key="frame" x="57.666666666666657" y="17.333333333333332" width="61" height="41.333333333333343"/>
+                        <rect key="frame" x="57.666666666666657" y="17.333333333333332" width="61" height="58.333333333333343"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4Y-OJ-f63">
                                 <rect key="frame" x="0.0" y="0.0" width="61" height="24"/>
@@ -41,24 +41,40 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CURRENCY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7w-6f-DIu">
-                                <rect key="frame" x="0.0" y="25.000000000000007" width="61" height="16.333333333333336"/>
+                                <rect key="frame" x="0.0" y="25.000000000000004" width="61" height="33.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="11.600000381469727"/>
                                 <color key="textColor" red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                     </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zzc-Vt-HW6" customClass="RadioButton" customModule="BM_Currency_Graduation" customModuleProvider="target">
+                        <rect key="frame" x="475" y="21.333333333333332" width="75" height="34.333333333333343"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                        <connections>
+                            <action selector="favButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NlO-B5-shy"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="bpP-gm-qhX" firstAttribute="leading" secondItem="rgs-T1-HPT" secondAttribute="trailing" constant="15.41" id="7uH-5V-3jr"/>
+                    <constraint firstItem="Zzc-Vt-HW6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21.359999999999999" id="ApE-Ju-fUW"/>
+                    <constraint firstAttribute="trailing" secondItem="Zzc-Vt-HW6" secondAttribute="trailing" id="D93-Ux-Rld"/>
                     <constraint firstAttribute="bottom" secondItem="rgs-T1-HPT" secondAttribute="bottom" constant="19.27" id="Kzt-EE-8H6"/>
                     <constraint firstItem="bpP-gm-qhX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17.34" id="N3b-dE-hbe"/>
                     <constraint firstAttribute="bottom" secondItem="bpP-gm-qhX" secondAttribute="bottom" constant="18.530000000000001" id="U08-Mr-dxC"/>
                     <constraint firstItem="rgs-T1-HPT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pTh-n5-voG"/>
                     <constraint firstItem="rgs-T1-HPT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15.41" id="tNb-61-iuh"/>
+                    <constraint firstAttribute="bottom" secondItem="Zzc-Vt-HW6" secondAttribute="bottom" constant="38.530000000000001" id="w5q-K4-4Rc"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="currencyImage" destination="rgs-T1-HPT" id="a7Z-BD-zNU"/>
+                <outlet property="currencyNameLabel" destination="P4Y-OJ-f63" id="oXw-sG-Yyl"/>
+                <outlet property="favRadioButton" destination="Zzc-Vt-HW6" id="eau-SX-H2s"/>
+            </connections>
             <point key="canvasLocation" x="325.19083969465646" y="-44.718309859154935"/>
         </tableViewCell>
     </objects>

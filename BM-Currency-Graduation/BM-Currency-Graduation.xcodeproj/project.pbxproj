@@ -117,8 +117,8 @@
 				AB0FD14B2A96A75800E75270 /* Customs */,
 				AB0FD1442A9699BE00E75270 /* ConvertViewController.swift */,
 				AB0FD1462A9699CA00E75270 /* CompareViewController.swift */,
-				AB0FD12E2A9667EE00E75270 /* ViewController.swift */,
 				AB49F7B42A97C147001A7F15 /* FavouritesViewController.swift */,
+				AB0FD12E2A9667EE00E75270 /* ViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

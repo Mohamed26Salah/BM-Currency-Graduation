@@ -10,7 +10,6 @@ import iOSDropDown
 
 class CompareViewController: UIViewController {
     
-    
     @IBOutlet weak var fromAmountTextField: UITextField!
     @IBOutlet weak var fromCurrency: DropDown!
     @IBOutlet weak var firstToCurrency: DropDown!

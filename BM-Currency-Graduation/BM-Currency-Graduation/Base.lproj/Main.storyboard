@@ -179,7 +179,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdS-i0-bYF">
-                                <rect key="frame" x="160.66666666666666" y="21.666666666666668" width="38.333333333333343" height="17.000000000000004"/>
+                                <rect key="frame" x="174.66666666666666" y="21.666666666666668" width="38.333333333333343" height="17.000000000000004"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="niR-4P-aad"/>
                                 </constraints>
@@ -365,7 +365,7 @@
                             <constraint firstItem="jwj-OP-QSg" firstAttribute="leading" secondItem="oeE-cx-6kw" secondAttribute="leading" constant="30" id="Au9-vV-Zoz"/>
                             <constraint firstItem="Cd0-ud-NFG" firstAttribute="leading" secondItem="2t1-CF-YMf" secondAttribute="trailing" constant="28" id="DRc-id-v4G"/>
                             <constraint firstItem="5Vt-OB-H7a" firstAttribute="top" secondItem="jwj-OP-QSg" secondAttribute="bottom" constant="18" id="Hlf-nY-OaX"/>
-                            <constraint firstItem="CdS-i0-bYF" firstAttribute="leading" secondItem="uoM-EZ-Ncn" secondAttribute="trailing" constant="70.950000000000003" id="LMf-z8-Kd0"/>
+                            <constraint firstItem="CdS-i0-bYF" firstAttribute="leading" secondItem="uoM-EZ-Ncn" secondAttribute="trailing" constant="85" id="LMf-z8-Kd0"/>
                             <constraint firstItem="4It-Zo-fGY" firstAttribute="leading" secondItem="oeE-cx-6kw" secondAttribute="leading" constant="30" id="OBf-wP-4Tf"/>
                             <constraint firstAttribute="trailing" secondItem="5Vt-OB-H7a" secondAttribute="trailing" constant="30" id="Ojg-l6-KEP"/>
                             <constraint firstItem="2t1-CF-YMf" firstAttribute="leading" secondItem="o7P-MK-dAz" secondAttribute="leading" constant="24" id="PcG-8L-SNG"/>
@@ -434,7 +434,7 @@
                                                 <rect key="frame" x="20" y="96" width="353" height="551"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pQ-1U-XO3">
-                                                        <rect key="frame" x="10" y="29" width="108" height="24"/>
+                                                        <rect key="frame" x="10" y="29" width="107.33333333333333" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="DCl-hr-raP"/>
                                                         </constraints>
@@ -515,7 +515,7 @@
         <scene sceneID="5oC-YZ-eBX">
             <objects>
                 <viewController id="9ok-yP-2v3" customClass="CompareViewController" customModule="BM_Currency_Graduation" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="QIC-R6-Meu">
+                    <view key="view" contentMode="scaleToFill" id="QIC-R6-Meu">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="348.66666666666669"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

@@ -13,8 +13,8 @@ class CompareViewController: UIViewController {
     
     @IBOutlet weak var fromAmountTextField: UITextField!
     @IBOutlet weak var fromCurrency: DropDown!
-    @IBOutlet weak var firstToCurrency: UITextField!
-    @IBOutlet weak var secoundToCurrency: UITextField!
+    @IBOutlet weak var firstToCurrency: DropDown!
+    @IBOutlet weak var secoundToCurrency: DropDown!
     @IBOutlet weak var firstToAmountTextField: UITextField!
     @IBOutlet weak var secoundToAmountTextField: UITextField!
     

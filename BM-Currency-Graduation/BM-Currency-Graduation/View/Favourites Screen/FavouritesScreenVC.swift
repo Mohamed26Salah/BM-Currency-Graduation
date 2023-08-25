@@ -1,13 +1,13 @@
 //
-//  FavouritesViewController.swift
+//  FavouritesScreenVC.swift
 //  BM-Currency-Graduation
 //
-//  Created by Mohamed Salah on 24/08/2023.
+//  Created by Mohamed Salah on 25/08/2023.
 //
 
 import UIKit
 
-class FavouritesViewController: UIViewController {
+class FavouritesScreenVC: UIViewController {
     
     @IBOutlet weak var favTableView: UITableView!
     @IBOutlet weak var backgroundView: UIView!
@@ -28,7 +28,7 @@ class FavouritesViewController: UIViewController {
     }
     
 }
-extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
+extension FavouritesScreenVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         arr.count
     }
@@ -45,7 +45,7 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
     
     
 }
-extension FavouritesViewController {
+extension FavouritesScreenVC {
     func setupUI() {
         view.isOpaque = false
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavouritesScreenVC" customModule="BM_Currency_Graduation" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundView" destination="i5M-Pr-FkT" id="0bt-Ou-CR2"/>
+                <outlet property="favTableView" destination="khB-H8-ekO" id="3vR-kJ-NS9"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5TH-As-bfk">
+                    <rect key="frame" x="20" y="150" width="353" height="551"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hn-wy-Y1f">
+                            <rect key="frame" x="10" y="29" width="107.33333333333333" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="2cR-7C-Cl9"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="khB-H8-ekO">
+                            <rect key="frame" x="10" y="53.000000000000028" width="333" height="452.66666666666674"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="452.67000000000002" id="vfH-dw-B6r"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="df9-RX-dc9"/>
+                                <outlet property="delegate" destination="-1" id="bz4-g6-cRp"/>
+                            </connections>
+                        </tableView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iV5-0u-gda">
+                            <rect key="frame" x="317.66666666666669" y="14.999999999999998" width="20.333333333333314" height="20.333333333333329"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20.329999999999998" id="xme-W1-tgL"/>
+                                <constraint firstAttribute="height" constant="20.329999999999998" id="ySc-zm-fmO"/>
+                            </constraints>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                            <connections>
+                                <action selector="xButtonTapped:" destination="-1" eventType="touchUpInside" id="bK5-9S-aCr"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="iV5-0u-gda" secondAttribute="trailing" constant="15" id="15p-lj-doS"/>
+                        <constraint firstItem="iV5-0u-gda" firstAttribute="top" secondItem="5TH-As-bfk" secondAttribute="top" constant="15" id="Q2A-9z-pp4"/>
+                        <constraint firstAttribute="height" constant="551" id="VeU-r7-HFX"/>
+                        <constraint firstAttribute="trailing" secondItem="khB-H8-ekO" secondAttribute="trailing" constant="10" id="Xc2-hp-AdC"/>
+                        <constraint firstItem="0Hn-wy-Y1f" firstAttribute="top" secondItem="5TH-As-bfk" secondAttribute="top" constant="29" id="YTL-pg-wif"/>
+                        <constraint firstAttribute="bottom" secondItem="khB-H8-ekO" secondAttribute="bottom" constant="45.329999999999998" id="euN-V2-lIl"/>
+                        <constraint firstItem="0Hn-wy-Y1f" firstAttribute="leading" secondItem="5TH-As-bfk" secondAttribute="leading" constant="10" id="voD-hu-zg7"/>
+                        <constraint firstItem="khB-H8-ekO" firstAttribute="leading" secondItem="5TH-As-bfk" secondAttribute="leading" constant="10" id="yRa-ax-cpZ"/>
+                        <constraint firstItem="khB-H8-ekO" firstAttribute="top" secondItem="0Hn-wy-Y1f" secondAttribute="bottom" id="ynO-yc-i2F"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="5TH-As-bfk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="2D3-Ei-LTT"/>
+                <constraint firstItem="5TH-As-bfk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="91" id="BUD-r8-G0X"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5TH-As-bfk" secondAttribute="bottom" constant="10" id="TFc-93-AGR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5TH-As-bfk" secondAttribute="trailing" constant="20" id="zgt-do-sQd"/>
+            </constraints>
+            <point key="canvasLocation" x="123" y="21"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

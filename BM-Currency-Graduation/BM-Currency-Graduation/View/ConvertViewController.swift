@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import iOSDropDown
 
 class ConvertViewController: UIViewController {
 
     @IBOutlet weak var fromAmountTextField: UITextField!
-    @IBOutlet weak var fromCurrency: UITextField!
+    @IBOutlet weak var fromCurrency: DropDown!
     @IBOutlet weak var toAmountTextField: UITextField!
-    @IBOutlet weak var toCurrency: UITextField!
+    @IBOutlet weak var toCurrency: DropDown!
     @IBOutlet weak var favouritesTableView: UITableView!
     @IBOutlet weak var addToFavourites: UIButton!
     //Temp Values
@@ -34,12 +35,15 @@ class ConvertViewController: UIViewController {
     }
     
     @IBAction func addToFavouritesTapped(_ sender: UIButton) {
-        print("Add To Favourites Button Tapped...")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil) // Replace "Main" with your storyboard name
-        let nameSelectionVC = storyboard.instantiateViewController(withIdentifier: "FavouritesViewController") as! FavouritesViewController
-       nameSelectionVC.modalPresentationStyle = .overCurrentContext // Make the background transparent
-        
-        present(nameSelectionVC, animated: true, completion: nil)
+        let favouritesController = FavouritesScreenVC()
+        favouritesController.modalPresentationStyle = .overCurrentContext
+        present(favouritesController, animated: true, completion: nil)
+//
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let nameSelectionVC = storyboard.instantiateViewController(withIdentifier: K.viewsControllers.FavouritesViewController) as! FavouritesViewController
+//       nameSelectionVC.modalPresentationStyle = .overCurrentContext
+//
+//        present(nameSelectionVC, animated: true, completion: nil)
     }
     
 }
@@ -49,7 +53,7 @@ extension ConvertViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OutSideFTVCell", for: indexPath) as! OutSideFTVCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellsResuable.OutSideFTVCell, for: indexPath) as! OutSideFTVCell
         cell.currencyImage.image = arr[indexPath.row].image
         cell.currencyNameLabel.text = arr[indexPath.row].name
         cell.currencyAmountLabel.text = arr[indexPath.row].amount
@@ -61,7 +65,7 @@ extension ConvertViewController: UITableViewDelegate, UITableViewDataSource {
 extension ConvertViewController {
     func setupUI() {
         
-        favouritesTableView.register(UINib(nibName: "OutSideFTVCell", bundle: nil), forCellReuseIdentifier: "OutSideFTVCell")
+        favouritesTableView.register(UINib(nibName: K.cellsResuable.OutSideFTVCell, bundle: nil), forCellReuseIdentifier: K.cellsResuable.OutSideFTVCell)
         
         fromAmountTextField.layer.borderWidth = 0.5
         fromAmountTextField.layer.cornerRadius = 20

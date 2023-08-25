@@ -514,7 +514,7 @@
         <scene sceneID="5oC-YZ-eBX">
             <objects>
                 <viewController id="9ok-yP-2v3" customClass="CompareViewController" customModule="BM_Currency_Graduation" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QIC-R6-Meu">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="QIC-R6-Meu">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="348.66666666666669"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -539,7 +539,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    Select" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eRU-pY-TMq" customClass="JRDropDown">
                                         <rect key="frame" x="177" y="0.0" width="156" height="48"/>
                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="250"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="arrowColor">
@@ -548,6 +548,10 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="arrowSize">
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
+                                                <real key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSearchEnable" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                 </subviews>

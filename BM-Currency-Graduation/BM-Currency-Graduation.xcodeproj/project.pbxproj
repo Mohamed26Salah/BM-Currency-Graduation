@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB0093D82A98E61A00BF0BD9 /* CustomDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0093D72A98E61A00BF0BD9 /* CustomDropDown.swift */; };
 		AB0FD12B2A9667EE00E75270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12A2A9667EE00E75270 /* AppDelegate.swift */; };
 		AB0FD12D2A9667EE00E75270 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12C2A9667EE00E75270 /* SceneDelegate.swift */; };
 		AB0FD12F2A9667EE00E75270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12E2A9667EE00E75270 /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB0093D72A98E61A00BF0BD9 /* CustomDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDown.swift; sourceTree = "<group>"; };
 		AB0FD1272A9667EE00E75270 /* BM-Currency-Graduation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BM-Currency-Graduation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0FD12A2A9667EE00E75270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB0FD12C2A9667EE00E75270 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			children = (
 				AB0FD14C2A96A76900E75270 /* CustomSegmentedControl.swift */,
 				AB49F7BB2A97D974001A7F15 /* RadioButton.swift */,
+				AB0093D72A98E61A00BF0BD9 /* CustomDropDown.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				AB49F7BC2A97D974001A7F15 /* RadioButton.swift in Sources */,
 				AB49F7B92A97CE1B001A7F15 /* InSideFTVCell.swift in Sources */,
 				AB49F7B52A97C147001A7F15 /* FavouritesViewController.swift in Sources */,
+				AB0093D82A98E61A00BF0BD9 /* CustomDropDown.swift in Sources */,
 				ABE8D6992A97A54100ED898C /* OutSideFTVCell.swift in Sources */,
 				AB0FD14D2A96A76900E75270 /* CustomSegmentedControl.swift in Sources */,
 				AB0FD12F2A9667EE00E75270 /* ViewController.swift in Sources */,

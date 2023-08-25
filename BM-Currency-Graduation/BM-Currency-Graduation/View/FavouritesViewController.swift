@@ -48,9 +48,9 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
 extension FavouritesViewController {
     func setupUI() {
         view.isOpaque = false
-        view.backgroundColor = .clear
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         backgroundView.isOpaque = false
-        backgroundView.backgroundColor = .clear
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         favTableView.register(UINib(nibName: "InSideFTVCell", bundle: nil), forCellReuseIdentifier: "InSideFTVCell")
     }
 }

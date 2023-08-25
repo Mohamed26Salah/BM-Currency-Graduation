@@ -417,19 +417,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sua-2y-z5f">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpX-5S-AQI">
-                                                <rect key="frame" x="337.33333333333331" y="35.333333333333329" width="20.333333333333314" height="20.333333333333329"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20.300000000000001" id="OzY-Et-gHx"/>
-                                                    <constraint firstAttribute="width" constant="20.300000000000001" id="sDw-Go-ght"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
-                                                <connections>
-                                                    <action selector="xButtonTapped:" destination="TKj-Vv-SEv" eventType="touchUpInside" id="GaN-Tc-Y2N"/>
-                                                </connections>
-                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4q-BV-8bG">
                                                 <rect key="frame" x="20" y="96" width="353" height="551"/>
                                                 <subviews>
@@ -453,6 +440,19 @@
                                                             <outlet property="delegate" destination="TKj-Vv-SEv" id="EjW-vb-gYy"/>
                                                         </connections>
                                                     </tableView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpX-5S-AQI">
+                                                        <rect key="frame" x="317.66666666666669" y="14.999999999999998" width="20.333333333333314" height="20.333333333333329"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20.329999999999998" id="FQU-fY-YSn"/>
+                                                            <constraint firstAttribute="height" constant="20.329999999999998" id="dbj-FW-aC4"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="xButtonTapped:" destination="TKj-Vv-SEv" eventType="touchUpInside" id="GaN-Tc-Y2N"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -460,7 +460,9 @@
                                                     <constraint firstAttribute="height" constant="551" id="7rX-YC-WTk"/>
                                                     <constraint firstItem="lhz-HN-Rfy" firstAttribute="leading" secondItem="H4q-BV-8bG" secondAttribute="leading" constant="10" id="920-CH-O02"/>
                                                     <constraint firstAttribute="trailing" secondItem="lhz-HN-Rfy" secondAttribute="trailing" constant="10" id="S2F-V1-9Nl"/>
+                                                    <constraint firstAttribute="trailing" secondItem="DpX-5S-AQI" secondAttribute="trailing" constant="15" id="itP-oD-SsK"/>
                                                     <constraint firstItem="3pQ-1U-XO3" firstAttribute="leading" secondItem="H4q-BV-8bG" secondAttribute="leading" constant="10" id="r0W-Yw-bet"/>
+                                                    <constraint firstItem="DpX-5S-AQI" firstAttribute="top" secondItem="H4q-BV-8bG" secondAttribute="top" constant="15" id="sez-D0-GhH"/>
                                                     <constraint firstItem="lhz-HN-Rfy" firstAttribute="top" secondItem="3pQ-1U-XO3" secondAttribute="bottom" id="voZ-bX-tJq"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -474,9 +476,6 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="H4q-BV-8bG" secondAttribute="trailing" constant="20" id="1WJ-2w-0NA"/>
                                             <constraint firstItem="H4q-BV-8bG" firstAttribute="leading" secondItem="Sua-2y-z5f" secondAttribute="leading" constant="20" id="7zI-VD-9zc"/>
-                                            <constraint firstItem="H4q-BV-8bG" firstAttribute="top" secondItem="DpX-5S-AQI" secondAttribute="bottom" constant="40.359999999999999" id="E01-NV-DQr"/>
-                                            <constraint firstItem="DpX-5S-AQI" firstAttribute="top" secondItem="Sua-2y-z5f" secondAttribute="top" constant="35.280000000000001" id="MBf-OY-Aa9"/>
-                                            <constraint firstAttribute="trailing" secondItem="DpX-5S-AQI" secondAttribute="trailing" constant="35.280000000000001" id="UNq-Uc-lFS"/>
                                             <constraint firstAttribute="bottom" secondItem="H4q-BV-8bG" secondAttribute="bottom" constant="112" id="efY-2A-eu7"/>
                                         </constraints>
                                     </view>

@@ -10,7 +10,16 @@ import RxSwift
 import RxCocoa
 
 class APIManager {
-
+    
+    private init() {}
+    
+    private static let sharedInstance = APIManager()
+    
+    static func shared() -> APIManager {
+        return APIManager.sharedInstance
+    }
+   
+    
     let disposeBag = DisposeBag()
     enum EndPoint {
         case getCurrencesData

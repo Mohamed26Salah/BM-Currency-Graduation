@@ -6,20 +6,23 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import SDWebImage
 
 class FavouritesScreenVC: UIViewController {
     
     @IBOutlet weak var favTableView: UITableView!
     @IBOutlet weak var backgroundView: UIView!
-    let arr = [CurrencyTemp(image: UIImage(named: "USD")!, name: "USD", amount: "1"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "EGB", amount: "12"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "EUR", amount: "123"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "FUK", amount: "1234"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "KSA", amount: "12345"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "MSA", amount: "123456")]
+    
+    let disposeBag = DisposeBag()
+    var currencyVM = CurrencyViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        currencyVM.getAllCurrenciesData()
+        showCurrenciesData()
         // Do any additional setup after loading the view.
     }
     
@@ -28,22 +31,22 @@ class FavouritesScreenVC: UIViewController {
     }
     
 }
-extension FavouritesScreenVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        arr.count
+extension FavouritesScreenVC {
+    
+    func showCurrenciesData () {
+        currencyVM.currenciesArray
+            .bind(to: favTableView
+                .rx
+                .items(cellIdentifier: K.cellsResuable.InSideFTVCell, cellType: InSideFTVCell.self)) {
+                    (tv, curr, cell) in
+                    if let url = URL(string: curr.flagURL) {
+                        cell.currencyImage.sd_setImage(with: url)
+                    }
+                    cell.currencyNameLabel.text = curr.code
+//                    cell.favRadioButton -->
+                }
+                .disposed(by: disposeBag)
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellsResuable.InSideFTVCell, for: indexPath) as! InSideFTVCell
-        cell.currencyImage.image = arr[indexPath.row].image
-        cell.currencyNameLabel.text = arr[indexPath.row].name
-        cell.onFavButtonTapped = {
-            print("User Added Currency To Favourites")
-        }
-        return cell
-    }
-    
-    
 }
 extension FavouritesScreenVC {
     func setupUI() {

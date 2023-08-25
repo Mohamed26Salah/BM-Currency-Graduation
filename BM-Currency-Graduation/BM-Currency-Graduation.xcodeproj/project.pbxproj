@@ -16,6 +16,10 @@
 		AB0093F62A99406300BF0BD9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AB0093F52A99406300BF0BD9 /* RxCocoa */; };
 		AB0093F82A99406300BF0BD9 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AB0093F72A99406300BF0BD9 /* RxRelay */; };
 		AB0093FA2A99406300BF0BD9 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB0093F92A99406300BF0BD9 /* RxSwift */; };
+		AB0093FC2A995BE100BF0BD9 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0093FB2A995BE100BF0BD9 /* CurrencyViewModel.swift */; };
+		AB0094012A995C8100BF0BD9 /* AllCurrenciesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0094002A995C8100BF0BD9 /* AllCurrenciesModel.swift */; };
+		AB0094042A995CF300BF0BD9 /* OptionallyDecodable in Frameworks */ = {isa = PBXBuildFile; productRef = AB0094032A995CF300BF0BD9 /* OptionallyDecodable */; };
+		AB0094072A99630E00BF0BD9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AB0094062A99630E00BF0BD9 /* SDWebImageSwiftUI */; };
 		AB0FD12B2A9667EE00E75270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12A2A9667EE00E75270 /* AppDelegate.swift */; };
 		AB0FD12D2A9667EE00E75270 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12C2A9667EE00E75270 /* SceneDelegate.swift */; };
 		AB0FD12F2A9667EE00E75270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12E2A9667EE00E75270 /* ViewController.swift */; };
@@ -41,6 +45,8 @@
 		AB0093DE2A99095F00BF0BD9 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		AB0093E22A9910EA00BF0BD9 /* FavouritesScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesScreenVC.swift; sourceTree = "<group>"; };
 		AB0093E32A9910EA00BF0BD9 /* FavouritesScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritesScreenVC.xib; sourceTree = "<group>"; };
+		AB0093FB2A995BE100BF0BD9 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
+		AB0094002A995C8100BF0BD9 /* AllCurrenciesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCurrenciesModel.swift; sourceTree = "<group>"; };
 		AB0FD1272A9667EE00E75270 /* BM-Currency-Graduation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BM-Currency-Graduation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0FD12A2A9667EE00E75270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB0FD12C2A9667EE00E75270 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,11 +76,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB0094072A99630E00BF0BD9 /* SDWebImageSwiftUI in Frameworks */,
 				AB0093F62A99406300BF0BD9 /* RxCocoa in Frameworks */,
 				AB49F7BF2A98000B001A7F15 /* iOSDropDown in Frameworks */,
 				AB0093FA2A99406300BF0BD9 /* RxSwift in Frameworks */,
 				AB0093F82A99406300BF0BD9 /* RxRelay in Frameworks */,
 				AB0093F42A99406300BF0BD9 /* RxBlocking in Frameworks */,
+				AB0094042A995CF300BF0BD9 /* OptionallyDecodable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +104,14 @@
 				AB0093E32A9910EA00BF0BD9 /* FavouritesScreenVC.xib */,
 			);
 			path = "Favourites Screen";
+			sourceTree = "<group>";
+		};
+		AB0093FF2A995C6B00BF0BD9 /* parsers */ = {
+			isa = PBXGroup;
+			children = (
+				AB0094002A995C8100BF0BD9 /* AllCurrenciesModel.swift */,
+			);
+			path = parsers;
 			sourceTree = "<group>";
 		};
 		AB0FD11E2A9667ED00E75270 = {
@@ -136,6 +152,7 @@
 		AB0FD13E2A96680A00E75270 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AB0093FF2A995C6B00BF0BD9 /* parsers */,
 				ABE8D69B2A97ABE600ED898C /* CurrencyTemp.swift */,
 			);
 			path = Model;
@@ -144,6 +161,7 @@
 		AB0FD13F2A96680F00E75270 /* VIewModel */ = {
 			isa = PBXGroup;
 			children = (
+				AB0093FB2A995BE100BF0BD9 /* CurrencyViewModel.swift */,
 			);
 			path = VIewModel;
 			sourceTree = "<group>";
@@ -240,6 +258,8 @@
 				AB0093F52A99406300BF0BD9 /* RxCocoa */,
 				AB0093F72A99406300BF0BD9 /* RxRelay */,
 				AB0093F92A99406300BF0BD9 /* RxSwift */,
+				AB0094032A995CF300BF0BD9 /* OptionallyDecodable */,
+				AB0094062A99630E00BF0BD9 /* SDWebImageSwiftUI */,
 			);
 			productName = "BM-Currency-Graduation";
 			productReference = AB0FD1272A9667EE00E75270 /* BM-Currency-Graduation.app */;
@@ -272,6 +292,8 @@
 			packageReferences = (
 				AB49F7BD2A98000B001A7F15 /* XCRemoteSwiftPackageReference "iOSDropDown" */,
 				AB0093F22A99406300BF0BD9 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				AB0094022A995CF200BF0BD9 /* XCRemoteSwiftPackageReference "OptionallyDecodable" */,
+				AB0094052A99630E00BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = AB0FD1282A9667EE00E75270 /* Products */;
 			projectDirPath = "";
@@ -309,9 +331,11 @@
 				AB49F7B92A97CE1B001A7F15 /* InSideFTVCell.swift in Sources */,
 				AB0093DF2A99095F00BF0BD9 /* Test.swift in Sources */,
 				AB49F7B52A97C147001A7F15 /* FavouritesViewController.swift in Sources */,
+				AB0094012A995C8100BF0BD9 /* AllCurrenciesModel.swift in Sources */,
 				ABE8D6992A97A54100ED898C /* OutSideFTVCell.swift in Sources */,
 				AB0FD14D2A96A76900E75270 /* CustomSegmentedControl.swift in Sources */,
 				AB0FD12F2A9667EE00E75270 /* ViewController.swift in Sources */,
+				AB0093FC2A995BE100BF0BD9 /* CurrencyViewModel.swift in Sources */,
 				AB0093DD2A99060D00BF0BD9 /* Constants.swift in Sources */,
 				AB0FD12B2A9667EE00E75270 /* AppDelegate.swift in Sources */,
 				AB0FD1472A9699CA00E75270 /* CompareViewController.swift in Sources */,
@@ -545,6 +569,22 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		AB0094022A995CF200BF0BD9 /* XCRemoteSwiftPackageReference "OptionallyDecodable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/idrougge/OptionallyDecodable";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		AB0094052A99630E00BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		AB49F7BD2A98000B001A7F15 /* XCRemoteSwiftPackageReference "iOSDropDown" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jriosdev/iOSDropDown";
@@ -575,6 +615,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AB0093F22A99406300BF0BD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		AB0094032A995CF300BF0BD9 /* OptionallyDecodable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0094022A995CF200BF0BD9 /* XCRemoteSwiftPackageReference "OptionallyDecodable" */;
+			productName = OptionallyDecodable;
+		};
+		AB0094062A99630E00BF0BD9 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0094052A99630E00BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 		AB49F7BE2A98000B001A7F15 /* iOSDropDown */ = {
 			isa = XCSwiftPackageProductDependency;

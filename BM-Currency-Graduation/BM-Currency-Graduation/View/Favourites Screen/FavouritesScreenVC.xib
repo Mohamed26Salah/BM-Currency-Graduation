@@ -29,7 +29,7 @@
                     <rect key="frame" x="20" y="150" width="353" height="551"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hn-wy-Y1f">
-                            <rect key="frame" x="10" y="29" width="107.33333333333333" height="24"/>
+                            <rect key="frame" x="10" y="29" width="97.666666666666671" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="2cR-7C-Cl9"/>
                             </constraints>
@@ -43,10 +43,6 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="452.67000000000002" id="vfH-dw-B6r"/>
                             </constraints>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="df9-RX-dc9"/>
-                                <outlet property="delegate" destination="-1" id="bz4-g6-cRp"/>
-                            </connections>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iV5-0u-gda">
                             <rect key="frame" x="317.66666666666669" y="14.999999999999998" width="20.333333333333314" height="20.333333333333329"/>

@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SDWebImage
+import SDWebImageSVGCoder
 
 class FavouritesScreenVC: UIViewController {
     
@@ -21,6 +22,7 @@ class FavouritesScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupSVG()
         currencyVM.getAllCurrenciesData()
         showCurrenciesData()
         // Do any additional setup after loading the view.
@@ -34,6 +36,7 @@ class FavouritesScreenVC: UIViewController {
 extension FavouritesScreenVC {
     
     func showCurrenciesData () {
+        
         currencyVM.currenciesArray
             .bind(to: favTableView
                 .rx
@@ -55,5 +58,9 @@ extension FavouritesScreenVC {
         backgroundView.isOpaque = false
         backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         favTableView.register(UINib(nibName: K.cellsResuable.InSideFTVCell, bundle: nil), forCellReuseIdentifier: K.cellsResuable.InSideFTVCell)
+    }
+    func setupSVG() {
+        let SVGCoder = SDImageSVGCoder.shared
+        SDImageCodersManager.shared.addCoder(SVGCoder)
     }
 }

@@ -20,6 +20,7 @@
 		AB0094012A995C8100BF0BD9 /* AllCurrenciesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0094002A995C8100BF0BD9 /* AllCurrenciesModel.swift */; };
 		AB0094042A995CF300BF0BD9 /* OptionallyDecodable in Frameworks */ = {isa = PBXBuildFile; productRef = AB0094032A995CF300BF0BD9 /* OptionallyDecodable */; };
 		AB0094072A99630E00BF0BD9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AB0094062A99630E00BF0BD9 /* SDWebImageSwiftUI */; };
+		AB00940A2A996AE900BF0BD9 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = AB0094092A996AE900BF0BD9 /* SDWebImageSVGCoder */; };
 		AB0FD12B2A9667EE00E75270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12A2A9667EE00E75270 /* AppDelegate.swift */; };
 		AB0FD12D2A9667EE00E75270 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12C2A9667EE00E75270 /* SceneDelegate.swift */; };
 		AB0FD12F2A9667EE00E75270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12E2A9667EE00E75270 /* ViewController.swift */; };
@@ -83,6 +84,7 @@
 				AB0093F82A99406300BF0BD9 /* RxRelay in Frameworks */,
 				AB0093F42A99406300BF0BD9 /* RxBlocking in Frameworks */,
 				AB0094042A995CF300BF0BD9 /* OptionallyDecodable in Frameworks */,
+				AB00940A2A996AE900BF0BD9 /* SDWebImageSVGCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +262,7 @@
 				AB0093F92A99406300BF0BD9 /* RxSwift */,
 				AB0094032A995CF300BF0BD9 /* OptionallyDecodable */,
 				AB0094062A99630E00BF0BD9 /* SDWebImageSwiftUI */,
+				AB0094092A996AE900BF0BD9 /* SDWebImageSVGCoder */,
 			);
 			productName = "BM-Currency-Graduation";
 			productReference = AB0FD1272A9667EE00E75270 /* BM-Currency-Graduation.app */;
@@ -294,6 +297,7 @@
 				AB0093F22A99406300BF0BD9 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				AB0094022A995CF200BF0BD9 /* XCRemoteSwiftPackageReference "OptionallyDecodable" */,
 				AB0094052A99630E00BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				AB0094082A996AE900BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */,
 			);
 			productRefGroup = AB0FD1282A9667EE00E75270 /* Products */;
 			projectDirPath = "";
@@ -585,6 +589,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		AB0094082A996AE900BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSVGCoder";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		AB49F7BD2A98000B001A7F15 /* XCRemoteSwiftPackageReference "iOSDropDown" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jriosdev/iOSDropDown";
@@ -625,6 +637,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AB0094052A99630E00BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		AB0094092A996AE900BF0BD9 /* SDWebImageSVGCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0094082A996AE900BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */;
+			productName = SDWebImageSVGCoder;
 		};
 		AB49F7BE2A98000B001A7F15 /* iOSDropDown */ = {
 			isa = XCSwiftPackageProductDependency;

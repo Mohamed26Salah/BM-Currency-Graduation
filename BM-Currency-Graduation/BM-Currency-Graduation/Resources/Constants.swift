@@ -9,7 +9,7 @@ import Foundation
 
 struct K {
     struct Links {
-        static let apiLinkGetData = "http://16.171.161.38/api/v1"
+        static let baseURL = "http://www.amrcurrencyconversion.site/api/"
     }
     struct cellsResuable {
         static let InSideFTVCell = "InSideFTVCell"

@@ -21,7 +21,9 @@ class CompareViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fromCurrency.text = " " + currencyCodeToEmoji("JP") + " JPY"
-        fromCurrency.optionArray = [" " + currencyCodeToEmoji("US") + " USD", " " + currencyCodeToEmoji("EU") + " EUR", " " + currencyCodeToEmoji("JP") + " JPY"]
+        fromCurrency.optionArray = [" " + currencyCodeToEmoji("US") + " USD",
+                                    " " + currencyCodeToEmoji("EU") + " EUR",
+                                    " " + currencyCodeToEmoji("JP") + " JPY"]
         setupUI()
         // Do any additional setup after loading the view.
     }

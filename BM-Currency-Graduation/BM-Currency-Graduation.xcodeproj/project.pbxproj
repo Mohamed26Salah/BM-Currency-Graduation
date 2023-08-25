@@ -12,6 +12,10 @@
 		AB0093DF2A99095F00BF0BD9 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0093DE2A99095F00BF0BD9 /* Test.swift */; };
 		AB0093E42A9910EA00BF0BD9 /* FavouritesScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0093E22A9910EA00BF0BD9 /* FavouritesScreenVC.swift */; };
 		AB0093E52A9910EA00BF0BD9 /* FavouritesScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0093E32A9910EA00BF0BD9 /* FavouritesScreenVC.xib */; };
+		AB0093F42A99406300BF0BD9 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = AB0093F32A99406300BF0BD9 /* RxBlocking */; };
+		AB0093F62A99406300BF0BD9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AB0093F52A99406300BF0BD9 /* RxCocoa */; };
+		AB0093F82A99406300BF0BD9 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AB0093F72A99406300BF0BD9 /* RxRelay */; };
+		AB0093FA2A99406300BF0BD9 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB0093F92A99406300BF0BD9 /* RxSwift */; };
 		AB0FD12B2A9667EE00E75270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12A2A9667EE00E75270 /* AppDelegate.swift */; };
 		AB0FD12D2A9667EE00E75270 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12C2A9667EE00E75270 /* SceneDelegate.swift */; };
 		AB0FD12F2A9667EE00E75270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12E2A9667EE00E75270 /* ViewController.swift */; };
@@ -66,7 +70,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB0093F62A99406300BF0BD9 /* RxCocoa in Frameworks */,
 				AB49F7BF2A98000B001A7F15 /* iOSDropDown in Frameworks */,
+				AB0093FA2A99406300BF0BD9 /* RxSwift in Frameworks */,
+				AB0093F82A99406300BF0BD9 /* RxRelay in Frameworks */,
+				AB0093F42A99406300BF0BD9 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +236,10 @@
 			name = "BM-Currency-Graduation";
 			packageProductDependencies = (
 				AB49F7BE2A98000B001A7F15 /* iOSDropDown */,
+				AB0093F32A99406300BF0BD9 /* RxBlocking */,
+				AB0093F52A99406300BF0BD9 /* RxCocoa */,
+				AB0093F72A99406300BF0BD9 /* RxRelay */,
+				AB0093F92A99406300BF0BD9 /* RxSwift */,
 			);
 			productName = "BM-Currency-Graduation";
 			productReference = AB0FD1272A9667EE00E75270 /* BM-Currency-Graduation.app */;
@@ -259,6 +271,7 @@
 			mainGroup = AB0FD11E2A9667ED00E75270;
 			packageReferences = (
 				AB49F7BD2A98000B001A7F15 /* XCRemoteSwiftPackageReference "iOSDropDown" */,
+				AB0093F22A99406300BF0BD9 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = AB0FD1282A9667EE00E75270 /* Products */;
 			projectDirPath = "";
@@ -524,6 +537,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AB0093F22A99406300BF0BD9 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		AB49F7BD2A98000B001A7F15 /* XCRemoteSwiftPackageReference "iOSDropDown" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jriosdev/iOSDropDown";
@@ -535,6 +556,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AB0093F32A99406300BF0BD9 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0093F22A99406300BF0BD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		AB0093F52A99406300BF0BD9 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0093F22A99406300BF0BD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		AB0093F72A99406300BF0BD9 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0093F22A99406300BF0BD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		AB0093F92A99406300BF0BD9 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0093F22A99406300BF0BD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		AB49F7BE2A98000B001A7F15 /* iOSDropDown */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AB49F7BD2A98000B001A7F15 /* XCRemoteSwiftPackageReference "iOSDropDown" */;

@@ -37,6 +37,8 @@
 		AB55D2E02A9A541B00661288 /* Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB55D2DF2A9A541B00661288 /* Extenstions.swift */; };
 		AB55D2E22A9A5F8400661288 /* ConvertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB55D2E12A9A5F8400661288 /* ConvertModel.swift */; };
 		AB55D2E42A9A8C9600661288 /* CompareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB55D2E32A9A8C9600661288 /* CompareModel.swift */; };
+		AB55D2E72A9AA8EB00661288 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AB55D2E62A9AA8EB00661288 /* Realm */; };
+		AB55D2E92A9AA8EB00661288 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB55D2E82A9AA8EB00661288 /* RealmSwift */; };
 		ABE8D6992A97A54100ED898C /* OutSideFTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE8D6972A97A54100ED898C /* OutSideFTVCell.swift */; };
 		ABE8D69A2A97A54100ED898C /* OutSideFTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE8D6982A97A54100ED898C /* OutSideFTVCell.xib */; };
 		ABE8D69C2A97ABE600ED898C /* CurrencyTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE8D69B2A97ABE600ED898C /* CurrencyTemp.swift */; };
@@ -87,7 +89,9 @@
 				AB0093FA2A99406300BF0BD9 /* RxSwift in Frameworks */,
 				AB0093F82A99406300BF0BD9 /* RxRelay in Frameworks */,
 				AB0093F42A99406300BF0BD9 /* RxBlocking in Frameworks */,
+				AB55D2E72A9AA8EB00661288 /* Realm in Frameworks */,
 				AB0094042A995CF300BF0BD9 /* OptionallyDecodable in Frameworks */,
+				AB55D2E92A9AA8EB00661288 /* RealmSwift in Frameworks */,
 				AB00940A2A996AE900BF0BD9 /* SDWebImageSVGCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +273,8 @@
 				AB0094032A995CF300BF0BD9 /* OptionallyDecodable */,
 				AB0094062A99630E00BF0BD9 /* SDWebImageSwiftUI */,
 				AB0094092A996AE900BF0BD9 /* SDWebImageSVGCoder */,
+				AB55D2E62A9AA8EB00661288 /* Realm */,
+				AB55D2E82A9AA8EB00661288 /* RealmSwift */,
 			);
 			productName = "BM-Currency-Graduation";
 			productReference = AB0FD1272A9667EE00E75270 /* BM-Currency-Graduation.app */;
@@ -304,6 +310,7 @@
 				AB0094022A995CF200BF0BD9 /* XCRemoteSwiftPackageReference "OptionallyDecodable" */,
 				AB0094052A99630E00BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				AB0094082A996AE900BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */,
+				AB55D2E52A9AA8EB00661288 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = AB0FD1282A9667EE00E75270 /* Products */;
 			projectDirPath = "";
@@ -613,6 +620,14 @@
 				minimumVersion = 0.4.0;
 			};
 		};
+		AB55D2E52A9AA8EB00661288 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -655,6 +670,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AB49F7BD2A98000B001A7F15 /* XCRemoteSwiftPackageReference "iOSDropDown" */;
 			productName = iOSDropDown;
+		};
+		AB55D2E62A9AA8EB00661288 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB55D2E52A9AA8EB00661288 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		AB55D2E82A9AA8EB00661288 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB55D2E52A9AA8EB00661288 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

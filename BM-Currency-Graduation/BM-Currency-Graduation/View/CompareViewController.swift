@@ -9,7 +9,12 @@ import UIKit
 import iOSDropDown
 
 class CompareViewController: UIViewController {
-    
+    var data: String = "" {
+        didSet {
+            print("myProperty was set to: \(data)")
+        }
+    }
+
     @IBOutlet weak var fromAmountTextField: UITextField!
     @IBOutlet weak var fromCurrency: DropDown!
     @IBOutlet weak var firstToCurrency: DropDown!
@@ -24,6 +29,7 @@ class CompareViewController: UIViewController {
         fromCurrency.optionArray = [" " + currencyCodeToEmoji("US") + " USD",
                                     " " + currencyCodeToEmoji("EU") + " EUR",
                                     " " + currencyCodeToEmoji("JP") + " JPY"]
+        print(data)
         setupUI()
         // Do any additional setup after loading the view.
     }

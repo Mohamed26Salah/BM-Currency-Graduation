@@ -6,15 +6,29 @@
 //
 
 import UIKit
-
+import RxSwift
+import RxCocoa
 class ViewController: UIViewController {
 
     @IBOutlet weak var segmentOutlet: UISegmentedControl!
     @IBOutlet weak var convertSegmentView: UIView!
     @IBOutlet weak var compareSegmentView: UIView!
     
+    var childVC: CompareViewController?
+
+    let disposeBag = DisposeBag()
+    var currencyVM = CurrencyViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        currencyVM.getAllCurrenciesData()
+        
+        for vc in children {
+            if let childVC = vc as? CompareViewController {
+                self.childVC = childVC
+                break
+            }
+        }
+        childVC?.data = "Some data"
 //        self.view.bringSubviewToFront(convertSegmentView)
         convertSegmentView.superview?.bringSubviewToFront(convertSegmentView)
     }

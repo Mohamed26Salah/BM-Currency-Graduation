@@ -7,15 +7,23 @@
 
 import UIKit
 import iOSDropDown
+import RxSwift
+import RxCocoa
 
 class ConvertViewController: UIViewController {
-
+    var data: String = "" {
+            didSet {
+                print("myProperty was set to: \(data)")
+            }
+        }
     @IBOutlet weak var fromAmountTextField: UITextField!
     @IBOutlet weak var fromCurrency: DropDown!
     @IBOutlet weak var toAmountTextField: UITextField!
     @IBOutlet weak var toCurrency: DropDown!
     @IBOutlet weak var favouritesTableView: UITableView!
     @IBOutlet weak var addToFavourites: UIButton!
+    let disposeBag = DisposeBag()
+    var currencyVM = CurrencyViewModel()
     //Temp Values
     let arr = [CurrencyTemp(image: UIImage(named: "USD")!, name: "USD", amount: "1"),
                CurrencyTemp(image: UIImage(named: "USD")!, name: "EGB", amount: "12"),
@@ -27,8 +35,12 @@ class ConvertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        currencyVM.getAllCurrenciesData()
         setupUI()
+        fillDropDownMenus()
+        print("Salahajkshduashjkuashdjkua" + (data ?? "Fuck Me"))
     }
+
     
     @IBAction func convertButtonTapped(_ sender: UIButton) {
         print("Convert Button Tapped...")
@@ -86,5 +98,14 @@ extension ConvertViewController {
         addToFavourites.layer.borderWidth = 0.91
         addToFavourites.layer.cornerRadius = 18.12
         addToFavourites.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0).cgColor
+    }
+    func fillDropDownMenus() {
+        currencyVM.currenciesArray
+            .subscribe { currencyArray in
+                self.fromCurrency.reloadInputViews()
+                self.fromCurrency.optionArray = self.currencyVM.fillDropDown(currencyArray: currencyArray)
+                self.toCurrency.optionArray = self.currencyVM.fillDropDown(currencyArray: currencyArray)
+            }
+            .disposed(by: disposeBag)
     }
 }

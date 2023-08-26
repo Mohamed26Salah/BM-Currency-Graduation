@@ -34,3 +34,23 @@ class CurrencyViewModel {
     
     
 }
+//MARK: Helping Functions
+extension CurrencyViewModel {
+    func fillDropDown(currencyArray: [Currency]) -> [String] {
+        var arr = [String]()
+        for flag in currencyArray {
+            arr.append(" " + getFlagEmoji(flag: flag.code) + flag.code)
+        }
+        
+        return arr
+    }
+    func getFlagEmoji(flag: String) -> String{
+        let code = flag.dropLast()
+        let base: UInt32 = 127397
+        var emoji = ""
+        for scalar in code.unicodeScalars {
+            emoji.append(String(UnicodeScalar(base + scalar.value)!))
+        }
+        return emoji
+    }
+}

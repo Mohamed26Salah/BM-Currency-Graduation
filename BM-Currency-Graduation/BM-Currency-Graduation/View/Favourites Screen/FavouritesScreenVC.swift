@@ -18,7 +18,6 @@ class FavouritesScreenVC: UIViewController {
     
     let disposeBag = DisposeBag()
     var currencyVM = CurrencyViewModel()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

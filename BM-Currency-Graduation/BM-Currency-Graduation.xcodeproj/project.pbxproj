@@ -34,6 +34,7 @@
 		AB49F7BA2A97CE1B001A7F15 /* InSideFTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB49F7B82A97CE1B001A7F15 /* InSideFTVCell.xib */; };
 		AB49F7BC2A97D974001A7F15 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB49F7BB2A97D974001A7F15 /* RadioButton.swift */; };
 		AB49F7BF2A98000B001A7F15 /* iOSDropDown in Frameworks */ = {isa = PBXBuildFile; productRef = AB49F7BE2A98000B001A7F15 /* iOSDropDown */; };
+		AB55D2E02A9A541B00661288 /* Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB55D2DF2A9A541B00661288 /* Extenstions.swift */; };
 		ABE8D6992A97A54100ED898C /* OutSideFTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE8D6972A97A54100ED898C /* OutSideFTVCell.swift */; };
 		ABE8D69A2A97A54100ED898C /* OutSideFTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE8D6982A97A54100ED898C /* OutSideFTVCell.xib */; };
 		ABE8D69C2A97ABE600ED898C /* CurrencyTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE8D69B2A97ABE600ED898C /* CurrencyTemp.swift */; };
@@ -63,6 +64,7 @@
 		AB49F7B72A97CE1B001A7F15 /* InSideFTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InSideFTVCell.swift; sourceTree = "<group>"; };
 		AB49F7B82A97CE1B001A7F15 /* InSideFTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InSideFTVCell.xib; sourceTree = "<group>"; };
 		AB49F7BB2A97D974001A7F15 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		AB55D2DF2A9A541B00661288 /* Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenstions.swift; sourceTree = "<group>"; };
 		ABE8D6932A976B7000ED898C /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		ABE8D6942A979FC000ED898C /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		ABE8D6972A97A54100ED898C /* OutSideFTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutSideFTVCell.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		AB0FD14A2A96A74A00E75270 /* Extenstions */ = {
 			isa = PBXGroup;
 			children = (
+				AB55D2DF2A9A541B00661288 /* Extenstions.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				AB0093FC2A995BE100BF0BD9 /* CurrencyViewModel.swift in Sources */,
 				AB0093DD2A99060D00BF0BD9 /* Constants.swift in Sources */,
 				AB0FD12B2A9667EE00E75270 /* AppDelegate.swift in Sources */,
+				AB55D2E02A9A541B00661288 /* Extenstions.swift in Sources */,
 				AB0FD1472A9699CA00E75270 /* CompareViewController.swift in Sources */,
 				AB0FD1452A9699BE00E75270 /* ConvertViewController.swift in Sources */,
 				ABE8D69C2A97ABE600ED898C /* CurrencyTemp.swift in Sources */,

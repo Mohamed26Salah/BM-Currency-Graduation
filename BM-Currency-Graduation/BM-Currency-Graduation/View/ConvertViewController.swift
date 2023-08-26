@@ -11,11 +11,7 @@ import RxSwift
 import RxCocoa
 
 class ConvertViewController: UIViewController {
-    var data: String = "" {
-            didSet {
-                print("myProperty was set to: \(data)")
-            }
-        }
+
     @IBOutlet weak var fromAmountTextField: UITextField!
     @IBOutlet weak var fromCurrency: DropDown!
     @IBOutlet weak var toAmountTextField: UITextField!
@@ -24,6 +20,13 @@ class ConvertViewController: UIViewController {
     @IBOutlet weak var addToFavourites: UIButton!
     let disposeBag = DisposeBag()
     var currencyVM = CurrencyViewModel()
+//    var comingCurrencyVM: CurrencyViewModel? {
+//        didSet {
+//            if let currVM = comingCurrencyVM {
+//                currencyVM = currVM
+//            }
+//        }
+//    }
     //Temp Values
     let arr = [CurrencyTemp(image: UIImage(named: "USD")!, name: "USD", amount: "1"),
                CurrencyTemp(image: UIImage(named: "USD")!, name: "EGB", amount: "12"),
@@ -38,7 +41,6 @@ class ConvertViewController: UIViewController {
         currencyVM.getAllCurrenciesData()
         setupUI()
         fillDropDownMenus()
-        print("Salahajkshduashjkuashdjkua" + (data ?? "Fuck Me"))
     }
 
     
@@ -78,10 +80,11 @@ extension ConvertViewController {
     func setupUI() {
         
         favouritesTableView.register(UINib(nibName: K.cellsResuable.OutSideFTVCell, bundle: nil), forCellReuseIdentifier: K.cellsResuable.OutSideFTVCell)
-        
+
         fromAmountTextField.layer.borderWidth = 0.5
         fromAmountTextField.layer.cornerRadius = 20
         fromAmountTextField.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor
+        fromAmountTextField.addLeftPadding(16)
         
         fromCurrency.layer.borderWidth = 0.5
         fromCurrency.layer.cornerRadius = 20
@@ -90,6 +93,8 @@ extension ConvertViewController {
         toAmountTextField.layer.borderWidth = 0.5
         toAmountTextField.layer.cornerRadius = 20
         toAmountTextField.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor
+        toAmountTextField.addLeftPadding(16)
+
         
         toCurrency.layer.borderWidth = 0.5
         toCurrency.layer.cornerRadius = 20

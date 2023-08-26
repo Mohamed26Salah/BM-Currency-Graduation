@@ -14,21 +14,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var convertSegmentView: UIView!
     @IBOutlet weak var compareSegmentView: UIView!
     
-    var childVC: CompareViewController?
-
+//    var convertVC: ConvertViewController?
+//    var compareVC: CompareViewController?
+//    var favouritesVC: FavouritesScreenVC?
+    
     let disposeBag = DisposeBag()
-    var currencyVM = CurrencyViewModel()
+//    var currencyVM = CurrencyViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-        currencyVM.getAllCurrenciesData()
-        
-        for vc in children {
-            if let childVC = vc as? CompareViewController {
-                self.childVC = childVC
-                break
-            }
-        }
-        childVC?.data = "Some data"
+//        currencyVM.getAllCurrenciesData()
+//        passViewModelToViews()
+       
 //        self.view.bringSubviewToFront(convertSegmentView)
         convertSegmentView.superview?.bringSubviewToFront(convertSegmentView)
     }
@@ -49,4 +45,25 @@ class ViewController: UIViewController {
     }
     
 }
+//extension ViewController {
+//    func passViewModelToViews() {
+//        for vc in children {
+//            if let convertVC = vc as? ConvertViewController {
+//                self.convertVC = convertVC
+//                break
+//            }
+//            if let compareVC = vc as? CompareViewController {
+//                self.compareVC = compareVC
+//                break
+//            }
+//            if let favouritesVC = vc as? FavouritesScreenVC {
+//                self.favouritesVC = favouritesVC
+//                break
+//            }
+//        }
+////        convertVC?.comingCurrencyVM = currencyVM
+////        compareVC?.comingCurrencyVM = currencyVM
+////        favouritesVC?.comingCurrencyVM = currencyVM
+//    }
+//}
 

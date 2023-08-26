@@ -9,19 +9,14 @@ import UIKit
 import iOSDropDown
 
 class CompareViewController: UIViewController {
-    var data: String = "" {
-        didSet {
-            print("myProperty was set to: \(data)")
-        }
-    }
-
+   
     @IBOutlet weak var fromAmountTextField: UITextField!
     @IBOutlet weak var fromCurrency: DropDown!
     @IBOutlet weak var firstToCurrency: DropDown!
     @IBOutlet weak var secoundToCurrency: DropDown!
     @IBOutlet weak var firstToAmountTextField: UITextField!
     @IBOutlet weak var secoundToAmountTextField: UITextField!
-    
+    var currencyVM = CurrencyViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +24,6 @@ class CompareViewController: UIViewController {
         fromCurrency.optionArray = [" " + currencyCodeToEmoji("US") + " USD",
                                     " " + currencyCodeToEmoji("EU") + " EUR",
                                     " " + currencyCodeToEmoji("JP") + " JPY"]
-        print(data)
         setupUI()
         // Do any additional setup after loading the view.
     }
@@ -54,6 +48,8 @@ extension CompareViewController {
         fromAmountTextField.layer.borderWidth = 0.5
         fromAmountTextField.layer.cornerRadius = 20
         fromAmountTextField.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor
+        fromAmountTextField.addLeftPadding(16)
+
         
         fromCurrency.layer.borderWidth = 0.5
         fromCurrency.layer.cornerRadius = 20
@@ -70,9 +66,13 @@ extension CompareViewController {
         firstToAmountTextField.layer.borderWidth = 0.5
         firstToAmountTextField.layer.cornerRadius = 20
         firstToAmountTextField.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor
+        firstToAmountTextField.addLeftPadding(16)
+
         
         secoundToAmountTextField.layer.borderWidth = 0.5
         secoundToAmountTextField.layer.cornerRadius = 20
         secoundToAmountTextField.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor
+        secoundToAmountTextField.addLeftPadding(16)
+
     }
 }

@@ -9,6 +9,7 @@ import UIKit
 import iOSDropDown
 import RxSwift
 import RxCocoa
+import SDWebImage
 
 class ConvertViewController: UIViewController {
 
@@ -40,12 +41,24 @@ class ConvertViewController: UIViewController {
         super.viewDidLoad()
         currencyVM.getAllCurrenciesData()
         setupUI()
+        setupDropDown()
         fillDropDownMenus()
+        bindViewModelToViews()
     }
 
     
     @IBAction func convertButtonTapped(_ sender: UIButton) {
-        print("Convert Button Tapped...")
+        guard let fromCurrencyText = fromCurrency.text, !fromCurrencyText.isEmpty,
+              let toCurrencyText = toCurrency.text, !toCurrencyText.isEmpty else {
+            return
+        }
+        
+        var fromAmount = fromAmountTextField.text ?? "0.0"
+        if fromAmount.isEmpty {
+            fromAmount = "0.0"
+        }
+        
+        currencyVM.convertCurrency(amount: fromAmount, from: String(fromCurrencyText.dropFirst(2)), to: String(toCurrencyText.dropFirst(2)))
     }
     
     @IBAction func addToFavouritesTapped(_ sender: UIButton) {
@@ -75,6 +88,12 @@ extension ConvertViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+}
+//MARK: RxFunctions
+extension ConvertViewController {
+    func bindViewModelToViews() {
+        currencyVM.convertion.bind(to: toAmountTextField.rx.text).disposed(by: disposeBag)
+    }
 }
 extension ConvertViewController {
     func setupUI() {
@@ -107,10 +126,13 @@ extension ConvertViewController {
     func fillDropDownMenus() {
         currencyVM.currenciesArray
             .subscribe { currencyArray in
-                self.fromCurrency.reloadInputViews()
                 self.fromCurrency.optionArray = self.currencyVM.fillDropDown(currencyArray: currencyArray)
                 self.toCurrency.optionArray = self.currencyVM.fillDropDown(currencyArray: currencyArray)
             }
             .disposed(by: disposeBag)
+    }
+    func setupDropDown() {
+        fromCurrency.text = " " + currencyVM.getFlagEmoji(flag: "EGP") + "EGP"
+        toCurrency.text = " " + currencyVM.getFlagEmoji(flag: "USD") + "USD"
     }
 }

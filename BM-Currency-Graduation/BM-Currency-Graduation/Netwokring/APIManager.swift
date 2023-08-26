@@ -46,12 +46,11 @@ class APIManager {
     }
     
     func fetchGlobal<T: Codable>(parsingType: T.Type, url: URL, attributes: [String: String]? = nil) -> Observable<T> {
-        var request = URLRequest(url: url)
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         if let attributes = attributes {
-            for (key, value) in attributes {
-                request.addValue(value, forHTTPHeaderField: key)
-            }
+            components.queryItems = attributes.map { URLQueryItem(name: $0.key, value: $0.value) }
         }
+        var request = URLRequest(url: components.url!)
         return URLSession.shared.rx.response(request: request)
             .map { result -> Data in
                 guard result.response.statusCode == 200 else {

@@ -15,6 +15,9 @@ class CurrencyViewModel {
     //In
     var errorSubject = PublishSubject<String>()
     //Out
+    var convertion = PublishRelay<String>.init()
+    var firstComparedCurrency = PublishRelay<String>.init()
+    var secoundComparedCurrency = PublishRelay<String>.init()
     var currenciesArray = PublishRelay<[Currency]>.init()
     
 //    init() {
@@ -30,6 +33,33 @@ class CurrencyViewModel {
                 self.errorSubject.onNext(error.localizedDescription)
             })
             .disposed(by: disposeBag)
+    }
+    func convertCurrency(amount: String, from: String, to: String) {
+        APIManager.shared().fetchGlobal(parsingType: ConvertModel.self, url: APIManager.EndPoint.convertCurrency.stringToUrl, attributes: ["from":from, "to":to, "amount":amount])
+            .subscribe(onNext: { convertion in
+                self.convertion.accept(String(format: "%.2f", convertion.result))
+//                print(convertion.result)
+//                , completion: @escaping (Double) -> Void
+//                completion(convertion.result)
+            }, onError: { error in
+                print(error)
+                self.errorSubject.onNext(error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
+    }
+    func compareCurrency(amount: String, from: String, toFirstCurrency: String, toSecoundCurrency: String) {
+        let currencyList = [toFirstCurrency, toSecoundCurrency]
+        let listParameter = currencyList.joined(separator: ",")
+        APIManager.shared().fetchGlobal(parsingType: CompareModel.self, url: APIManager.EndPoint.compareCurrencies.stringToUrl, attributes: ["from":from, "amount":amount, "list":listParameter ])
+            .subscribe { compareModel in
+                self.firstComparedCurrency.accept(String(format: "%.2f", compareModel.conversionRates[0].amount))
+                self.secoundComparedCurrency.accept(String(format: "%.2f", compareModel.conversionRates[1].amount))
+            } onError: { error in
+                print(error)
+                self.errorSubject.onNext(error.localizedDescription)
+            }
+            .disposed(by: disposeBag)
+
     }
     
     

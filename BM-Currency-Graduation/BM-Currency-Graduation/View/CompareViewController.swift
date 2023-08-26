@@ -7,6 +7,9 @@
 
 import UIKit
 import iOSDropDown
+import RxSwift
+import RxCocoa
+import RxRelay
 
 class CompareViewController: UIViewController {
    
@@ -17,30 +20,38 @@ class CompareViewController: UIViewController {
     @IBOutlet weak var firstToAmountTextField: UITextField!
     @IBOutlet weak var secoundToAmountTextField: UITextField!
     var currencyVM = CurrencyViewModel()
-    
+    let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        fromCurrency.text = " " + currencyCodeToEmoji("JP") + " JPY"
-        fromCurrency.optionArray = [" " + currencyCodeToEmoji("US") + " USD",
-                                    " " + currencyCodeToEmoji("EU") + " EUR",
-                                    " " + currencyCodeToEmoji("JP") + " JPY"]
+        currencyVM.getAllCurrenciesData()
+        setupDropDown()
+        fillDropDownMenus()
         setupUI()
+        bindViewModelToViews()
         // Do any additional setup after loading the view.
     }
     
     
     @IBAction func compareButtonTapped(_ sender: UIButton) {
-        print("Compare Button Tapped...")
+        guard let fromCurrencyText = fromCurrency.text, !fromCurrencyText.isEmpty,
+              let firstToCurrencyText = firstToCurrency.text, !firstToCurrencyText.isEmpty,
+              let secoundToCurrencyText = secoundToCurrency.text, !secoundToCurrencyText.isEmpty else {
+            return
+        }
+
+        var fromAmount = fromAmountTextField.text ?? "0.0"
+        if fromAmount.isEmpty {
+            fromAmount = "0.0"
+        }
+        currencyVM.compareCurrency(amount: fromAmount, from: String(fromCurrencyText.dropFirst(2)), toFirstCurrency: String(firstToCurrencyText.dropFirst(2)), toSecoundCurrency: String(secoundToCurrencyText.dropFirst(2)))
     }
 }
+//MARK: RxFunctions
 extension CompareViewController {
-    func currencyCodeToEmoji(_ code: String) -> String {
-        let base: UInt32 = 127397
-        var emoji = ""
-        for scalar in code.unicodeScalars {
-            emoji.append(String(UnicodeScalar(base + scalar.value)!))
-        }
-        return emoji
+    func bindViewModelToViews() {
+        currencyVM.firstComparedCurrency.bind(to: firstToAmountTextField.rx.text).disposed(by: disposeBag)
+        currencyVM.secoundComparedCurrency.bind(to: secoundToAmountTextField.rx.text).disposed(by: disposeBag)
     }
 }
 extension CompareViewController {
@@ -74,5 +85,18 @@ extension CompareViewController {
         secoundToAmountTextField.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor
         secoundToAmountTextField.addLeftPadding(16)
 
+    }
+    func fillDropDownMenus() {
+        currencyVM.currenciesArray
+            .subscribe { currency in
+                self.fromCurrency.optionArray = self.currencyVM.fillDropDown(currencyArray: currency)
+                self.firstToCurrency.optionArray = self.currencyVM.fillDropDown(currencyArray: currency)
+                self.secoundToCurrency.optionArray = self.currencyVM.fillDropDown(currencyArray: currency)
+            }.disposed(by: disposeBag)
+    }
+    func setupDropDown() {
+        self.fromCurrency.text = " " + currencyVM.getFlagEmoji(flag: "EGP") + "EGP"
+        self.firstToCurrency.text = " " + currencyVM.getFlagEmoji(flag: "USD") + "USD"
+        self.secoundToCurrency.text = " " + currencyVM.getFlagEmoji(flag: "KWD") + "KWD"
     }
 }

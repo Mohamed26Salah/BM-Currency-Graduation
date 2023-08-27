@@ -82,6 +82,25 @@ extension ConvertViewController {
                     
                 }
                 .disposed(by: disposeBag)
+        currencyVM.favouritesArray
+            .map { $0.isEmpty }
+            .subscribe(onNext: { [weak self] isEmpty in
+                self?.updateTableViewUI(isEmpty: isEmpty)
+            })
+            .disposed(by: disposeBag)
+    }
+    func updateTableViewUI(isEmpty: Bool) {
+        if isEmpty {
+            let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: favouritesTableView.bounds.size.width, height: favouritesTableView.bounds.size.height))
+            noDataLabel.text = "You Haven't added any favoruites yet!"
+            noDataLabel.textColor = UIColor.black
+            noDataLabel.textAlignment = .center
+            favouritesTableView.backgroundView = noDataLabel
+            favouritesTableView.separatorStyle = .none
+        } else {
+            favouritesTableView.backgroundView = nil
+            favouritesTableView.separatorStyle = .singleLine
+        }
     }
     
 }

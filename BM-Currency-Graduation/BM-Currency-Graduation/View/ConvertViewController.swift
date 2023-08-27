@@ -36,6 +36,7 @@ class ConvertViewController: UIViewController {
         setupDropDown()
         fillDropDownMenus()
         bindViewModelToViews()
+        bindViewslToViewModel()
         showFavouritesData()
 //        APIManager.shared().fetchBassyooni()
     }
@@ -73,14 +74,30 @@ extension ConvertViewController {
         currencyVM.favouritesArray
             .bind(to: favouritesTableView
                 .rx
-                .items(cellIdentifier: K.cellsResuable.OutSideFTVCell, cellType: OutSideFTVCell.self)) {
+                .items(cellIdentifier: K.cellsResuable.OutSideFTVCell, cellType: OutSideFTVCell.self)) { [weak self]
                     (tv, curr, cell) in
+                    guard let self = self else {
+                        return
+                    }
                     if let url = URL(string: curr.imageUrl) {
                         cell.currencyImage.sd_setImage(with: url)
                     }
                     cell.currencyNameLabel.text = curr.currencyCode
-                    cell.currencyAmountLabel.text = "123"
+                    Observable.combineLatest(self.currencyVM.fromAmount, self.currencyVM.fromCurrency)
+                        .subscribe(onNext: { (amount, fromCurrency) in
+                            self.currencyVM.getConvertionRate(amount: amount, from: fromCurrency, to: curr.currencyCode) { converstionRate in
+                                cell.currencyAmountLabel.text = converstionRate
+                            }
+                        })
+                        .disposed(by: disposeBag)
                     
+//                    Observable.combineLatest(currencyVM.fromAmount, currencyVM.fromCurrency)
+//                        .subscribe(onNext: { [weak self] (amount, fromCurrency) in
+//                            currencyVM.getConvertionRate(amount: amount, from: fromCurrency, to: curr.currencyCode) { conversionRate in
+//                                cell.currencyAmountLabel.text = "\(conversionRate)"
+//                            }
+//                        })
+//                        .disposed(by: disposeBag)
                 }
                 .disposed(by: disposeBag)
         currencyVM.favouritesArray
@@ -109,6 +126,28 @@ extension ConvertViewController {
 extension ConvertViewController {
     func bindViewModelToViews() {
         currencyVM.convertion.bind(to: toAmountTextField.rx.text).disposed(by: disposeBag)
+    }
+    func bindViewslToViewModel() {
+        fromAmountTextField.rx.controlEvent(.editingChanged)
+            .withLatestFrom(fromAmountTextField.rx.text.orEmpty)
+            .map { currency in
+                let cleanedCurrency = String(currency.dropFirst(2))
+                return cleanedCurrency.isEmpty ? "0.0" : cleanedCurrency
+            }
+            .distinctUntilChanged()
+            .compactMap(Double.init)
+            .bind(to: currencyVM.fromAmount)
+            .disposed(by: disposeBag)
+        
+        fromCurrency.rx.text.orEmpty
+            .map { currency in
+                let cleanedCurrency = String(currency.dropFirst(2))
+                return cleanedCurrency.isEmpty ? "0.0" : cleanedCurrency
+            }
+            .distinctUntilChanged()
+            .bind(to: currencyVM.fromCurrency)
+            .disposed(by: disposeBag)
+
     }
 }
 extension ConvertViewController {

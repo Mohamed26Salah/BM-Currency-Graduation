@@ -423,7 +423,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BsC-1t-1KR">
-                                <rect key="frame" x="30" y="299.33333333333331" width="333" height="48"/>
+                                <rect key="frame" x="30" y="299.33333333333331" width="94" height="48"/>
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.21176470589999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Zd5-QK-5Di"/>
@@ -452,9 +452,8 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="152" height="84"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXS-Gn-UJu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="21"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="59.666666666666664" height="21"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="60.049999999999997" id="23c-tQ-7gm"/>
                                                             <constraint firstAttribute="height" constant="21" id="9He-Jb-icQ"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="MontserratRoman-SemiBold" family="Montserrat" pointSize="14"/>
@@ -490,7 +489,6 @@
                                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="48" id="CmN-F4-Jr3"/>
-                                                            <constraint firstAttribute="width" priority="750" constant="152" id="VUm-cf-zV2"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -521,9 +519,8 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="152" height="143"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Targeted Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TiX-DL-k1g">
-                                                        <rect key="frame" x="0.0" y="0.0" width="133" height="21"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="134.33333333333334" height="21"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="133" id="Iyx-hI-lKT"/>
                                                             <constraint firstAttribute="height" constant="21" id="WKx-Bn-fJt"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="MontserratRoman-SemiBold" family="Montserrat" pointSize="14"/>
@@ -531,11 +528,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    Select" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6qg-yx-x0N" customClass="JRDropDown">
-                                                        <rect key="frame" x="0.0" y="36.000000000000014" width="152" height="48"/>
+                                                        <rect key="frame" x="0.0" y="36.000000000000014" width="79" height="48"/>
                                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="48" id="3fp-dx-tcX"/>
-                                                            <constraint firstAttribute="width" constant="152" id="AZW-J4-5CJ"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -580,7 +576,6 @@
                                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="48" id="vtx-x2-Xul"/>
-                                                            <constraint firstAttribute="width" priority="750" constant="152" id="vz2-fm-lLD"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -622,7 +617,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hfh-oY-B1h" firstAttribute="top" secondItem="QIC-R6-Meu" secondAttribute="top" constant="21.469999999999999" id="0in-t7-hua"/>
-                            <constraint firstAttribute="trailing" secondItem="BsC-1t-1KR" secondAttribute="trailing" constant="30" id="83n-Zn-m0v"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BsC-1t-1KR" secondAttribute="trailing" symbolic="YES" id="83n-Zn-m0v"/>
                             <constraint firstAttribute="bottom" secondItem="BsC-1t-1KR" secondAttribute="bottom" constant="0.67000000000000004" id="BFC-Rg-RjZ"/>
                             <constraint firstItem="hfh-oY-B1h" firstAttribute="leading" secondItem="f0X-KC-6YL" secondAttribute="leading" constant="30" id="Rr0-ug-gEo"/>
                             <constraint firstItem="BsC-1t-1KR" firstAttribute="top" secondItem="hfh-oY-B1h" secondAttribute="bottom" constant="38" id="UzP-at-Sge"/>

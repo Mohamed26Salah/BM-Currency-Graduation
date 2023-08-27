@@ -33,7 +33,7 @@ class APIManager {
 //            case .convertCurrency:
 //                return K.Links.baseURL + "v2/conversion?"
             case .compareCurrencies:
-                return K.Links.baseURL + "v2/comparison?"
+                return K.Links.baseURL + "comparison?"
             }
         }
         var stringToUrl: URL {

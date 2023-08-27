@@ -8,26 +8,31 @@
 import Foundation
 import OptionallyDecodable
 
+
 // MARK: - CompareModel
 struct CompareModel: Codable {
-    var conversionRates: [ConversionRate]
-    var timeLastUpdateUTC: String
+    var result: String
+    var baseCode: String
+    var targetCodes: [String]
+    var conversionRates: ConversionRates
 
     enum CodingKeys: String, CodingKey {
+        case result = "result"
+        case baseCode = "base_code"
+        case targetCodes = "target_codes"
         case conversionRates = "conversion_rates"
-        case timeLastUpdateUTC = "time_last_update_utc"
     }
 }
 
-// MARK: - ConversionRate
-struct ConversionRate: Codable {
-    var currencyCode: String
-    var rate: Double
-    var amount: Double
+// MARK: - ConversionRates
+struct ConversionRates: Codable {
+    var additionalProp1: Int
+    var additionalProp2: Int
+    var additionalProp3: Int
 
     enum CodingKeys: String, CodingKey {
-        case currencyCode = "currencyCode"
-        case rate = "rate"
-        case amount = "amount"
+        case additionalProp1 = "additionalProp1"
+        case additionalProp2 = "additionalProp2"
+        case additionalProp3 = "additionalProp3"
     }
 }

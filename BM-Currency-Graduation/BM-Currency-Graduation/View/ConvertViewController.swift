@@ -29,15 +29,6 @@ class ConvertViewController: UIViewController {
 //            }
 //        }
 //    }
-    //Temp Values
-//    let arr = [CurrencyTemp(image: UIImage(named: "USD")!, name: "USD", amount: "1"),
-//               CurrencyTemp(image: UIImage(named: "USD")!, name: "EGB", amount: "12"),
-//               CurrencyTemp(image: UIImage(named: "USD")!, name: "EUR", amount: "123"),
-//               CurrencyTemp(image: UIImage(named: "USD")!, name: "FUK", amount: "1234"),
-//               CurrencyTemp(image: UIImage(named: "USD")!, name: "KSA", amount: "12345"),
-//               CurrencyTemp(image: UIImage(named: "USD")!, name: "MSA", amount: "123456")]
-//    let favouritesArray = FavouritesManager.shared().getAllFavoriteItems()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         currencyVM.getAllCurrenciesData()
@@ -67,7 +58,7 @@ class ConvertViewController: UIViewController {
         let favouritesController = FavouritesScreenVC(currencyVm: currencyVM)
         favouritesController.modalPresentationStyle = .overCurrentContext
         present(favouritesController, animated: true, completion: nil)
-//
+
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        let nameSelectionVC = storyboard.instantiateViewController(withIdentifier: K.viewsControllers.FavouritesViewController) as! FavouritesViewController
 //       nameSelectionVC.modalPresentationStyle = .overCurrentContext
@@ -77,33 +68,20 @@ class ConvertViewController: UIViewController {
     
 }
 extension ConvertViewController {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        favouritesArray.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellsResuable.OutSideFTVCell, for: indexPath) as! OutSideFTVCell
-//
-//        if let url = URL(string: favouritesArray[indexPath.row].imageUrl) {
-//            cell.currencyImage.sd_setImage(with: url)
-//        }
-//        cell.currencyNameLabel.text = favouritesArray[indexPath.row].currencyCode
-//        cell.currencyAmountLabel.text = "123"
-//        return cell
-//    }
-//
     func showFavouritesData() {
         currencyVM.favouritesArray
             .bind(to: favouritesTableView
                 .rx
                 .items(cellIdentifier: K.cellsResuable.OutSideFTVCell, cellType: OutSideFTVCell.self)) {
                     (tv, curr, cell) in
+                    print("Before")
                     if let url = URL(string: curr.imageUrl) {
                         cell.currencyImage.sd_setImage(with: url)
                     }
+                    print("After")
                     cell.currencyNameLabel.text = curr.currencyCode
                     cell.currencyAmountLabel.text = "123"
-                   
+                    
                 }
                 .disposed(by: disposeBag)
     }

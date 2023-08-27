@@ -13,10 +13,13 @@ import SDWebImageSVGCoder
 
 class FavouritesScreenVC: UIViewController {
     
+
+    @IBOutlet weak var favTableView: UITableView!
+    @IBOutlet weak var backgroundView: UIView!
+    
     let currencyVM: CurrencyViewModel
 
     init(currencyVm: CurrencyViewModel){
-//        print(FavouritesManager.shared().returnDataBaseURL())
         self.currencyVM = currencyVm
         super.init(nibName: "FavouritesScreenVC", bundle: .main)
     }
@@ -24,9 +27,6 @@ class FavouritesScreenVC: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    @IBOutlet weak var favTableView: UITableView!
-    @IBOutlet weak var backgroundView: UIView!
-    
     let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,16 +45,17 @@ class FavouritesScreenVC: UIViewController {
 extension FavouritesScreenVC {
     
     func showCurrenciesData () {
-        
         currencyVM.currenciesArray
             .bind(to: favTableView
                 .rx
                 .items(cellIdentifier: K.cellsResuable.InSideFTVCell, cellType: InSideFTVCell.self)) {
                     (tv, curr, cell) in
                     let favouriteItem = FavouriteItem(currencyCode: curr.code, imageUrl: curr.flagURL)
+                    print("Before")
                     if let url = URL(string: curr.flagURL) {
                         cell.currencyImage.sd_setImage(with: url)
                     }
+                    print("After")
                     cell.currencyNameLabel.text = curr.code
                     cell.favRadioButton.isChecked = FavouritesManager.shared().isItemFavorited(item: favouriteItem)
                     cell.onFavButtonTapped = {

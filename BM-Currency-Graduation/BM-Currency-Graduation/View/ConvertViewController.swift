@@ -37,6 +37,7 @@ class ConvertViewController: UIViewController {
         fillDropDownMenus()
         bindViewModelToViews()
         showFavouritesData()
+//        APIManager.shared().fetchBassyooni()
     }
 
     

@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
-
+import Alamofire
 class APIManager {
     
     private init() {}
@@ -33,7 +33,7 @@ class APIManager {
 //            case .convertCurrency:
 //                return K.Links.baseURL + "v2/conversion?"
             case .compareCurrencies:
-                return K.Links.baseURL + "comparison?"
+                return K.Links.newBaseURL + "/comparison"
             }
         }
         var stringToUrl: URL {
@@ -44,7 +44,40 @@ class APIManager {
         case invalidResponse(URLResponse?)
         case invalidJSON(Swift.Error)
     }
-    
+//    func fetchBassyooni() {
+//        print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
+//        let parameters = "{\n  \"base_code\": \"USD\",\n  \"target_codes\": [\n    \"JPY\",\n    \"GBP\"\n  ]\n}\n"
+//        let postData = parameters.data(using: .utf8)
+//
+//        var request = URLRequest(url: URL(string: "https://concurrency-api.onrender.com/api/v1/currencies/comparison")!,timeoutInterval: Double.infinity)
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//        request.httpMethod = "GET"
+//        request.httpBody = postData
+//
+//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//          guard let data = data else {
+//            print(String(describing: error))
+//            return
+//          }
+//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
+//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
+//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
+//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
+//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
+//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
+//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
+//          print(String(data: data, encoding: .utf8)!)
+//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
+//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
+//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
+//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
+//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
+//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
+//        }
+//
+//        task.resume()
+//    }
     func fetchGlobal<T: Codable>(
         parsingType: T.Type,
         baseURL: URL,
@@ -52,6 +85,7 @@ class APIManager {
         queryParameters: [String: String]? = nil,
         jsonBody: [String: Any]? = nil
     ) -> Observable<T> {
+
         var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)!
         if let attributes = attributes, !attributes.isEmpty {
             components.path += "/" + attributes.joined(separator: "/")
@@ -92,4 +126,5 @@ class APIManager {
             .observe(on: MainScheduler.instance)
             .asObservable()
     }
+   
 }

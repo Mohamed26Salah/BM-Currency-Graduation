@@ -55,3 +55,19 @@ func fetchGlobal2<T: Codable>(
         .observe(on: MainScheduler.instance)
         .asObservable()
 }
+//        let baseeURL = "https://concurrency-api.onrender.com/api/v1/currencies/comparison"
+//        let jsoneBody: [String: Any] = [
+//            "base_code": "USD",
+//            "target_codes": ["EGP", "JPY"]
+//        ]
+//
+//        AF.request(baseeURL, method: .post, parameters: jsoneBody, encoding: JSONEncoding.default)
+//            .responseDecodable(of: CompareModel.self) { response in
+//                switch response.result {
+//                case .success(let value):
+//                    print("Success:", value)
+//                    print("AAAAAAAAAAAAAAAAAAAAAA")
+//                case .failure(let error):
+//                    print("Error:", error)
+//                }
+//            }

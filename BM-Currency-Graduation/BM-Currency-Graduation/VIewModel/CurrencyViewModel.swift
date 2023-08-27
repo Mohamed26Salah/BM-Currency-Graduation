@@ -47,27 +47,16 @@ class CurrencyViewModel {
     }
     func compareCurrency(amount: String, from: String, toFirstCurrency: String, toSecoundCurrency: String) {
         let currencyList = [toFirstCurrency, toSecoundCurrency]
-//        let listParameter = currencyList.joined(separator: ",")
         let body: [String : Any] = ["base_code":from, "target_codes":currencyList]
         APIManager.shared().fetchGlobal(parsingType: CompareModel.self, baseURL: APIManager.EndPoint.compareCurrencies.stringToUrl, jsonBody: body)
             .subscribe { compareModel in
-                self.firstComparedCurrency.accept(String(compareModel.conversionRates.additionalProp1))
-                self.secoundComparedCurrency.accept(String(compareModel.conversionRates.additionalProp2))
+                self.firstComparedCurrency.accept(String(self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toFirstCurrency, conversionRates: compareModel.conversionRates) ?? 1.0))
+                self.secoundComparedCurrency.accept(String(self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toSecoundCurrency, conversionRates: compareModel.conversionRates) ?? 1.0))
             } onError: { error in
                 print(error)
                 self.errorSubject.onNext(error.localizedDescription)
             }
             .disposed(by: disposeBag)
-
-//        APIManager.shared().fetchGlobal(parsingType: CompareModel.self, baseURL: APIManager.EndPoint.compareCurrencies.stringToUrl, queryParameters: ["from":from, "amount":amount, "list":listParameter ])
-//            .subscribe { compareModel in
-//                self.firstComparedCurrency.accept(String(format: "%.2f", compareModel.conversionRates[0].amount))
-//                self.secoundComparedCurrency.accept(String(format: "%.2f", compareModel.conversionRates[1].amount))
-//            } onError: { error in
-//                print(error)
-//                self.errorSubject.onNext(error.localizedDescription)
-//            }
-//            .disposed(by: disposeBag)
 
     }
     
@@ -91,5 +80,11 @@ extension CurrencyViewModel {
             emoji.append(String(UnicodeScalar(base + scalar.value)!))
         }
         return emoji
+    }
+    func calculateConvertedAmount(baseAmount: Double, targetCurrency: String, conversionRates: [String:Double]) -> Double? {
+        if let rate = conversionRates[targetCurrency] {
+            return baseAmount * rate
+        }
+        return nil
     }
 }

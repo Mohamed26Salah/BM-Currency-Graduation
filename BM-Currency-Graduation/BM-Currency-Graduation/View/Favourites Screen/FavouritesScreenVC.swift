@@ -51,11 +51,9 @@ extension FavouritesScreenVC {
                 .items(cellIdentifier: K.cellsResuable.InSideFTVCell, cellType: InSideFTVCell.self)) {
                     (tv, curr, cell) in
                     let favouriteItem = FavouriteItem(currencyCode: curr.code, imageUrl: curr.flagURL)
-                    print("Before")
                     if let url = URL(string: curr.flagURL) {
                         cell.currencyImage.sd_setImage(with: url)
                     }
-                    print("After")
                     cell.currencyNameLabel.text = curr.code
                     cell.favRadioButton.isChecked = FavouritesManager.shared().isItemFavorited(item: favouriteItem)
                     cell.onFavButtonTapped = {

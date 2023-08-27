@@ -74,11 +74,9 @@ extension ConvertViewController {
                 .rx
                 .items(cellIdentifier: K.cellsResuable.OutSideFTVCell, cellType: OutSideFTVCell.self)) {
                     (tv, curr, cell) in
-                    print("Before")
                     if let url = URL(string: curr.imageUrl) {
                         cell.currencyImage.sd_setImage(with: url)
                     }
-                    print("After")
                     cell.currencyNameLabel.text = curr.currencyCode
                     cell.currencyAmountLabel.text = "123"
                     

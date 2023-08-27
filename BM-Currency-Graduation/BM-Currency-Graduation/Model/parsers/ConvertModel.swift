@@ -6,17 +6,19 @@
 //
 
 import Foundation
-
-import Foundation
 import OptionallyDecodable
 
 // MARK: - DecodeScene
 struct ConvertModel: Codable {
-    var result: Double
-    var timeLastUpdateUTC: String
+    var baseCode: String
+    var targetCode: String
+    var conversionRate: Double
+    var conversionResult: Double
 
     enum CodingKeys: String, CodingKey {
-        case result = "result"
-        case timeLastUpdateUTC = "time_last_update_utc"
+        case baseCode = "base_code"
+        case targetCode = "target_code"
+        case conversionRate = "conversion_rate"
+        case conversionResult = "conversion_result"
     }
 }

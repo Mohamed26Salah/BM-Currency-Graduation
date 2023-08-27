@@ -50,8 +50,8 @@ extension FavouritesScreenVC {
                 .rx
                 .items(cellIdentifier: K.cellsResuable.InSideFTVCell, cellType: InSideFTVCell.self)) {
                     (tv, curr, cell) in
-                    let favouriteItem = FavouriteItem(currencyCode: curr.code, imageUrl: curr.flagURL)
-                    if let url = URL(string: curr.flagURL) {
+                    let favouriteItem = FavouriteItem(currencyCode: curr.code, imageUrl: curr.iconURL)
+                    if let url = URL(string: curr.iconURL) {
                         cell.currencyImage.sd_setImage(with: url)
                     }
                     cell.currencyNameLabel.text = curr.code

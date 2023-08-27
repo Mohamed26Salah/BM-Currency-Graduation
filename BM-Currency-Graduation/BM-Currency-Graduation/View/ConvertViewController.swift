@@ -10,6 +10,7 @@ import iOSDropDown
 import RxSwift
 import RxCocoa
 import SDWebImage
+import SDWebImageSVGCoder
 
 class ConvertViewController: UIViewController {
 
@@ -29,13 +30,13 @@ class ConvertViewController: UIViewController {
 //        }
 //    }
     //Temp Values
-    let arr = [CurrencyTemp(image: UIImage(named: "USD")!, name: "USD", amount: "1"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "EGB", amount: "12"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "EUR", amount: "123"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "FUK", amount: "1234"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "KSA", amount: "12345"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "MSA", amount: "123456")]
-    
+//    let arr = [CurrencyTemp(image: UIImage(named: "USD")!, name: "USD", amount: "1"),
+//               CurrencyTemp(image: UIImage(named: "USD")!, name: "EGB", amount: "12"),
+//               CurrencyTemp(image: UIImage(named: "USD")!, name: "EUR", amount: "123"),
+//               CurrencyTemp(image: UIImage(named: "USD")!, name: "FUK", amount: "1234"),
+//               CurrencyTemp(image: UIImage(named: "USD")!, name: "KSA", amount: "12345"),
+//               CurrencyTemp(image: UIImage(named: "USD")!, name: "MSA", amount: "123456")]
+//    let favouritesArray = FavouritesManager.shared().getAllFavoriteItems()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,7 @@ class ConvertViewController: UIViewController {
         setupDropDown()
         fillDropDownMenus()
         bindViewModelToViews()
+        showFavouritesData()
     }
 
     
@@ -62,7 +64,7 @@ class ConvertViewController: UIViewController {
     }
     
     @IBAction func addToFavouritesTapped(_ sender: UIButton) {
-        let favouritesController = FavouritesScreenVC()
+        let favouritesController = FavouritesScreenVC(currencyVm: currencyVM)
         favouritesController.modalPresentationStyle = .overCurrentContext
         present(favouritesController, animated: true, completion: nil)
 //
@@ -74,19 +76,37 @@ class ConvertViewController: UIViewController {
     }
     
 }
-extension ConvertViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        arr.count
+extension ConvertViewController {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        favouritesArray.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellsResuable.OutSideFTVCell, for: indexPath) as! OutSideFTVCell
+//
+//        if let url = URL(string: favouritesArray[indexPath.row].imageUrl) {
+//            cell.currencyImage.sd_setImage(with: url)
+//        }
+//        cell.currencyNameLabel.text = favouritesArray[indexPath.row].currencyCode
+//        cell.currencyAmountLabel.text = "123"
+//        return cell
+//    }
+//
+    func showFavouritesData() {
+        currencyVM.favouritesArray
+            .bind(to: favouritesTableView
+                .rx
+                .items(cellIdentifier: K.cellsResuable.OutSideFTVCell, cellType: OutSideFTVCell.self)) {
+                    (tv, curr, cell) in
+                    if let url = URL(string: curr.imageUrl) {
+                        cell.currencyImage.sd_setImage(with: url)
+                    }
+                    cell.currencyNameLabel.text = curr.currencyCode
+                    cell.currencyAmountLabel.text = "123"
+                   
+                }
+                .disposed(by: disposeBag)
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellsResuable.OutSideFTVCell, for: indexPath) as! OutSideFTVCell
-        cell.currencyImage.image = arr[indexPath.row].image
-        cell.currencyNameLabel.text = arr[indexPath.row].name
-        cell.currencyAmountLabel.text = arr[indexPath.row].amount
-        return cell
-    }
-    
     
 }
 //MARK: RxFunctions

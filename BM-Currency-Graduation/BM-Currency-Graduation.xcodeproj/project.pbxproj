@@ -39,6 +39,8 @@
 		AB55D2E42A9A8C9600661288 /* CompareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB55D2E32A9A8C9600661288 /* CompareModel.swift */; };
 		AB55D2E72A9AA8EB00661288 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AB55D2E62A9AA8EB00661288 /* Realm */; };
 		AB55D2E92A9AA8EB00661288 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB55D2E82A9AA8EB00661288 /* RealmSwift */; };
+		AB91BF0D2A9B59D800AEE95D /* FavouriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB91BF0C2A9B59D800AEE95D /* FavouriteItem.swift */; };
+		AB91BF102A9B5D3B00AEE95D /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB91BF0F2A9B5D3B00AEE95D /* FavoritesManager.swift */; };
 		ABE8D6992A97A54100ED898C /* OutSideFTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE8D6972A97A54100ED898C /* OutSideFTVCell.swift */; };
 		ABE8D69A2A97A54100ED898C /* OutSideFTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE8D6982A97A54100ED898C /* OutSideFTVCell.xib */; };
 		ABE8D69C2A97ABE600ED898C /* CurrencyTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE8D69B2A97ABE600ED898C /* CurrencyTemp.swift */; };
@@ -71,6 +73,8 @@
 		AB55D2DF2A9A541B00661288 /* Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenstions.swift; sourceTree = "<group>"; };
 		AB55D2E12A9A5F8400661288 /* ConvertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertModel.swift; sourceTree = "<group>"; };
 		AB55D2E32A9A8C9600661288 /* CompareModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareModel.swift; sourceTree = "<group>"; };
+		AB91BF0C2A9B59D800AEE95D /* FavouriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteItem.swift; sourceTree = "<group>"; };
+		AB91BF0F2A9B5D3B00AEE95D /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		ABE8D6932A976B7000ED898C /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		ABE8D6942A979FC000ED898C /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		ABE8D6972A97A54100ED898C /* OutSideFTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutSideFTVCell.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 				AB0FD13E2A96680A00E75270 /* Model */,
 				AB0FD13F2A96680F00E75270 /* VIewModel */,
 				AB0FD1402A96681500E75270 /* View */,
+				AB91BF0E2A9B5D2300AEE95D /* Data Manager */,
 				AB0093D92A9902EA00BF0BD9 /* Netwokring */,
 				AB0FD1412A966FE000E75270 /* Resources */,
 				AB0FD14A2A96A74A00E75270 /* Extenstions */,
@@ -166,6 +171,7 @@
 			children = (
 				AB0093FF2A995C6B00BF0BD9 /* parsers */,
 				ABE8D69B2A97ABE600ED898C /* CurrencyTemp.swift */,
+				AB91BF0C2A9B59D800AEE95D /* FavouriteItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,6 +234,14 @@
 				AB49F7B82A97CE1B001A7F15 /* InSideFTVCell.xib */,
 			);
 			path = "InSide Cell";
+			sourceTree = "<group>";
+		};
+		AB91BF0E2A9B5D2300AEE95D /* Data Manager */ = {
+			isa = PBXGroup;
+			children = (
+				AB91BF0F2A9B5D3B00AEE95D /* FavoritesManager.swift */,
+			);
+			path = "Data Manager";
 			sourceTree = "<group>";
 		};
 		ABE8D6952A97A4E800ED898C /* Cells */ = {
@@ -344,6 +358,7 @@
 			files = (
 				AB0093DB2A99030300BF0BD9 /* APIManager.swift in Sources */,
 				AB49F7BC2A97D974001A7F15 /* RadioButton.swift in Sources */,
+				AB91BF0D2A9B59D800AEE95D /* FavouriteItem.swift in Sources */,
 				AB0093E42A9910EA00BF0BD9 /* FavouritesScreenVC.swift in Sources */,
 				AB49F7B92A97CE1B001A7F15 /* InSideFTVCell.swift in Sources */,
 				AB0093DF2A99095F00BF0BD9 /* Test.swift in Sources */,
@@ -351,6 +366,7 @@
 				AB0094012A995C8100BF0BD9 /* AllCurrenciesModel.swift in Sources */,
 				ABE8D6992A97A54100ED898C /* OutSideFTVCell.swift in Sources */,
 				AB0FD14D2A96A76900E75270 /* CustomSegmentedControl.swift in Sources */,
+				AB91BF102A9B5D3B00AEE95D /* FavoritesManager.swift in Sources */,
 				AB0FD12F2A9667EE00E75270 /* ViewController.swift in Sources */,
 				AB0093FC2A995BE100BF0BD9 /* CurrencyViewModel.swift in Sources */,
 				AB0093DD2A99060D00BF0BD9 /* Constants.swift in Sources */,

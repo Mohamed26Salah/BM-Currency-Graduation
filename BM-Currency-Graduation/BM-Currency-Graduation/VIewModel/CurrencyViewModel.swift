@@ -19,6 +19,7 @@ class CurrencyViewModel {
     var firstComparedCurrency = PublishRelay<String>.init()
     var secoundComparedCurrency = PublishRelay<String>.init()
     var currenciesArray = PublishRelay<[Currency]>.init()
+    var favouritesArray = BehaviorRelay<[FavouriteItem]>(value: FavouritesManager.shared().getAllFavoriteItems())
     
 //    init() {
 //        self.getAllCurrenciesData()

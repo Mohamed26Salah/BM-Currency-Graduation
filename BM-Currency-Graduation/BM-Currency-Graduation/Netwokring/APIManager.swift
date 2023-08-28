@@ -8,7 +8,6 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import Alamofire
 class APIManager {
     
     private init() {}
@@ -23,15 +22,12 @@ class APIManager {
     let disposeBag = DisposeBag()
     enum EndPoint {
         case getCurrencesData
-//        case convertCurrency
         case compareCurrencies
         
         var stringValue: String {
             switch self {
             case .getCurrencesData:
                 return K.Links.newBaseURL
-//            case .convertCurrency:
-//                return K.Links.baseURL + "v2/conversion?"
             case .compareCurrencies:
                 return K.Links.newBaseURL + "/comparison"
             }

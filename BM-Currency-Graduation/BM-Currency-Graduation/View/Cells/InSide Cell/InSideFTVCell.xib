@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -84,6 +85,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="white"/>
             <connections>
                 <outlet property="currencyImage" destination="rgs-T1-HPT" id="a7Z-BD-zNU"/>
                 <outlet property="currencyNameLabel" destination="P4Y-OJ-f63" id="oXw-sG-Yyl"/>
@@ -92,4 +94,9 @@
             <point key="canvasLocation" x="325.19083969465646" y="-44.718309859154935"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

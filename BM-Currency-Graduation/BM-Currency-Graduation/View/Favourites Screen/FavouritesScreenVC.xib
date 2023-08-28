@@ -29,7 +29,7 @@
                     <rect key="frame" x="20" y="150" width="353" height="551"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hn-wy-Y1f">
-                            <rect key="frame" x="10" y="29" width="97.666666666666671" height="24"/>
+                            <rect key="frame" x="10" y="29" width="107.33333333333333" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="2cR-7C-Cl9"/>
                             </constraints>
@@ -43,6 +43,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="452.67000000000002" id="vfH-dw-B6r"/>
                             </constraints>
+                            <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iV5-0u-gda">
                             <rect key="frame" x="317.66666666666669" y="14.999999999999998" width="20.333333333333314" height="20.333333333333329"/>
@@ -78,7 +79,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="5TH-As-bfk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="2D3-Ei-LTT"/>
                 <constraint firstItem="5TH-As-bfk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="91" id="BUD-r8-G0X"/>

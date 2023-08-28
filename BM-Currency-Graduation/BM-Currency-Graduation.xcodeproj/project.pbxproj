@@ -21,6 +21,21 @@
 		AB0094042A995CF300BF0BD9 /* OptionallyDecodable in Frameworks */ = {isa = PBXBuildFile; productRef = AB0094032A995CF300BF0BD9 /* OptionallyDecodable */; };
 		AB0094072A99630E00BF0BD9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AB0094062A99630E00BF0BD9 /* SDWebImageSwiftUI */; };
 		AB00940A2A996AE900BF0BD9 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = AB0094092A996AE900BF0BD9 /* SDWebImageSVGCoder */; };
+		AB09FE0D2A9D1A1200D0F192 /* BM_Currency_GraduationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FE0C2A9D1A1200D0F192 /* BM_Currency_GraduationTests.swift */; };
+		AB09FE142A9D1A8400D0F192 /* API-Manager-Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FE132A9D1A8400D0F192 /* API-Manager-Test.swift */; };
+		AB09FE172A9D1B0900D0F192 /* iOSDropDown in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE162A9D1B0900D0F192 /* iOSDropDown */; };
+		AB09FE192A9D1B0900D0F192 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE182A9D1B0900D0F192 /* RxBlocking */; };
+		AB09FE1B2A9D1B0900D0F192 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE1A2A9D1B0900D0F192 /* RxCocoa */; };
+		AB09FE1D2A9D1B0900D0F192 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE1C2A9D1B0900D0F192 /* RxRelay */; };
+		AB09FE1F2A9D1B0900D0F192 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE1E2A9D1B0900D0F192 /* RxSwift */; };
+		AB09FE212A9D1B0900D0F192 /* OptionallyDecodable in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE202A9D1B0900D0F192 /* OptionallyDecodable */; };
+		AB09FE232A9D1B0900D0F192 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE222A9D1B0900D0F192 /* SDWebImageSwiftUI */; };
+		AB09FE252A9D1B0900D0F192 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE242A9D1B0900D0F192 /* SDWebImageSVGCoder */; };
+		AB09FE272A9D1B0900D0F192 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE262A9D1B0900D0F192 /* Realm */; };
+		AB09FE292A9D1B0900D0F192 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE282A9D1B0900D0F192 /* RealmSwift */; };
+		AB09FE2B2A9D211700D0F192 /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FE2A2A9D211700D0F192 /* LaunchScreenVC.swift */; };
+		AB09FE2D2A9D22C800D0F192 /* Bundle + unitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FE2C2A9D22C800D0F192 /* Bundle + unitTest.swift */; };
+		AB09FE2F2A9D266300D0F192 /* stub.json in Resources */ = {isa = PBXBuildFile; fileRef = AB09FE2E2A9D266300D0F192 /* stub.json */; };
 		AB0FD12B2A9667EE00E75270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12A2A9667EE00E75270 /* AppDelegate.swift */; };
 		AB0FD12D2A9667EE00E75270 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12C2A9667EE00E75270 /* SceneDelegate.swift */; };
 		AB0FD12F2A9667EE00E75270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12E2A9667EE00E75270 /* ViewController.swift */; };
@@ -41,12 +56,21 @@
 		AB55D2E92A9AA8EB00661288 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB55D2E82A9AA8EB00661288 /* RealmSwift */; };
 		AB91BF0D2A9B59D800AEE95D /* FavouriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB91BF0C2A9B59D800AEE95D /* FavouriteItem.swift */; };
 		AB91BF102A9B5D3B00AEE95D /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB91BF0F2A9B5D3B00AEE95D /* FavoritesManager.swift */; };
-		AB91BF162A9BD6E700AEE95D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AB91BF152A9BD6E700AEE95D /* Alamofire */; };
 		AB91BF182A9C0A5600AEE95D /* ConvertionRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB91BF172A9C0A5600AEE95D /* ConvertionRate.swift */; };
 		ABE8D6992A97A54100ED898C /* OutSideFTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE8D6972A97A54100ED898C /* OutSideFTVCell.swift */; };
 		ABE8D69A2A97A54100ED898C /* OutSideFTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE8D6982A97A54100ED898C /* OutSideFTVCell.xib */; };
 		ABE8D69C2A97ABE600ED898C /* CurrencyTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE8D69B2A97ABE600ED898C /* CurrencyTemp.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AB09FE0E2A9D1A1200D0F192 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB0FD11F2A9667ED00E75270 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB0FD1262A9667EE00E75270;
+			remoteInfo = "BM-Currency-Graduation";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		AB0093DA2A99030300BF0BD9 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -56,6 +80,12 @@
 		AB0093E32A9910EA00BF0BD9 /* FavouritesScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritesScreenVC.xib; sourceTree = "<group>"; };
 		AB0093FB2A995BE100BF0BD9 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 		AB0094002A995C8100BF0BD9 /* AllCurrenciesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCurrenciesModel.swift; sourceTree = "<group>"; };
+		AB09FE0A2A9D1A1200D0F192 /* BM-Currency-GraduationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BM-Currency-GraduationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB09FE0C2A9D1A1200D0F192 /* BM_Currency_GraduationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BM_Currency_GraduationTests.swift; sourceTree = "<group>"; };
+		AB09FE132A9D1A8400D0F192 /* API-Manager-Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API-Manager-Test.swift"; sourceTree = "<group>"; };
+		AB09FE2A2A9D211700D0F192 /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
+		AB09FE2C2A9D22C800D0F192 /* Bundle + unitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle + unitTest.swift"; sourceTree = "<group>"; };
+		AB09FE2E2A9D266300D0F192 /* stub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stub.json; sourceTree = "<group>"; };
 		AB0FD1272A9667EE00E75270 /* BM-Currency-Graduation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BM-Currency-Graduation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0FD12A2A9667EE00E75270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB0FD12C2A9667EE00E75270 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +116,23 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AB09FE072A9D1A1200D0F192 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB09FE232A9D1B0900D0F192 /* SDWebImageSwiftUI in Frameworks */,
+				AB09FE1B2A9D1B0900D0F192 /* RxCocoa in Frameworks */,
+				AB09FE172A9D1B0900D0F192 /* iOSDropDown in Frameworks */,
+				AB09FE1F2A9D1B0900D0F192 /* RxSwift in Frameworks */,
+				AB09FE1D2A9D1B0900D0F192 /* RxRelay in Frameworks */,
+				AB09FE192A9D1B0900D0F192 /* RxBlocking in Frameworks */,
+				AB09FE272A9D1B0900D0F192 /* Realm in Frameworks */,
+				AB09FE212A9D1B0900D0F192 /* OptionallyDecodable in Frameworks */,
+				AB09FE292A9D1B0900D0F192 /* RealmSwift in Frameworks */,
+				AB09FE252A9D1B0900D0F192 /* SDWebImageSVGCoder in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AB0FD1242A9667EE00E75270 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -95,7 +142,6 @@
 				AB49F7BF2A98000B001A7F15 /* iOSDropDown in Frameworks */,
 				AB0093FA2A99406300BF0BD9 /* RxSwift in Frameworks */,
 				AB0093F82A99406300BF0BD9 /* RxRelay in Frameworks */,
-				AB91BF162A9BD6E700AEE95D /* Alamofire in Frameworks */,
 				AB0093F42A99406300BF0BD9 /* RxBlocking in Frameworks */,
 				AB55D2E72A9AA8EB00661288 /* Realm in Frameworks */,
 				AB0094042A995CF300BF0BD9 /* OptionallyDecodable in Frameworks */,
@@ -135,11 +181,31 @@
 			path = parsers;
 			sourceTree = "<group>";
 		};
+		AB09FE0B2A9D1A1200D0F192 /* BM-Currency-GraduationTests */ = {
+			isa = PBXGroup;
+			children = (
+				AB09FE0C2A9D1A1200D0F192 /* BM_Currency_GraduationTests.swift */,
+				AB09FE132A9D1A8400D0F192 /* API-Manager-Test.swift */,
+				AB09FE2C2A9D22C800D0F192 /* Bundle + unitTest.swift */,
+				AB09FE2E2A9D266300D0F192 /* stub.json */,
+			);
+			path = "BM-Currency-GraduationTests";
+			sourceTree = "<group>";
+		};
+		AB09FE152A9D1B0900D0F192 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AB0FD11E2A9667ED00E75270 = {
 			isa = PBXGroup;
 			children = (
 				AB0FD1292A9667EE00E75270 /* BM-Currency-Graduation */,
+				AB09FE0B2A9D1A1200D0F192 /* BM-Currency-GraduationTests */,
 				AB0FD1282A9667EE00E75270 /* Products */,
+				AB09FE152A9D1B0900D0F192 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0FD1272A9667EE00E75270 /* BM-Currency-Graduation.app */,
+				AB09FE0A2A9D1A1200D0F192 /* BM-Currency-GraduationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0FD12E2A9667EE00E75270 /* ViewController.swift */,
+				AB09FE2A2A9D211700D0F192 /* LaunchScreenVC.swift */,
 				AB0FD1442A9699BE00E75270 /* ConvertViewController.swift */,
 				AB0FD1462A9699CA00E75270 /* CompareViewController.swift */,
 				AB0FD14B2A96A75800E75270 /* Customs */,
@@ -270,6 +338,36 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AB09FE092A9D1A1200D0F192 /* BM-Currency-GraduationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB09FE122A9D1A1200D0F192 /* Build configuration list for PBXNativeTarget "BM-Currency-GraduationTests" */;
+			buildPhases = (
+				AB09FE062A9D1A1200D0F192 /* Sources */,
+				AB09FE072A9D1A1200D0F192 /* Frameworks */,
+				AB09FE082A9D1A1200D0F192 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB09FE0F2A9D1A1200D0F192 /* PBXTargetDependency */,
+			);
+			name = "BM-Currency-GraduationTests";
+			packageProductDependencies = (
+				AB09FE162A9D1B0900D0F192 /* iOSDropDown */,
+				AB09FE182A9D1B0900D0F192 /* RxBlocking */,
+				AB09FE1A2A9D1B0900D0F192 /* RxCocoa */,
+				AB09FE1C2A9D1B0900D0F192 /* RxRelay */,
+				AB09FE1E2A9D1B0900D0F192 /* RxSwift */,
+				AB09FE202A9D1B0900D0F192 /* OptionallyDecodable */,
+				AB09FE222A9D1B0900D0F192 /* SDWebImageSwiftUI */,
+				AB09FE242A9D1B0900D0F192 /* SDWebImageSVGCoder */,
+				AB09FE262A9D1B0900D0F192 /* Realm */,
+				AB09FE282A9D1B0900D0F192 /* RealmSwift */,
+			);
+			productName = "BM-Currency-GraduationTests";
+			productReference = AB09FE0A2A9D1A1200D0F192 /* BM-Currency-GraduationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		AB0FD1262A9667EE00E75270 /* BM-Currency-Graduation */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB0FD13B2A9667EE00E75270 /* Build configuration list for PBXNativeTarget "BM-Currency-Graduation" */;
@@ -294,7 +392,6 @@
 				AB0094092A996AE900BF0BD9 /* SDWebImageSVGCoder */,
 				AB55D2E62A9AA8EB00661288 /* Realm */,
 				AB55D2E82A9AA8EB00661288 /* RealmSwift */,
-				AB91BF152A9BD6E700AEE95D /* Alamofire */,
 			);
 			productName = "BM-Currency-Graduation";
 			productReference = AB0FD1272A9667EE00E75270 /* BM-Currency-Graduation.app */;
@@ -310,6 +407,10 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					AB09FE092A9D1A1200D0F192 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = AB0FD1262A9667EE00E75270;
+					};
 					AB0FD1262A9667EE00E75270 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -331,18 +432,26 @@
 				AB0094052A99630E00BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				AB0094082A996AE900BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */,
 				AB55D2E52A9AA8EB00661288 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				AB91BF142A9BD6E700AEE95D /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = AB0FD1282A9667EE00E75270 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				AB0FD1262A9667EE00E75270 /* BM-Currency-Graduation */,
+				AB09FE092A9D1A1200D0F192 /* BM-Currency-GraduationTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AB09FE082A9D1A1200D0F192 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB09FE2F2A9D266300D0F192 /* stub.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AB0FD1252A9667EE00E75270 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -359,6 +468,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AB09FE062A9D1A1200D0F192 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB09FE142A9D1A8400D0F192 /* API-Manager-Test.swift in Sources */,
+				AB09FE0D2A9D1A1200D0F192 /* BM_Currency_GraduationTests.swift in Sources */,
+				AB09FE2D2A9D22C800D0F192 /* Bundle + unitTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AB0FD1232A9667EE00E75270 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -367,6 +486,7 @@
 				AB49F7BC2A97D974001A7F15 /* RadioButton.swift in Sources */,
 				AB91BF182A9C0A5600AEE95D /* ConvertionRate.swift in Sources */,
 				AB91BF0D2A9B59D800AEE95D /* FavouriteItem.swift in Sources */,
+				AB09FE2B2A9D211700D0F192 /* LaunchScreenVC.swift in Sources */,
 				AB0093E42A9910EA00BF0BD9 /* FavouritesScreenVC.swift in Sources */,
 				AB49F7B92A97CE1B001A7F15 /* InSideFTVCell.swift in Sources */,
 				AB0093DF2A99095F00BF0BD9 /* Test.swift in Sources */,
@@ -390,6 +510,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		AB09FE0F2A9D1A1200D0F192 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB0FD1262A9667EE00E75270 /* BM-Currency-Graduation */;
+			targetProxy = AB09FE0E2A9D1A1200D0F192 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		AB0FD1302A9667EE00E75270 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -410,6 +538,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AB09FE102A9D1A1200D0F192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3Q8FDFK3WX;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.salah.12488.BM-Currency-GraduationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BM-Currency-Graduation.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BM-Currency-Graduation";
+			};
+			name = Debug;
+		};
+		AB09FE112A9D1A1200D0F192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3Q8FDFK3WX;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.salah.12488.BM-Currency-GraduationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BM-Currency-Graduation.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BM-Currency-Graduation";
+			};
+			name = Release;
+		};
 		AB0FD1392A9667EE00E75270 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -583,6 +747,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AB09FE122A9D1A1200D0F192 /* Build configuration list for PBXNativeTarget "BM-Currency-GraduationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB09FE102A9D1A1200D0F192 /* Debug */,
+				AB09FE112A9D1A1200D0F192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AB0FD1222A9667ED00E75270 /* Build configuration list for PBXProject "BM-Currency-Graduation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -652,14 +825,6 @@
 				kind = branch;
 			};
 		};
-		AB91BF142A9BD6E700AEE95D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -698,6 +863,56 @@
 			package = AB0094082A996AE900BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */;
 			productName = SDWebImageSVGCoder;
 		};
+		AB09FE162A9D1B0900D0F192 /* iOSDropDown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB49F7BD2A98000B001A7F15 /* XCRemoteSwiftPackageReference "iOSDropDown" */;
+			productName = iOSDropDown;
+		};
+		AB09FE182A9D1B0900D0F192 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0093F22A99406300BF0BD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		AB09FE1A2A9D1B0900D0F192 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0093F22A99406300BF0BD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		AB09FE1C2A9D1B0900D0F192 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0093F22A99406300BF0BD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		AB09FE1E2A9D1B0900D0F192 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0093F22A99406300BF0BD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		AB09FE202A9D1B0900D0F192 /* OptionallyDecodable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0094022A995CF200BF0BD9 /* XCRemoteSwiftPackageReference "OptionallyDecodable" */;
+			productName = OptionallyDecodable;
+		};
+		AB09FE222A9D1B0900D0F192 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0094052A99630E00BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		AB09FE242A9D1B0900D0F192 /* SDWebImageSVGCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0094082A996AE900BF0BD9 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */;
+			productName = SDWebImageSVGCoder;
+		};
+		AB09FE262A9D1B0900D0F192 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB55D2E52A9AA8EB00661288 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		AB09FE282A9D1B0900D0F192 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB55D2E52A9AA8EB00661288 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		AB49F7BE2A98000B001A7F15 /* iOSDropDown */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AB49F7BD2A98000B001A7F15 /* XCRemoteSwiftPackageReference "iOSDropDown" */;
@@ -712,11 +927,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AB55D2E52A9AA8EB00661288 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
-		};
-		AB91BF152A9BD6E700AEE95D /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AB91BF142A9BD6E700AEE95D /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

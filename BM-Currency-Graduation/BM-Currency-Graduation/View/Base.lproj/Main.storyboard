@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -85,6 +84,7 @@
                                             </segmentedControl>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TaE-pj-TBR">
                                                 <rect key="frame" x="0.0" y="268.66666666666669" width="393" height="684.33333333333326"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="684.33000000000004" id="bgE-yj-jO4"/>
                                                 </constraints>
@@ -94,6 +94,7 @@
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oof-pQ-0tc">
                                                 <rect key="frame" x="0.0" y="268.66666666666663" width="393" height="348.66666666666663"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="348.67000000000002" id="Nx5-oL-s8p"/>
                                                 </constraints>
@@ -102,7 +103,7 @@
                                                 </connections>
                                             </containerView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="sW6-Uq-UKI" firstAttribute="width" secondItem="NPD-tL-J5e" secondAttribute="width" id="0gg-wb-XFl"/>
                                             <constraint firstItem="sW6-Uq-UKI" firstAttribute="top" secondItem="NPD-tL-J5e" secondAttribute="top" id="2t0-4o-Ibj"/>
@@ -139,7 +140,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nbw-vF-lmx" secondAttribute="trailing" id="BcA-7y-Ys1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nbw-vF-lmx" secondAttribute="bottom" id="BcX-2q-P9d"/>
@@ -368,11 +369,13 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hVB-lB-smy">
                                 <rect key="frame" x="24" y="453.66666666666669" width="345" height="230.33333333333331"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="o7P-MK-dAz"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="o7P-MK-dAz" firstAttribute="trailing" secondItem="K9N-lK-gw0" secondAttribute="trailing" constant="187" id="3xZ-uB-MdD"/>
                             <constraint firstAttribute="trailing" secondItem="4It-Zo-fGY" secondAttribute="trailing" constant="30" id="4UI-d0-YO7"/>
@@ -460,16 +463,15 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="hfh-oY-B1h">
                                 <rect key="frame" x="30" y="21.333333333333343" width="333" height="240.00000000000003"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="fax-cB-msL">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="fax-cB-msL">
                                         <rect key="frame" x="0.0" y="0.0" width="325" height="84"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="HQ3-W3-PXx">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="HQ3-W3-PXx">
                                                 <rect key="frame" x="0.0" y="0.0" width="152" height="84"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXS-Gn-UJu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="21"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="152" height="21"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="60.049999999999997" id="23c-tQ-7gm"/>
                                                             <constraint firstAttribute="height" constant="21" id="9He-Jb-icQ"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="MontserratRoman-SemiBold" family="Montserrat" pointSize="14"/>
@@ -523,22 +525,18 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="152" id="mpA-5A-c8h"/>
-                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="x17-Lm-kYY">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="x17-Lm-kYY">
                                         <rect key="frame" x="0.0" y="97" width="325" height="143"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cOy-7f-iLn">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cOy-7f-iLn">
                                                 <rect key="frame" x="0.0" y="0.0" width="152" height="143"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Targeted Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TiX-DL-k1g">
-                                                        <rect key="frame" x="0.0" y="0.0" width="133" height="21"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="152" height="21"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="133" id="Iyx-hI-lKT"/>
                                                             <constraint firstAttribute="height" constant="21" id="WKx-Bn-fJt"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="MontserratRoman-SemiBold" family="Montserrat" pointSize="14"/>
@@ -579,7 +577,7 @@
                                                     </textField>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mdy-0Y-Et6">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mdy-0Y-Et6">
                                                 <rect key="frame" x="173" y="0.0" width="152" height="143"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Targeted Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjR-gw-Yhx">
@@ -635,7 +633,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="f0X-KC-6YL"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hfh-oY-B1h" firstAttribute="top" secondItem="QIC-R6-Meu" secondAttribute="top" constant="21.469999999999999" id="0in-t7-hua"/>
                             <constraint firstAttribute="trailing" secondItem="BsC-1t-1KR" secondAttribute="trailing" constant="30" id="83n-Zn-m0v"/>
@@ -669,8 +667,5 @@
     <resources>
         <image name="glowing-chart-shows-successful-financial-growth-generated-by-ai 1" width="1728" height="1111"/>
         <image name="plus 1" width="18" height="19"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

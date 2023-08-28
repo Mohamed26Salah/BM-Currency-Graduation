@@ -13,11 +13,12 @@ class CurrencyViewModel {
     private let disposeBag = DisposeBag()
     var allCurrenciesModel: AllCurrencies?
     //In
-    var errorSubject = PublishSubject<String>()
+    var errorSubject = PublishSubject<Error>()
 //    var fromAmount = BehaviorRelay<Double>(value: 1.0)
     var fromCurrency = BehaviorRelay<String>(value: "EGP")
 
     //Out
+    var showLoading = BehaviorRelay<Bool>(value: false)
     var convertion = PublishRelay<String>.init()
     var firstComparedCurrency = PublishRelay<String>.init()
     var secoundComparedCurrency = PublishRelay<String>.init()
@@ -28,21 +29,23 @@ class CurrencyViewModel {
     func getAllCurrenciesData() {
         APIManager.shared().fetchGlobal(parsingType: AllCurrencies.self, baseURL: APIManager.EndPoint.getCurrencesData.stringToUrl)
             .subscribe(onNext: { ListOFAllCurrenciesModel in
+                self.showLoading.accept(false)
                 self.allCurrenciesModel = ListOFAllCurrenciesModel
                 self.currenciesArray.accept(ListOFAllCurrenciesModel)
             }, onError: { error in
-                print(error)
-                self.errorSubject.onNext(error.localizedDescription)
+//                print(error)
+                self.errorSubject.onNext(error)
             })
             .disposed(by: disposeBag)
     }
     func convertCurrency(amount: String, from: String, to: String) {
         APIManager.shared().fetchGlobal(parsingType: ConvertModel.self, baseURL: APIManager.EndPoint.getCurrencesData.stringToUrl, attributes: [from, to, amount])
             .subscribe(onNext: { convertion in
+                self.showLoading.accept(false)
                 self.convertion.accept(String(format: "%.2f", convertion.conversionResult))
             }, onError: { error in
                 print(error)
-                self.errorSubject.onNext(error.localizedDescription)
+                self.errorSubject.onNext(error)
             })
             .disposed(by: disposeBag)
     }
@@ -51,11 +54,12 @@ class CurrencyViewModel {
         let body: [String : Any] = ["base_code":from, "target_codes":currencyList]
         APIManager.shared().fetchGlobal(parsingType: CompareModel.self, baseURL: APIManager.EndPoint.compareCurrencies.stringToUrl, jsonBody: body)
             .subscribe { compareModel in
+                self.showLoading.accept(false)
                 self.firstComparedCurrency.accept(String(self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toFirstCurrency, conversionRates: compareModel.conversionRates) ?? 1.0))
                 self.secoundComparedCurrency.accept(String(self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toSecoundCurrency, conversionRates: compareModel.conversionRates) ?? 1.0))
             } onError: { error in
                 print(error)
-                self.errorSubject.onNext(error.localizedDescription)
+                self.errorSubject.onNext(error)
             }
             .disposed(by: disposeBag)
     }
@@ -65,13 +69,10 @@ class CurrencyViewModel {
                 completion(String(format: "%.2f", converstionRate.conversionRate))
             } onError: { error in
                 print(error)
-                self.errorSubject.onNext(error.localizedDescription)
+                self.errorSubject.onNext(error)
             }
             .disposed(by: disposeBag)
     }
-
-    
-    
 }
 //MARK: Helping Functions
 extension CurrencyViewModel {

@@ -21,16 +21,11 @@ class ConvertViewController: UIViewController {
     @IBOutlet weak var favouritesTableView: UITableView!
     @IBOutlet weak var addToFavourites: UIButton!
     @IBOutlet weak var convertButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let disposeBag = DisposeBag()
     var currencyVM = CurrencyViewModel()
-//    var comingCurrencyVM: CurrencyViewModel? {
-//        didSet {
-//            if let currVM = comingCurrencyVM {
-//                currencyVM = currVM
-//            }
-//        }
-//    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         currencyVM.getAllCurrenciesData()
@@ -41,6 +36,9 @@ class ConvertViewController: UIViewController {
         bindViewslToViewModel()
         showFavouritesData()
         subscribeToDropDown()
+        handleLoadingIndicator()
+        manageIndicator()
+        handleErrors()
     }
 
 
@@ -55,7 +53,7 @@ class ConvertViewController: UIViewController {
         if fromAmount.isEmpty {
             fromAmount = "0.0"
         }
-        
+        currencyVM.showLoading.accept(true)
         currencyVM.convertCurrency(amount: fromAmount, from: String(fromCurrencyText.dropFirst(2)), to: String(toCurrencyText.dropFirst(2)))
     }
     
@@ -63,12 +61,6 @@ class ConvertViewController: UIViewController {
         let favouritesController = FavouritesScreenVC(currencyVm: currencyVM)
         favouritesController.modalPresentationStyle = .overCurrentContext
         present(favouritesController, animated: true, completion: nil)
-
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let nameSelectionVC = storyboard.instantiateViewController(withIdentifier: K.viewsControllers.FavouritesViewController) as! FavouritesViewController
-//       nameSelectionVC.modalPresentationStyle = .overCurrentContext
-//
-//        present(nameSelectionVC, animated: true, completion: nil)
     }
     
 }
@@ -149,6 +141,27 @@ extension ConvertViewController {
             self.currencyVM.fromCurrency.accept(String(selectedText.dropFirst(2)))
         }
     }
+    func handleLoadingIndicator() {
+        currencyVM.showLoading
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] isLoading in
+                if isLoading {
+                    self?.activityIndicator.startAnimating()
+                    self?.convertButton.isEnabled = false
+                } else {
+                    self?.activityIndicator.stopAnimating()
+                    self?.convertButton.isEnabled = true
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    func handleErrors() {
+        currencyVM.errorSubject
+            .subscribe { error in
+                self.show(messageAlert: "Error", message: error.localizedDescription)
+            }
+            .disposed(by: disposeBag)
+    }
 }
 extension ConvertViewController {
     func setupUI() {
@@ -168,6 +181,7 @@ extension ConvertViewController {
         toAmountTextField.layer.cornerRadius = 20
         toAmountTextField.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor
         toAmountTextField.addLeftPadding(16)
+        toAmountTextField.isEnabled = false
 
         
         toCurrency.layer.borderWidth = 0.5
@@ -190,4 +204,8 @@ extension ConvertViewController {
         fromCurrency.text = " " + currencyVM.getFlagEmoji(flag: "EGP") + "EGP"
         toCurrency.text = " " + currencyVM.getFlagEmoji(flag: "USD") + "USD"
     }
+    func manageIndicator() {
+        view.bringSubviewToFront(activityIndicator)
+    }
 }
+

@@ -35,13 +35,25 @@ class FavouritesManager {
         return realm.object(ofType: FavouriteItem.self, forPrimaryKey: item.currencyCode) != nil
     }
 
+//    func removeFromFavorites(item: FavouriteItem) {
+//        if let itemToDelete = realm.object(ofType: FavouriteItem.self, forPrimaryKey: item.currencyCode) {
+//            try! realm.write {
+//                realm.delete(itemToDelete)
+//            }
+//        }
+//    }
     func removeFromFavorites(item: FavouriteItem) {
         if let itemToDelete = realm.object(ofType: FavouriteItem.self, forPrimaryKey: item.currencyCode) {
-            try! realm.write {
-                realm.delete(itemToDelete)
-            }
+            if !itemToDelete.isInvalidated {
+                try! realm.write {
+                    if !itemToDelete.isInvalidated {
+                        realm.delete(itemToDelete)
+                    }
+                }
+            } 
         }
     }
+
     func getAllFavoriteItems() -> [FavouriteItem] {
         let favoriteItems = realm.objects(FavouriteItem.self)
         return Array(favoriteItems)

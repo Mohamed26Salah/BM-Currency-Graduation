@@ -19,6 +19,10 @@ class CompareViewController: UIViewController {
     @IBOutlet weak var secoundToCurrency: DropDown!
     @IBOutlet weak var firstToAmountTextField: UITextField!
     @IBOutlet weak var secoundToAmountTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var compareButton: UIButton!
+    
+    
     var currencyVM = CurrencyViewModel()
     let disposeBag = DisposeBag()
 
@@ -29,7 +33,9 @@ class CompareViewController: UIViewController {
         fillDropDownMenus()
         setupUI()
         bindViewModelToViews()
-        // Do any additional setup after loading the view.
+        handleLoadingIndicator()
+        manageIndicator()
+        handleErrors()
     }
     
     
@@ -44,6 +50,7 @@ class CompareViewController: UIViewController {
         if fromAmount.isEmpty {
             fromAmount = "0.0"
         }
+        currencyVM.showLoading.accept(true)
         currencyVM.compareCurrency(amount: fromAmount, from: String(fromCurrencyText.dropFirst(2)), toFirstCurrency: String(firstToCurrencyText.dropFirst(2)), toSecoundCurrency: String(secoundToCurrencyText.dropFirst(2)))
     }
 }
@@ -52,6 +59,27 @@ extension CompareViewController {
     func bindViewModelToViews() {
         currencyVM.firstComparedCurrency.bind(to: firstToAmountTextField.rx.text).disposed(by: disposeBag)
         currencyVM.secoundComparedCurrency.bind(to: secoundToAmountTextField.rx.text).disposed(by: disposeBag)
+    }
+    func handleLoadingIndicator() {
+        currencyVM.showLoading
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] isLoading in
+                if isLoading {
+                    self?.activityIndicator.startAnimating()
+                    self?.compareButton.isEnabled = false
+                } else {
+                    self?.activityIndicator.stopAnimating()
+                    self?.compareButton.isEnabled = true
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    func handleErrors() {
+        currencyVM.errorSubject
+            .subscribe { error in
+                self.show(messageAlert: "Error", message: error.localizedDescription)
+            }
+            .disposed(by: disposeBag)
     }
 }
 extension CompareViewController {
@@ -70,6 +98,7 @@ extension CompareViewController {
         firstToCurrency.layer.cornerRadius = 20
         firstToCurrency.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor
         
+        
         secoundToCurrency.layer.borderWidth = 0.5
         secoundToCurrency.layer.cornerRadius = 20
         secoundToCurrency.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor
@@ -78,13 +107,13 @@ extension CompareViewController {
         firstToAmountTextField.layer.cornerRadius = 20
         firstToAmountTextField.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor
         firstToAmountTextField.addLeftPadding(16)
-
+        firstToAmountTextField.isEnabled = false
         
         secoundToAmountTextField.layer.borderWidth = 0.5
         secoundToAmountTextField.layer.cornerRadius = 20
         secoundToAmountTextField.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor
         secoundToAmountTextField.addLeftPadding(16)
-
+        secoundToAmountTextField.isEnabled = false
     }
     func fillDropDownMenus() {
         currencyVM.currenciesArray
@@ -98,5 +127,8 @@ extension CompareViewController {
         self.fromCurrency.text = " " + currencyVM.getFlagEmoji(flag: "EGP") + "EGP"
         self.firstToCurrency.text = " " + currencyVM.getFlagEmoji(flag: "USD") + "USD"
         self.secoundToCurrency.text = " " + currencyVM.getFlagEmoji(flag: "KWD") + "KWD"
+    }
+    func manageIndicator() {
+       view.bringSubviewToFront(activityIndicator)
     }
 }

@@ -192,12 +192,12 @@
 		AB0FD1402A96681500E75270 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AB0093E02A9910AF00BF0BD9 /* Favourites Screen */,
-				ABE8D6952A97A4E800ED898C /* Cells */,
-				AB0FD14B2A96A75800E75270 /* Customs */,
+				AB0FD12E2A9667EE00E75270 /* ViewController.swift */,
 				AB0FD1442A9699BE00E75270 /* ConvertViewController.swift */,
 				AB0FD1462A9699CA00E75270 /* CompareViewController.swift */,
-				AB0FD12E2A9667EE00E75270 /* ViewController.swift */,
+				AB0FD14B2A96A75800E75270 /* Customs */,
+				ABE8D6952A97A4E800ED898C /* Cells */,
+				AB0093E02A9910AF00BF0BD9 /* Favourites Screen */,
 				AB0FD1302A9667EE00E75270 /* Main.storyboard */,
 			);
 			path = View;
@@ -210,7 +210,6 @@
 				ABE8D6942A979FC000ED898C /* Poppins-SemiBold.ttf */,
 				ABE8D6932A976B7000ED898C /* Poppins-Medium.ttf */,
 				AB0FD1422A966FF500E75270 /* Montserrat-VariableFont_wght.ttf */,
-				AB0093DC2A99060D00BF0BD9 /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -218,6 +217,7 @@
 		AB0FD14A2A96A74A00E75270 /* Extenstions */ = {
 			isa = PBXGroup;
 			children = (
+				AB0093DC2A99060D00BF0BD9 /* Constants.swift */,
 				AB55D2DF2A9A541B00661288 /* Extenstions.swift */,
 			);
 			path = Extenstions;

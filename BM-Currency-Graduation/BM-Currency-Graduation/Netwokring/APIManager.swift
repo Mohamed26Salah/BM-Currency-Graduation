@@ -40,7 +40,7 @@ class APIManager {
             return URL(string: stringValue)!
         }
     }
-    private enum Error: Swift.Error {
+    private enum APIError: Swift.Error {
         case invalidResponse(URLResponse?)
         case invalidJSON(Swift.Error)
     }
@@ -77,7 +77,7 @@ class APIManager {
             .map { result -> Data in
                 guard result.response.statusCode == 200 else {
 //                    print(result.response)
-                    throw Error.invalidResponse(result.response)
+                    throw APIError.invalidResponse(result.response)
                 }
                 return result.data
             }.map { data in
@@ -87,7 +87,7 @@ class APIManager {
                     )
                     return decodedData
                 } catch let error {
-                    throw Error.invalidJSON(error)
+                    throw APIError.invalidJSON(error)
                 }
             }
             .observe(on: MainScheduler.instance)

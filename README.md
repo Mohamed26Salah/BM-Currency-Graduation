@@ -1,7 +1,7 @@
 # BM-Currency-Graduation
 # Currency Conversion App
 
-![App Screenshot]()
+![App Screenshot](1.PNG)
 
 ## Description
 
@@ -17,9 +17,9 @@ Currency Conversion App is a Swift-based iOS application that allows users to ea
 
 ## Screenshots
 
-![Screenshot 1]()
-![Screenshot 2]()
-![Screenshot 3]()
+![Screenshot 1](2.PNG)
+![Screenshot 2](3.PNG)
+![Screenshot 3](4.PNG)
 
 ## How to Use
 

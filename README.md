@@ -1,8 +1,8 @@
 # BM-Currency-Graduation
 # Currency Conversion App
 
-![App Screenshot](1.PNG)
 
+<img src="1.PNG" alt="Screenshot 1" width="200">
 ## Description
 
 Currency Conversion App is a Swift-based iOS application that allows users to easily convert currencies and compare exchange rates. The app leverages UIKit for the user interface and employs reactive programming with RxSwift to ensure a smooth and responsive user experience.
@@ -17,10 +17,9 @@ Currency Conversion App is a Swift-based iOS application that allows users to ea
 
 ## Screenshots
 
-![Screenshot 1](2.PNG)
-![Screenshot 2](3.PNG)
-![Screenshot 3](4.PNG)
-
+<img src="2.PNG" alt="Screenshot 1" width="200">
+<img src="3.PNG" alt="Screenshot 1" width="200">
+<img src="4.PNG" alt="Screenshot 1" width="200">
 ## How to Use
 
 1. Clone this repository to your local machine.

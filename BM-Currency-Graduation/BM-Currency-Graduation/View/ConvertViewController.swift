@@ -41,9 +41,8 @@ class ConvertViewController: UIViewController {
         bindViewslToViewModel()
         showFavouritesData()
         subscribeToDropDown()
-        currencyVM.convertButtonTapRelay.accept(())
-//        APIManager.shared().fetchBassyooni()
     }
+
 
     
     @IBAction func convertButtonTapped(_ sender: UIButton) {
@@ -87,14 +86,12 @@ extension ConvertViewController {
                         cell.currencyImage.sd_setImage(with: url)
                     }
                     cell.currencyNameLabel.text = curr.currencyCode
-                    convertButton.rx.tap
-                        .withLatestFrom(Observable.combineLatest(currencyVM.fromAmount, currencyVM.fromCurrency))
-                    //                    Observable.combineLatest(self.currencyVM.fromAmount, self.currencyVM.fromCurrency)
-                        .subscribe(onNext: { (amount, fromCurrency) in
-                            self.currencyVM.getConvertionRate(amount: amount, from: fromCurrency, to: curr.currencyCode) { converstionRate in
+                    self.currencyVM.fromCurrency
+                        .subscribe { fromCurrency in
+                            self.currencyVM.getConvertionRate(from: fromCurrency, to: curr.currencyCode) { converstionRate in
                                 cell.currencyAmountLabel.text = converstionRate
                             }
-                        })
+                        }
                         .disposed(by: disposeBag)
                 }
                 .disposed(by: disposeBag)
@@ -135,10 +132,6 @@ extension ConvertViewController {
             .distinctUntilChanged()
             .compactMap(Double.init)
             .bind(to: currencyVM.fromAmount)
-            .disposed(by: disposeBag)
-        //Trigger-First-Tap
-        convertButton.rx.tap
-            .bind(to: currencyVM.convertButtonTapRelay)
             .disposed(by: disposeBag)
 
 //        fromCurrency.rx.text.orEmpty

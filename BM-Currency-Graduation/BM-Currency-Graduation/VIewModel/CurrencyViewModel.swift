@@ -16,7 +16,6 @@ class CurrencyViewModel {
     var errorSubject = PublishSubject<String>()
     var fromAmount = BehaviorRelay<Double>(value: 1.0)
     var fromCurrency = BehaviorRelay<String>(value: "EGP")
-    let convertButtonTapRelay = PublishRelay<Void>()
 
     //Out
     var convertion = PublishRelay<String>.init()
@@ -25,9 +24,7 @@ class CurrencyViewModel {
     var currenciesArray = PublishRelay<AllCurrencies>.init()
     var favouritesArray = BehaviorRelay<[FavouriteItem]>(value: FavouritesManager.shared().getAllFavoriteItems())
     
-    //    init() {
-    //        self.getAllCurrenciesData()
-    //    }
+
     func getAllCurrenciesData() {
         APIManager.shared().fetchGlobal(parsingType: AllCurrencies.self, baseURL: APIManager.EndPoint.getCurrencesData.stringToUrl)
             .subscribe(onNext: { ListOFAllCurrenciesModel in
@@ -62,10 +59,10 @@ class CurrencyViewModel {
             }
             .disposed(by: disposeBag)
     }
-    func getConvertionRate(amount: Double, from: String, to: String, completion: @escaping (String?) -> Void) {
+    func getConvertionRate(from: String, to: String, completion: @escaping (String?) -> Void) {
         APIManager.shared().fetchGlobal(parsingType: ConverstionRate.self, baseURL: APIManager.EndPoint.getCurrencesData.stringToUrl, attributes: [from, to])
             .subscribe { converstionRate in
-                completion(String(format: "%.2f", amount*converstionRate.conversionRate))
+                completion(String(format: "%.2f", converstionRate.conversionRate))
             } onError: { error in
                 print(error)
                 self.errorSubject.onNext(error.localizedDescription)

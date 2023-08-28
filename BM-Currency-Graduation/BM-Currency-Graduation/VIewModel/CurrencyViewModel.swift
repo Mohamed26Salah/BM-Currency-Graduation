@@ -55,8 +55,8 @@ class CurrencyViewModel {
         APIManager.shared().fetchGlobal(parsingType: CompareModel.self, baseURL: APIManager.EndPoint.compareCurrencies.stringToUrl, jsonBody: body)
             .subscribe { compareModel in
                 self.showLoading.accept(false)
-                self.firstComparedCurrency.accept(String(self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toFirstCurrency, conversionRates: compareModel.conversionRates) ?? 1.0))
-                self.secoundComparedCurrency.accept(String(self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toSecoundCurrency, conversionRates: compareModel.conversionRates) ?? 1.0))
+                self.firstComparedCurrency.accept(String(format: "%.2f", self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toFirstCurrency, conversionRates: compareModel.conversionRates) ?? 1.0))
+                self.secoundComparedCurrency.accept(String(format: "%.2f", self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toSecoundCurrency, conversionRates: compareModel.conversionRates) ?? 1.0))
             } onError: { error in
                 print(error)
                 self.errorSubject.onNext(error)

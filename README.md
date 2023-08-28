@@ -2,7 +2,7 @@
 # Currency Conversion App
 
 
-<img src="1.PNG" alt="Screenshot 1" width="200">
+<img src="/ScreenShots/1.PNG" alt="Screenshot 1" width="200">
 ## Description
 
 Currency Conversion App is a Swift-based iOS application that allows users to easily convert currencies and compare exchange rates. The app leverages UIKit for the user interface and employs reactive programming with RxSwift to ensure a smooth and responsive user experience.
@@ -17,9 +17,9 @@ Currency Conversion App is a Swift-based iOS application that allows users to ea
 
 ## Screenshots
 <div style="display: flex;">
-<img src="2.PNG" alt="Screenshot 1" width="200">
-<img src="3.PNG" alt="Screenshot 1" width="200">
-<img src="4.PNG" alt="Screenshot 1" width="200">
+<img src="/ScreenShots/2.PNG" alt="Screenshot 1" width="200">
+<img src="/ScreenShots/3.PNG" alt="Screenshot 1" width="200">
+<img src="/ScreenShots/4.PNG" alt="Screenshot 1" width="200">
 </div>
 ## How to Use
 

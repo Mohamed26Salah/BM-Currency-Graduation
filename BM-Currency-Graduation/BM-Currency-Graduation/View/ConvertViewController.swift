@@ -20,6 +20,8 @@ class ConvertViewController: UIViewController {
     @IBOutlet weak var toCurrency: DropDown!
     @IBOutlet weak var favouritesTableView: UITableView!
     @IBOutlet weak var addToFavourites: UIButton!
+    @IBOutlet weak var convertButton: UIButton!
+    
     let disposeBag = DisposeBag()
     var currencyVM = CurrencyViewModel()
 //    var comingCurrencyVM: CurrencyViewModel? {
@@ -38,6 +40,8 @@ class ConvertViewController: UIViewController {
         bindViewModelToViews()
         bindViewslToViewModel()
         showFavouritesData()
+        subscribeToDropDown()
+        currencyVM.convertButtonTapRelay.accept(())
 //        APIManager.shared().fetchBassyooni()
     }
 
@@ -83,21 +87,15 @@ extension ConvertViewController {
                         cell.currencyImage.sd_setImage(with: url)
                     }
                     cell.currencyNameLabel.text = curr.currencyCode
-                    Observable.combineLatest(self.currencyVM.fromAmount, self.currencyVM.fromCurrency)
+                    convertButton.rx.tap
+                        .withLatestFrom(Observable.combineLatest(currencyVM.fromAmount, currencyVM.fromCurrency))
+                    //                    Observable.combineLatest(self.currencyVM.fromAmount, self.currencyVM.fromCurrency)
                         .subscribe(onNext: { (amount, fromCurrency) in
                             self.currencyVM.getConvertionRate(amount: amount, from: fromCurrency, to: curr.currencyCode) { converstionRate in
                                 cell.currencyAmountLabel.text = converstionRate
                             }
                         })
                         .disposed(by: disposeBag)
-                    
-//                    Observable.combineLatest(currencyVM.fromAmount, currencyVM.fromCurrency)
-//                        .subscribe(onNext: { [weak self] (amount, fromCurrency) in
-//                            currencyVM.getConvertionRate(amount: amount, from: fromCurrency, to: curr.currencyCode) { conversionRate in
-//                                cell.currencyAmountLabel.text = "\(conversionRate)"
-//                            }
-//                        })
-//                        .disposed(by: disposeBag)
                 }
                 .disposed(by: disposeBag)
         currencyVM.favouritesArray
@@ -131,23 +129,32 @@ extension ConvertViewController {
         fromAmountTextField.rx.controlEvent(.editingChanged)
             .withLatestFrom(fromAmountTextField.rx.text.orEmpty)
             .map { currency in
-                let cleanedCurrency = String(currency.dropFirst(2))
+                let cleanedCurrency = String(currency)
                 return cleanedCurrency.isEmpty ? "0.0" : cleanedCurrency
             }
             .distinctUntilChanged()
             .compactMap(Double.init)
             .bind(to: currencyVM.fromAmount)
             .disposed(by: disposeBag)
-        
-        fromCurrency.rx.text.orEmpty
-            .map { currency in
-                let cleanedCurrency = String(currency.dropFirst(2))
-                return cleanedCurrency.isEmpty ? "0.0" : cleanedCurrency
-            }
-            .distinctUntilChanged()
-            .bind(to: currencyVM.fromCurrency)
+        //Trigger-First-Tap
+        convertButton.rx.tap
+            .bind(to: currencyVM.convertButtonTapRelay)
             .disposed(by: disposeBag)
 
+//        fromCurrency.rx.text.orEmpty
+//            .map { currency in
+//                return String(currency.dropFirst(2))
+//            }
+//            .distinctUntilChanged()
+//            .bind(to: currencyVM.fromCurrency)
+//            .disposed(by: disposeBag)
+
+    }
+    //the package Doesn't support Rx
+    func subscribeToDropDown() {
+        fromCurrency.didSelect{(selectedText , index ,id) in
+            self.currencyVM.fromCurrency.accept(String(selectedText.dropFirst(2)))
+        }
     }
 }
 extension ConvertViewController {

@@ -38,7 +38,7 @@ func fetchGlobal2<T: Codable>(
     return URLSession.shared.rx.response(request: request)
         .map { result -> Data in
             guard result.response.statusCode == 200 else {
-                print(result.response)
+//                print(result.response)
                 throw Error.invalidResponse(result.response)
             }
             return result.data
@@ -55,19 +55,4 @@ func fetchGlobal2<T: Codable>(
         .observe(on: MainScheduler.instance)
         .asObservable()
 }
-//        let baseeURL = "https://concurrency-api.onrender.com/api/v1/currencies/comparison"
-//        let jsoneBody: [String: Any] = [
-//            "base_code": "USD",
-//            "target_codes": ["EGP", "JPY"]
-//        ]
-//
-//        AF.request(baseeURL, method: .post, parameters: jsoneBody, encoding: JSONEncoding.default)
-//            .responseDecodable(of: CompareModel.self) { response in
-//                switch response.result {
-//                case .success(let value):
-//                    print("Success:", value)
-//                    print("AAAAAAAAAAAAAAAAAAAAAA")
-//                case .failure(let error):
-//                    print("Error:", error)
-//                }
-//            }
+

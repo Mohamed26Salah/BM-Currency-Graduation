@@ -44,40 +44,7 @@ class APIManager {
         case invalidResponse(URLResponse?)
         case invalidJSON(Swift.Error)
     }
-//    func fetchBassyooni() {
-//        print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
-//        let parameters = "{\n  \"base_code\": \"USD\",\n  \"target_codes\": [\n    \"JPY\",\n    \"GBP\"\n  ]\n}\n"
-//        let postData = parameters.data(using: .utf8)
-//
-//        var request = URLRequest(url: URL(string: "https://concurrency-api.onrender.com/api/v1/currencies/comparison")!,timeoutInterval: Double.infinity)
-//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//        request.httpMethod = "GET"
-//        request.httpBody = postData
-//
-//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//          guard let data = data else {
-//            print(String(describing: error))
-//            return
-//          }
-//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
-//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
-//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
-//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
-//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
-//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
-//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
-//          print(String(data: data, encoding: .utf8)!)
-//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
-//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
-//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
-//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
-//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
-//            print("fetchBassyoonifetchBassyoonifetchBassyoonifetchBassyooni")
-//        }
-//
-//        task.resume()
-//    }
+
     func fetchGlobal<T: Codable>(
         parsingType: T.Type,
         baseURL: URL,
@@ -109,7 +76,7 @@ class APIManager {
         return URLSession.shared.rx.response(request: request)
             .map { result -> Data in
                 guard result.response.statusCode == 200 else {
-                    print(result.response)
+//                    print(result.response)
                     throw Error.invalidResponse(result.response)
                 }
                 return result.data

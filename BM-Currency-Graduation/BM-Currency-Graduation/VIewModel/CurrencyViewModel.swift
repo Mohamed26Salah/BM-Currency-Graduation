@@ -16,6 +16,8 @@ class CurrencyViewModel {
     var errorSubject = PublishSubject<String>()
     var fromAmount = BehaviorRelay<Double>(value: 1.0)
     var fromCurrency = BehaviorRelay<String>(value: "EGP")
+    let convertButtonTapRelay = PublishRelay<Void>()
+
     //Out
     var convertion = PublishRelay<String>.init()
     var firstComparedCurrency = PublishRelay<String>.init()
@@ -63,7 +65,6 @@ class CurrencyViewModel {
     func getConvertionRate(amount: Double, from: String, to: String, completion: @escaping (String?) -> Void) {
         APIManager.shared().fetchGlobal(parsingType: ConverstionRate.self, baseURL: APIManager.EndPoint.getCurrencesData.stringToUrl, attributes: [from, to])
             .subscribe { converstionRate in
-                print("3amr \(converstionRate.conversionRate)")
                 completion(String(format: "%.2f", amount*converstionRate.conversionRate))
             } onError: { error in
                 print(error)

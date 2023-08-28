@@ -16,10 +16,11 @@ Currency Conversion App is a Swift-based iOS application that allows users to ea
 - API integration to fetch up-to-date exchange rates.
 
 ## Screenshots
-
+<div style="display: flex;">
 <img src="2.PNG" alt="Screenshot 1" width="200">
 <img src="3.PNG" alt="Screenshot 1" width="200">
 <img src="4.PNG" alt="Screenshot 1" width="200">
+</div>
 ## How to Use
 
 1. Clone this repository to your local machine.

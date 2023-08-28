@@ -123,16 +123,16 @@ extension ConvertViewController {
         currencyVM.convertion.bind(to: toAmountTextField.rx.text).disposed(by: disposeBag)
     }
     func bindViewslToViewModel() {
-        fromAmountTextField.rx.controlEvent(.editingChanged)
-            .withLatestFrom(fromAmountTextField.rx.text.orEmpty)
-            .map { currency in
-                let cleanedCurrency = String(currency)
-                return cleanedCurrency.isEmpty ? "0.0" : cleanedCurrency
-            }
-            .distinctUntilChanged()
-            .compactMap(Double.init)
-            .bind(to: currencyVM.fromAmount)
-            .disposed(by: disposeBag)
+//        fromAmountTextField.rx.controlEvent(.editingChanged)
+//            .withLatestFrom(fromAmountTextField.rx.text.orEmpty)
+//            .map { currency in
+//                let cleanedCurrency = String(currency)
+//                return cleanedCurrency.isEmpty ? "0.0" : cleanedCurrency
+//            }
+//            .distinctUntilChanged()
+//            .compactMap(Double.init)
+//            .bind(to: currencyVM.fromAmount)
+//            .disposed(by: disposeBag)
 
 //        fromCurrency.rx.text.orEmpty
 //            .map { currency in

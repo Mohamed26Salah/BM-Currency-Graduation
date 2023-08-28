@@ -14,7 +14,7 @@ class CurrencyViewModel {
     var allCurrenciesModel: AllCurrencies?
     //In
     var errorSubject = PublishSubject<String>()
-    var fromAmount = BehaviorRelay<Double>(value: 1.0)
+//    var fromAmount = BehaviorRelay<Double>(value: 1.0)
     var fromCurrency = BehaviorRelay<String>(value: "EGP")
 
     //Out

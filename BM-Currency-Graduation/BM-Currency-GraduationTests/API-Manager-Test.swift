@@ -16,13 +16,18 @@ import RxTest
 final class API_Manager_Test: XCTestCase {
     var disposeBag: DisposeBag!
     var scheduler: TestScheduler!
-    var networkService: APIManager!
+    var networkService: APIClientProtocol!
     
     override func setUp() {
         super.setUp()
         disposeBag = DisposeBag()
         scheduler = TestScheduler(initialClock: 0)
-        networkService = APIManager.shared()
+        networkService = APIManager()
+    }
+    override func tearDownWithError() throws {
+        disposeBag = nil
+        scheduler = nil
+        networkService = nil
     }
     func testExample() {
         let disposeBag = DisposeBag()

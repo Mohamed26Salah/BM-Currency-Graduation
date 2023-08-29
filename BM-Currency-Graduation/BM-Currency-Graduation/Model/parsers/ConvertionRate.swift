@@ -6,9 +6,24 @@
 //
 
 import Foundation
-import OptionallyDecodable // https://github.com/idrougge/OptionallyDecodable
+import OptionallyDecodable 
 
 // MARK: - ConverstionRate
+struct Converstion: Codable {
+    var statusCode: Int
+    var status: String
+    var message: String
+    var data: ConverstionRate
+
+    enum CodingKeys: String, CodingKey {
+        case statusCode = "status_code"
+        case status = "status"
+        case message = "message"
+        case data = "data"
+    }
+}
+
+// MARK: - DataClass
 struct ConverstionRate: Codable {
     var baseCode: String
     var targetCode: String

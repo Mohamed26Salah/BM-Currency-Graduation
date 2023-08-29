@@ -35,8 +35,9 @@
 		AB09FE3E2A9D63B000D0F192 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE3D2A9D63B000D0F192 /* RxCocoa */; };
 		AB09FE402A9D63B000D0F192 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE3F2A9D63B000D0F192 /* RxRelay */; };
 		AB09FE422A9D63B000D0F192 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE412A9D63B000D0F192 /* RxSwift */; };
-		AB09FE442A9D63B000D0F192 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE432A9D63B000D0F192 /* RxTest */; };
 		AB09FE472A9D6CBE00D0F192 /* Converstion_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FE462A9D6CBE00D0F192 /* Converstion_Test.swift */; };
+		AB09FE492A9DF2B500D0F192 /* RxTest-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE482A9DF2B500D0F192 /* RxTest-Dynamic */; };
+		AB09FE4B2A9DF2B500D0F192 /* RxTest-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE482A9DF2B500D0F192 /* RxTest-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AB0FD12B2A9667EE00E75270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12A2A9667EE00E75270 /* AppDelegate.swift */; };
 		AB0FD12D2A9667EE00E75270 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12C2A9667EE00E75270 /* SceneDelegate.swift */; };
 		AB0FD12F2A9667EE00E75270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD12E2A9667EE00E75270 /* ViewController.swift */; };
@@ -72,6 +73,20 @@
 			remoteInfo = "BM-Currency-Graduation";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AB09FE4A2A9DF2B500D0F192 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AB09FE4B2A9DF2B500D0F192 /* RxTest-Dynamic in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AB0093DA2A99030300BF0BD9 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -123,7 +138,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB09FE442A9D63B000D0F192 /* RxTest in Frameworks */,
 				AB09FE422A9D63B000D0F192 /* RxSwift in Frameworks */,
 				AB09FE232A9D1B0900D0F192 /* SDWebImageSwiftUI in Frameworks */,
 				AB09FE3C2A9D63B000D0F192 /* RxBlocking in Frameworks */,
@@ -132,6 +146,7 @@
 				AB09FE272A9D1B0900D0F192 /* Realm in Frameworks */,
 				AB09FE212A9D1B0900D0F192 /* OptionallyDecodable in Frameworks */,
 				AB09FE402A9D63B000D0F192 /* RxRelay in Frameworks */,
+				AB09FE492A9DF2B500D0F192 /* RxTest-Dynamic in Frameworks */,
 				AB09FE252A9D1B0900D0F192 /* SDWebImageSVGCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +365,7 @@
 				AB09FE062A9D1A1200D0F192 /* Sources */,
 				AB09FE072A9D1A1200D0F192 /* Frameworks */,
 				AB09FE082A9D1A1200D0F192 /* Resources */,
+				AB09FE4A2A9DF2B500D0F192 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -367,7 +383,7 @@
 				AB09FE3D2A9D63B000D0F192 /* RxCocoa */,
 				AB09FE3F2A9D63B000D0F192 /* RxRelay */,
 				AB09FE412A9D63B000D0F192 /* RxSwift */,
-				AB09FE432A9D63B000D0F192 /* RxTest */,
+				AB09FE482A9DF2B500D0F192 /* RxTest-Dynamic */,
 			);
 			productName = "BM-Currency-GraduationTests";
 			productReference = AB09FE0A2A9D1A1200D0F192 /* BM-Currency-GraduationTests.xctest */;
@@ -918,10 +934,10 @@
 			package = AB09FE302A9D637D00D0F192 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
-		AB09FE432A9D63B000D0F192 /* RxTest */ = {
+		AB09FE482A9DF2B500D0F192 /* RxTest-Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AB09FE302A9D637D00D0F192 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxTest;
+			productName = "RxTest-Dynamic";
 		};
 		AB49F7BE2A98000B001A7F15 /* iOSDropDown */ = {
 			isa = XCSwiftPackageProductDependency;

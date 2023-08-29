@@ -8,17 +8,30 @@
 import Foundation
 import OptionallyDecodable
 
-// MARK: - CurrenciesArray
-struct CurrenciesArray: Codable {
-    var name: String
-    var code: String
-    var iconURL: String
+
+struct AllCurrencies: Codable {
+    var statusCode: Int
+    var status: String
+    var message: String
+    var data: [CurrencyData]
 
     enum CodingKeys: String, CodingKey {
-        case name = "name"
-        case code = "code"
-        case iconURL = "icon_url"
+        case statusCode = "status_code"
+        case status = "status"
+        case message = "message"
+        case data = "data"
     }
 }
 
-typealias AllCurrencies = [CurrenciesArray]
+// MARK: - Datum
+struct CurrencyData: Codable {
+    var iconURL: String
+    var name: String
+    var code: String
+
+    enum CodingKeys: String, CodingKey {
+        case iconURL = "icon_url"
+        case name = "name"
+        case code = "code"
+    }
+}

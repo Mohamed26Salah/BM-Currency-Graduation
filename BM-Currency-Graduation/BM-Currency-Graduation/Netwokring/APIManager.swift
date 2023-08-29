@@ -17,19 +17,22 @@ class APIManager {
     static func shared() -> APIManager {
         return APIManager.sharedInstance
     }
-   
+    
     
     let disposeBag = DisposeBag()
     enum EndPoint {
         case getCurrencesData
+        case convertCurrency
         case compareCurrencies
         
         var stringValue: String {
             switch self {
             case .getCurrencesData:
                 return K.Links.newBaseURL
+            case .convertCurrency:
+                return K.Links.newBaseURL + "/convert"
             case .compareCurrencies:
-                return K.Links.newBaseURL + "/comparison"
+                return K.Links.newBaseURL + "/compare"
             }
         }
         var stringToUrl: URL {
@@ -40,7 +43,6 @@ class APIManager {
         case invalidResponse(URLResponse?)
         case invalidJSON(Swift.Error)
     }
-
     func fetchGlobal<T: Codable>(
         parsingType: T.Type,
         baseURL: URL,
@@ -48,7 +50,7 @@ class APIManager {
         queryParameters: [String: String]? = nil,
         jsonBody: [String: Any]? = nil
     ) -> Observable<T> {
-
+        
         var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)!
         if let attributes = attributes, !attributes.isEmpty {
             components.path += "/" + attributes.joined(separator: "/")
@@ -72,7 +74,7 @@ class APIManager {
         return URLSession.shared.rx.response(request: request)
             .map { result -> Data in
                 guard result.response.statusCode == 200 else {
-//                    print(result.response)
+                    //                    print(result.response)
                     throw APIError.invalidResponse(result.response)
                 }
                 return result.data
@@ -89,5 +91,25 @@ class APIManager {
             .observe(on: MainScheduler.instance)
             .asObservable()
     }
-   
+    
+    func fetchLocalFile<T: Codable>(
+        parsingType: T.Type,
+        localFilePath: URL
+    ) -> Observable<T> {
+//        let localURL = URL(fileURLWithPath: localFilePath)
+        
+        guard let data = try? Data(contentsOf: localFilePath) else {
+            return Observable.error(APIError.invalidJSON(NSError(domain: "Failed to load local JSON file", code: -1, userInfo: nil)))
+        }
+        
+        do {
+            let decodedData = try JSONDecoder().decode(parsingType.self, from: data)
+            return Observable.just(decodedData)
+        } catch let error {
+            return Observable.error(APIError.invalidJSON(error))
+        }
+    }
+
 }
+
+

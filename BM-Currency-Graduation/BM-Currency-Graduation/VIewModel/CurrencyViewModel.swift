@@ -14,7 +14,6 @@ class CurrencyViewModel {
     var allCurrenciesModel: AllCurrencies?
     //In
     var errorSubject = PublishSubject<Error>()
-//    var fromAmount = BehaviorRelay<Double>(value: 1.0)
     var fromCurrency = BehaviorRelay<String>(value: "EGP")
 
     //Out
@@ -22,7 +21,7 @@ class CurrencyViewModel {
     var convertion = PublishRelay<String>.init()
     var firstComparedCurrency = PublishRelay<String>.init()
     var secoundComparedCurrency = PublishRelay<String>.init()
-    var currenciesArray = PublishRelay<AllCurrencies>.init()
+    var currenciesArray = PublishRelay<[CurrencyData]>.init()
     var favouritesArray = BehaviorRelay<[FavouriteItem]>(value: FavouritesManager.shared().getAllFavoriteItems())
     
 
@@ -31,20 +30,18 @@ class CurrencyViewModel {
             .subscribe(onNext: { ListOFAllCurrenciesModel in
                 self.showLoading.accept(false)
                 self.allCurrenciesModel = ListOFAllCurrenciesModel
-                self.currenciesArray.accept(ListOFAllCurrenciesModel)
+                self.currenciesArray.accept(ListOFAllCurrenciesModel.data)
             }, onError: { error in
-//                print(error)
                 self.errorSubject.onNext(error)
             })
             .disposed(by: disposeBag)
     }
     func convertCurrency(amount: String, from: String, to: String) {
-        APIManager.shared().fetchGlobal(parsingType: ConvertModel.self, baseURL: APIManager.EndPoint.getCurrencesData.stringToUrl, attributes: [from, to, amount])
+        APIManager.shared().fetchGlobal(parsingType: ConvertModel.self, baseURL: APIManager.EndPoint.convertCurrency.stringToUrl, attributes: [from, to, amount])
             .subscribe(onNext: { convertion in
                 self.showLoading.accept(false)
-                self.convertion.accept(String(format: "%.2f", convertion.conversionResult))
+                self.convertion.accept(String(format: "%.2f", convertion.data.conversionResult))
             }, onError: { error in
-//                print(error)
                 self.errorSubject.onNext(error)
             })
             .disposed(by: disposeBag)
@@ -55,20 +52,18 @@ class CurrencyViewModel {
         APIManager.shared().fetchGlobal(parsingType: CompareModel.self, baseURL: APIManager.EndPoint.compareCurrencies.stringToUrl, jsonBody: body)
             .subscribe { compareModel in
                 self.showLoading.accept(false)
-                self.firstComparedCurrency.accept(String(format: "%.2f", self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toFirstCurrency, conversionRates: compareModel.conversionRates) ?? 1.0))
-                self.secoundComparedCurrency.accept(String(format: "%.2f", self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toSecoundCurrency, conversionRates: compareModel.conversionRates) ?? 1.0))
+                self.firstComparedCurrency.accept(String(format: "%.2f", self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toFirstCurrency, conversionRates: compareModel.data.conversionRates) ?? 1.0))
+                self.secoundComparedCurrency.accept(String(format: "%.2f", self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toSecoundCurrency, conversionRates: compareModel.data.conversionRates) ?? 1.0))
             } onError: { error in
-//                print(error)
                 self.errorSubject.onNext(error)
             }
             .disposed(by: disposeBag)
     }
     func getConvertionRate(from: String, to: String, completion: @escaping (String?) -> Void) {
-        APIManager.shared().fetchGlobal(parsingType: ConverstionRate.self, baseURL: APIManager.EndPoint.getCurrencesData.stringToUrl, attributes: [from, to])
-            .subscribe { converstionRate in
-                completion(String(format: "%.2f", converstionRate.conversionRate))
+        APIManager.shared().fetchGlobal(parsingType: Converstion.self, baseURL: APIManager.EndPoint.convertCurrency.stringToUrl, attributes: [from, to])
+            .subscribe { converstion in
+                completion(String(format: "%.2f", converstion.data.conversionRate))
             } onError: { error in
-//                print(error)
                 self.errorSubject.onNext(error)
             }
             .disposed(by: disposeBag)
@@ -76,7 +71,7 @@ class CurrencyViewModel {
 }
 //MARK: Helping Functions
 extension CurrencyViewModel {
-    func fillDropDown(currencyArray: AllCurrencies) -> [String] {
+    func fillDropDown(currencyArray: [CurrencyData]) -> [String] {
         var arr = [String]()
         for flag in currencyArray {
             arr.append(" " + getFlagEmoji(flag: flag.code) + flag.code)

@@ -25,7 +25,6 @@ final class Converstion_Test: XCTestCase {
         let currencyArray: AllCurrencies = [
             CurrenciesArray(name: "United States Dollar", code: "USD", iconURL: ""),
             CurrenciesArray(name: "Euro", code: "EUR", iconURL: "")
-            // ... Add more currencies
         ]
         
         let expectedOutput = [
@@ -59,7 +58,6 @@ final class Converstion_Test: XCTestCase {
         let conversionRates: [String: Double] = [
             "USD": 0.85,
             "EUR": 1.0,
-            // ... Add more conversion rates
         ]
         
         let expectedConvertedAmount = 100.0 * 1.0 // Since targetCurrency is "EUR"

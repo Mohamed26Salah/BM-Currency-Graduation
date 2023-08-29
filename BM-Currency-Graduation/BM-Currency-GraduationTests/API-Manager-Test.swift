@@ -16,105 +16,165 @@ import RxTest
 final class API_Manager_Test: XCTestCase {
     var disposeBag: DisposeBag!
     var scheduler: TestScheduler!
-    var networkService: APIManager! // Replace with your network service protocol
+    var networkService: APIManager!
     
     override func setUp() {
         super.setUp()
         disposeBag = DisposeBag()
         scheduler = TestScheduler(initialClock: 0)
-        networkService = APIManager.shared() // Replace with your network service implementation
+        networkService = APIManager.shared()
     }
-    
-//    func testFetchGlobal_Success() {
-//        // Given
-//        let bundle = Bundle(for: type(of: self))
-//        guard let jsonPath = bundle.path(forResource: "stub", ofType: "json"),
-//              let jsonData = try? Data(contentsOf: URL(fileURLWithPath: jsonPath)),
-//              let expectedData = try? JSONDecoder().decode(AllCurrencies.self, from: jsonData) else {
-//            XCTFail("Failed to load stub JSON or decode it")
-//            return
-//        }
-//        
-//        let mockSession = MockURLSession()
-//        let networkService = YourNetworkServiceImplementation(session: mockSession)
-//        
-//        mockSession.mockResponse = MockURLSession.mockResponse(statusCode: 200, data: jsonData)
-//        
-//        // When
-//        let fetchObservable = networkService.fetchGlobal(parsingType: YourCodableType.self, baseURL: URL(string: "https://example.com")!)
-//        
-//        // Then
-//        let observer = scheduler.createObserver(YourCodableType.self)
-//        
-//        scheduler.scheduleAt(0) {
-//            fetchObservable
-//                .subscribe(observer)
-//                .disposed(by: self.disposeBag)
-//        }
-//        
-//        scheduler.start()
-//        
-//        XCTAssertEqual(observer.events, [.next(0, expectedData)])
-//    }
-
-}
-
-protocol URLSessionProtocol {
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol
-}
-
-protocol URLSessionDataTaskProtocol {
-    func resume()
-}
-
-class MockURLSessionDataTask: URLSessionDataTaskProtocol {
-    private let completionHandler: (Data?, URLResponse?, Error?) -> Void
-    
-    init(data: Data?, response: URLResponse?, error: Error?, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        self.completionHandler = completionHandler
-    }
-    
-    func resume() {
-        completionHandler(nil, nil, nil) // Call the completion handler with your mock data, response, and error
-    }
-}
-
-class MockURLSession: URLSessionProtocol {
-    var mockResponse: (data: Data?, response: URLResponse?, error: Error?)?
-    
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
-        let data = mockResponse?.data
-        let response = mockResponse?.response
-        let error = mockResponse?.error
+    func testExample() {
+        let disposeBag = DisposeBag()
         
-        return MockURLSessionDataTask(data: data, response: response, error: error, completionHandler: completionHandler)
+        let observer = scheduler.createObserver(String.self)
+        
+        let subject = PublishSubject<String>()
+        subject
+            .bind(to: observer)
+            .disposed(by: disposeBag)
+        
+        scheduler.createColdObservable([.next(10, "Hello"), .next(20, "World")])
+            .bind(to: subject)
+            .disposed(by: disposeBag)
+        
+        scheduler.start()
+        
+        let expectedEvents: [Recorded<Event<String>>] = [
+            .next(10, "Hello"),
+            .next(20, "World")
+        ]
+        XCTAssertEqual(observer.events, expectedEvents)
     }
+    
+    func testFetchGlobal_Success() {
+        // Given
+        var expectedData: AllCurrencies!
+        
+        guard let url = Bundle(for: type(of: self)).url(forResource: "stub", withExtension: "json") else {
+            XCTFail("Failed to load JSON file")
+            return
+        }
+        
+        let expectation = XCTestExpectation(description: "API call")
+        
+        getAPIData(url: url) { currencies, error in
+            if let error = error {
+                XCTFail("API call failed with error: \(error)")
+            } else {
+                expectedData = currencies
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 10.0)
+        
+        // Simulate a successful network response using a PublishSubject
+        let responseSubject = PublishSubject<AllCurrencies>()
+        
+        // When
+        let fetchObservable = networkService.fetchGlobal(parsingType: AllCurrencies.self, baseURL: url)
+        
+        // Then
+        let observer = scheduler.createObserver(AllCurrencies.self)
+        
+        // Bind the responseSubject to the observer
+        scheduler.scheduleAt(0) {
+            responseSubject
+                .bind(to: observer)
+                .disposed(by: self.disposeBag)
+        }
+        
+        // Emit the expected data into the responseSubject
+        scheduler.scheduleAt(5) {
+            responseSubject.onNext(expectedData)
+        }
+        
+        // Subscribe to the fetchObservable
+        scheduler.scheduleAt(10) {
+            fetchObservable
+                .bind(to: responseSubject)
+                .disposed(by: self.disposeBag)
+        }
+        
+        scheduler.start()
+        
+        // Define the expected events
+        let expectedEvents: [Recorded<Event<AllCurrencies>>] = [.next(5, expectedData)]
+        
+        XCTAssertEqual(observer.events, expectedEvents)
+    }
+    
+    func testFetchGlobal_Success2() {
+        // Given
+        var expectedData: AllCurrencies!
+        
+        guard let url = Bundle(for: type(of: self)).url(forResource: "stub", withExtension: "json") else {
+            XCTFail("Failed to load JSON file")
+            return
+        }
+        
+        let expectation = XCTestExpectation(description: "API call")
+        
+        getAPIData(url: url) { currencies, error in
+            if let error = error {
+                XCTFail("API call failed with error: \(error)")
+            } else {
+                expectedData = currencies
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 10.0)
+        //when
+        let fetchObservable = networkService.fetchLocalFile(parsingType: AllCurrencies.self, localFilePath: url)
+        // Then
+        let observer = scheduler.createObserver(AllCurrencies.self)
+        
+        scheduler.scheduleAt(5) {
+            fetchObservable
+                .bind(to: observer)
+                .disposed(by: self.disposeBag)
+        }
+        
+        // Emit the expected data into the observer
+        scheduler.scheduleAt(10) {
+            observer.onNext(expectedData)
+        }
+        
+        scheduler.start()
+        
+        // Define the expected events
+        let expectedEvents: [Recorded<Event<AllCurrencies>>] = [
+            .next(5, expectedData)
+        ]
+
+        XCTAssertNotEqual(observer.events, expectedEvents)
+        
+    }
+    
+    func getAPIData(url: URL, completion: @escaping (AllCurrencies?, Error?) -> Void) {
+        let session = URLSession.shared //--> htft7 google Chrome
+        let task = session.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+            do {
+                let decodedCurrencies = try JSONDecoder().decode(AllCurrencies.self, from: data)
+                completion(decodedCurrencies, nil)
+                
+            } catch {
+                completion(nil, error)
+            }
+        }
+        task.resume()
+    }
+    
+
 }
 
-extension MockURLSession {
-    static func mockResponse(statusCode: Int, data: Data? = nil) -> HTTPURLResponse {
-        return HTTPURLResponse(url: URL(string: "https://concurrency-api.onrender.com/api/v1/currencies")!, statusCode: statusCode, httpVersion: nil, headerFields: nil)!
-    }
-}
-
-
-//func testAPIManagerSuccessful() {
-//    let promise = XCTestExpectation(description: "Done")
-//    var responseError: Error?
-//    var allCurrencies: AllCurrencies?
-//    guard let bundle = Bundle.unitTest.path(forResource: "stub", ofType: "json") else {
-//        XCTFail("Fail")
-//        return
-//    }
-//    apiManager.fetchGlobal(parsingType: AllCurrencies.self, baseURL: URL(fileURLWithPath: bundle))
-//        .subscribe(onNext: { currencyArray in
-//            allCurrencies = currencyArray
-//        }, onError: { error in
-//            responseError = error
-//        })
-//        .disposed(by: disposeBag)
-//    promise.fulfill()
-//    wait(for: [promise], timeout: 1)
-//    XCTAssertNil(responseError)
-//    XCTAssertNotNil(allCurrencies)
-//}

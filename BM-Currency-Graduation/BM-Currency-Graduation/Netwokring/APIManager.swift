@@ -8,6 +8,28 @@
 import Foundation
 import RxSwift
 import RxCocoa
+
+protocol APIClient {
+    func fetchGlobal<T: Codable>(
+        parsingType: T.Type,
+        baseURL: URL,
+        attributes: [String]?,
+        queryParameters: [String: String]?,
+        jsonBody: [String: Any]?
+    ) -> Observable<T>
+}
+
+extension APIClient {
+    func fetchGlobal<T: Codable>(
+        parsingType: T.Type,
+        baseURL: URL,
+        attributes: [String]? = nil,
+        queryParameters: [String: String]? = nil
+    ) -> Observable<T> {
+        return fetchGlobal(parsingType: parsingType, baseURL: baseURL, attributes: attributes, queryParameters: queryParameters, jsonBody: nil)
+    }
+}
+
 class APIManager {
     
     private init() {}

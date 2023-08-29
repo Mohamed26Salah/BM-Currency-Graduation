@@ -34,7 +34,6 @@ class FavouritesScreenVC: UIViewController {
         setupSVG()
         currencyVM.getAllCurrenciesData()
         showCurrenciesData()
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func xButtonTapped(_ sender: UIButton) {

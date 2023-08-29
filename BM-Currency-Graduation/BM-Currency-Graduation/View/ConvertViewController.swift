@@ -33,7 +33,6 @@ class ConvertViewController: UIViewController {
         setupDropDown()
         fillDropDownMenus()
         bindViewModelToViews()
-        bindViewslToViewModel()
         showFavouritesData()
         subscribeToDropDown()
         handleLoadingIndicator()
@@ -112,27 +111,6 @@ extension ConvertViewController {
 extension ConvertViewController {
     func bindViewModelToViews() {
         currencyVM.convertion.bind(to: toAmountTextField.rx.text).disposed(by: disposeBag)
-    }
-    func bindViewslToViewModel() {
-//        fromAmountTextField.rx.controlEvent(.editingChanged)
-//            .withLatestFrom(fromAmountTextField.rx.text.orEmpty)
-//            .map { currency in
-//                let cleanedCurrency = String(currency)
-//                return cleanedCurrency.isEmpty ? "0.0" : cleanedCurrency
-//            }
-//            .distinctUntilChanged()
-//            .compactMap(Double.init)
-//            .bind(to: currencyVM.fromAmount)
-//            .disposed(by: disposeBag)
-
-//        fromCurrency.rx.text.orEmpty
-//            .map { currency in
-//                return String(currency.dropFirst(2))
-//            }
-//            .distinctUntilChanged()
-//            .bind(to: currencyVM.fromCurrency)
-//            .disposed(by: disposeBag)
-
     }
     //the package Doesn't support Rx
     func subscribeToDropDown() {

@@ -74,7 +74,6 @@ class APIManager {
         return URLSession.shared.rx.response(request: request)
             .map { result -> Data in
                 guard result.response.statusCode == 200 else {
-                    //                    print(result.response)
                     throw APIError.invalidResponse(result.response)
                 }
                 return result.data
@@ -96,8 +95,6 @@ class APIManager {
         parsingType: T.Type,
         localFilePath: URL
     ) -> Observable<T> {
-//        let localURL = URL(fileURLWithPath: localFilePath)
-        
         guard let data = try? Data(contentsOf: localFilePath) else {
             return Observable.error(APIError.invalidJSON(NSError(domain: "Failed to load local JSON file", code: -1, userInfo: nil)))
         }

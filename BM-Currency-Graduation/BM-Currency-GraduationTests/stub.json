@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Egyptian Pound",
+    "code": "EGP",
+    "icon_url": "https://www.xe.com/static-images/egp.static.df88137050e409e79db3433d9c8b1493.svg"
+  },
+  {
+    "name": "United States Dollar",
+    "code": "USD",
+    "icon_url": "https://www.xe.com/static-images/usd.static.e8b657d1161a08a32415d284a8e1dc89.svg"
+  },
+  {
+    "name": "Euro",
+    "code": "EUR",
+    "icon_url": "https://www.xe.com/static-images/eur.static.7c6f881c3b6506b03bcbda3644485094.svg"
+  },
+  {
+    "name": "Pound Sterling",
+    "code": "GBP",
+    "icon_url": "https://www.xe.com/static-images/gbp.static.da0ca3d1b6d9e74642276a0ea3cde603.svg"
+  },
+  {
+    "name": "UAE Dirham",
+    "code": "AED",
+    "icon_url": "https://www.xe.com/static-images/aed.static.93a2e850c3b1ada8d436ede89073d8ac.svg"
+  },
+  {
+    "name": "Bahraini Dinar",
+    "code": "BHD",
+    "icon_url": "https://www.xe.com/static-images/bhd.static.1383834e97690952aa4f128aff997809.svg"
+  },
+  {
+    "name": "Japanese Yen",
+    "code": "JPY",
+    "icon_url": "https://www.xe.com/static-images/jpy.static.238642084e415a2c2304c9b3da2308d9.svg"
+  },
+  {
+    "name": "Kuwaiti Dinar",
+    "code": "KWD",
+    "icon_url": "https://www.xe.com/static-images/kwd.static.d6c2b5cfa6e8626418dfa204f9c3ee20.svg"
+  },
+  {
+    "name": "Omani Rial",
+    "code": "OMR",
+    "icon_url": "https://www.xe.com/static-images/omr.static.9645a29f2292d23786b33abe40817cf5.svg"
+  },
+  {
+    "name": "Saudi Riyal",
+    "code": "SAR",
+    "icon_url": "https://www.xe.com/static-images/sar.static.172f85c044a4581c37da224739c18ecf.svg"
+  },
+  {
+    "name": "Qatari Riyal",
+    "code": "QAR",
+    "icon_url": "https://www.xe.com/static-images/qar.static.c24ed06a965876b6d172ddb5262c5caa.svg"
+  }
+]

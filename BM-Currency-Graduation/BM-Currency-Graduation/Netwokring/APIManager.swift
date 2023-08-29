@@ -8,7 +8,6 @@
 import Foundation
 import RxSwift
 import RxCocoa
-
 class APIManager {
     
     private init() {}
@@ -18,7 +17,7 @@ class APIManager {
     static func shared() -> APIManager {
         return APIManager.sharedInstance
     }
-   
+    
     
     let disposeBag = DisposeBag()
     enum EndPoint {
@@ -29,47 +28,88 @@ class APIManager {
         var stringValue: String {
             switch self {
             case .getCurrencesData:
-                return K.Links.baseURL + "v1"
+                return K.Links.newBaseURL
             case .convertCurrency:
-                return K.Links.baseURL + "v2/conversion?"
+                return K.Links.newBaseURL + "/convert"
             case .compareCurrencies:
-                return K.Links.baseURL + "v2/comparison?"
+                return K.Links.newBaseURL + "/compare"
             }
         }
         var stringToUrl: URL {
             return URL(string: stringValue)!
         }
     }
-    private enum Error: Swift.Error {
+    private enum APIError: Swift.Error {
         case invalidResponse(URLResponse?)
         case invalidJSON(Swift.Error)
     }
-    
-    func fetchGlobal<T: Codable>(parsingType: T.Type, url: URL, attributes: [String: String]? = nil) -> Observable<T> {
+    func fetchGlobal<T: Codable>(
+        parsingType: T.Type,
+        baseURL: URL,
+        attributes: [String]? = nil,
+        queryParameters: [String: String]? = nil,
+        jsonBody: [String: Any]? = nil
+    ) -> Observable<T> {
+        
+        var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)!
+        if let attributes = attributes, !attributes.isEmpty {
+            components.path += "/" + attributes.joined(separator: "/")
+        }
+        if let queryParameters = queryParameters {
+            components.queryItems = queryParameters.map { URLQueryItem(name: $0.key, value: $0.value) }
+        }
+        
+        guard let url = components.url else {
+            return Observable.error(NSError(domain: "Invalid URL", code: -1, userInfo: nil))
+        }
+        
         var request = URLRequest(url: url)
-        if let attributes = attributes {
-            for (key, value) in attributes {
-                request.addValue(value, forHTTPHeaderField: key)
-            }
+        request.httpMethod = jsonBody != nil ? "POST" : "GET"
+        
+        if let jsonBody = jsonBody {
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
+            request.httpBody = jsonData
         }
         return URLSession.shared.rx.response(request: request)
             .map { result -> Data in
                 guard result.response.statusCode == 200 else {
-                    print(result.response)
-                    throw Error.invalidResponse(result.response)
+                    //                    print(result.response)
+                    throw APIError.invalidResponse(result.response)
                 }
                 return result.data
             }.map { data in
                 do {
-                    let searchResult = try JSONDecoder().decode(
+                    let decodedData = try JSONDecoder().decode(
                         parsingType.self, from: data
                     )
-                    return searchResult
+                    return decodedData
                 } catch let error {
-                    throw Error.invalidJSON(error)
+                    throw APIError.invalidJSON(error)
                 }
             }
             .observe(on: MainScheduler.instance)
             .asObservable()
     }
+    
+    func fetchLocalFile<T: Codable>(
+        parsingType: T.Type,
+        localFilePath: URL
+    ) -> Observable<T> {
+//        let localURL = URL(fileURLWithPath: localFilePath)
+        
+        guard let data = try? Data(contentsOf: localFilePath) else {
+            return Observable.error(APIError.invalidJSON(NSError(domain: "Failed to load local JSON file", code: -1, userInfo: nil)))
+        }
+        
+        do {
+            let decodedData = try JSONDecoder().decode(parsingType.self, from: data)
+            return Observable.just(decodedData)
+        } catch let error {
+            return Observable.error(APIError.invalidJSON(error))
+        }
+    }
+
 }
+
+

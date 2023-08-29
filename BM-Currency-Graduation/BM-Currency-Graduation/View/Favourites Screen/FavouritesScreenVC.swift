@@ -13,11 +13,21 @@ import SDWebImageSVGCoder
 
 class FavouritesScreenVC: UIViewController {
     
+
     @IBOutlet weak var favTableView: UITableView!
     @IBOutlet weak var backgroundView: UIView!
     
+    let currencyVM: CurrencyViewModel
+
+    init(currencyVm: CurrencyViewModel){
+        self.currencyVM = currencyVm
+        super.init(nibName: "FavouritesScreenVC", bundle: .main)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     let disposeBag = DisposeBag()
-    var currencyVM = CurrencyViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -35,17 +45,25 @@ class FavouritesScreenVC: UIViewController {
 extension FavouritesScreenVC {
     
     func showCurrenciesData () {
-        
         currencyVM.currenciesArray
             .bind(to: favTableView
                 .rx
                 .items(cellIdentifier: K.cellsResuable.InSideFTVCell, cellType: InSideFTVCell.self)) {
                     (tv, curr, cell) in
-                    if let url = URL(string: curr.flagURL) {
+                    let favouriteItem = FavouriteItem(currencyCode: curr.code, imageUrl: curr.iconURL)
+                    if let url = URL(string: curr.iconURL) {
                         cell.currencyImage.sd_setImage(with: url)
                     }
                     cell.currencyNameLabel.text = curr.code
-//                    cell.favRadioButton -->
+                    cell.favRadioButton.isChecked = FavouritesManager.shared().isItemFavorited(item: favouriteItem)
+                    cell.onFavButtonTapped = {
+                        if cell.favRadioButton.isChecked {
+                            FavouritesManager.shared().addToFavorites(item: favouriteItem)
+                        } else {
+                            FavouritesManager.shared().removeFromFavorites(item: favouriteItem)
+                        }
+                        self.currencyVM.favouritesArray.accept(FavouritesManager.shared().getAllFavoriteItems())
+                    }
                 }
                 .disposed(by: disposeBag)
     }

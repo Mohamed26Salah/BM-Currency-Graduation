@@ -9,6 +9,8 @@ import UIKit
 import iOSDropDown
 import RxSwift
 import RxCocoa
+import SDWebImage
+import SDWebImageSVGCoder
 
 class ConvertViewController: UIViewController {
 
@@ -18,63 +20,147 @@ class ConvertViewController: UIViewController {
     @IBOutlet weak var toCurrency: DropDown!
     @IBOutlet weak var favouritesTableView: UITableView!
     @IBOutlet weak var addToFavourites: UIButton!
+    @IBOutlet weak var convertButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     let disposeBag = DisposeBag()
     var currencyVM = CurrencyViewModel()
-//    var comingCurrencyVM: CurrencyViewModel? {
-//        didSet {
-//            if let currVM = comingCurrencyVM {
-//                currencyVM = currVM
-//            }
-//        }
-//    }
-    //Temp Values
-    let arr = [CurrencyTemp(image: UIImage(named: "USD")!, name: "USD", amount: "1"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "EGB", amount: "12"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "EUR", amount: "123"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "FUK", amount: "1234"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "KSA", amount: "12345"),
-               CurrencyTemp(image: UIImage(named: "USD")!, name: "MSA", amount: "123456")]
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         currencyVM.getAllCurrenciesData()
         setupUI()
+        setupDropDown()
         fillDropDownMenus()
+        bindViewModelToViews()
+        bindViewslToViewModel()
+        showFavouritesData()
+        subscribeToDropDown()
+        handleLoadingIndicator()
+        manageIndicator()
+        handleErrors()
     }
+
 
     
     @IBAction func convertButtonTapped(_ sender: UIButton) {
-        print("Convert Button Tapped...")
+        guard let fromCurrencyText = fromCurrency.text, !fromCurrencyText.isEmpty,
+              let toCurrencyText = toCurrency.text, !toCurrencyText.isEmpty else {
+            return
+        }
+        guard let fromAmount = fromAmountTextField.text , !fromAmount.isEmpty else{
+            show(messageAlert: "Error!", message: "Please enter an amount")
+            return
+        }
+        currencyVM.showLoading.accept(true)
+        currencyVM.convertCurrency(amount: fromAmount, from: String(fromCurrencyText.dropFirst(2)), to: String(toCurrencyText.dropFirst(2)))
     }
     
     @IBAction func addToFavouritesTapped(_ sender: UIButton) {
-        let favouritesController = FavouritesScreenVC()
+        let favouritesController = FavouritesScreenVC(currencyVm: currencyVM)
         favouritesController.modalPresentationStyle = .overCurrentContext
         present(favouritesController, animated: true, completion: nil)
-//
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let nameSelectionVC = storyboard.instantiateViewController(withIdentifier: K.viewsControllers.FavouritesViewController) as! FavouritesViewController
-//       nameSelectionVC.modalPresentationStyle = .overCurrentContext
-//
-//        present(nameSelectionVC, animated: true, completion: nil)
     }
     
 }
-extension ConvertViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        arr.count
+extension ConvertViewController {
+    func showFavouritesData() {
+        currencyVM.favouritesArray
+            .bind(to: favouritesTableView
+                .rx
+                .items(cellIdentifier: K.cellsResuable.OutSideFTVCell, cellType: OutSideFTVCell.self)) { [weak self]
+                    (tv, curr, cell) in
+                    guard let self = self else {
+                        return
+                    }
+                    if let url = URL(string: curr.imageUrl) {
+                        cell.currencyImage.sd_setImage(with: url)
+                    }
+                    cell.currencyNameLabel.text = curr.currencyCode
+                    self.currencyVM.fromCurrency
+                        .subscribe { fromCurrency in
+                            self.currencyVM.getConvertionRate(from: fromCurrency, to: curr.currencyCode) { converstionRate in
+                                cell.currencyAmountLabel.text = converstionRate
+                            }
+                        }
+                        .disposed(by: disposeBag)
+                }
+                .disposed(by: disposeBag)
+        currencyVM.favouritesArray
+            .map { $0.isEmpty }
+            .subscribe(onNext: { [weak self] isEmpty in
+                self?.updateTableViewUI(isEmpty: isEmpty)
+            })
+            .disposed(by: disposeBag)
+    }
+    func updateTableViewUI(isEmpty: Bool) {
+        if isEmpty {
+            let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: favouritesTableView.bounds.size.width, height: favouritesTableView.bounds.size.height))
+            noDataLabel.text = "You Haven't added any favoruites yet!"
+            noDataLabel.textColor = UIColor.black
+            noDataLabel.textAlignment = .center
+            favouritesTableView.backgroundView = noDataLabel
+            favouritesTableView.separatorStyle = .none
+        } else {
+            favouritesTableView.backgroundView = nil
+            favouritesTableView.separatorStyle = .singleLine
+        }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellsResuable.OutSideFTVCell, for: indexPath) as! OutSideFTVCell
-        cell.currencyImage.image = arr[indexPath.row].image
-        cell.currencyNameLabel.text = arr[indexPath.row].name
-        cell.currencyAmountLabel.text = arr[indexPath.row].amount
-        return cell
+}
+//MARK: RxFunctions
+extension ConvertViewController {
+    func bindViewModelToViews() {
+        currencyVM.convertion.bind(to: toAmountTextField.rx.text).disposed(by: disposeBag)
     }
-    
-    
+    func bindViewslToViewModel() {
+//        fromAmountTextField.rx.controlEvent(.editingChanged)
+//            .withLatestFrom(fromAmountTextField.rx.text.orEmpty)
+//            .map { currency in
+//                let cleanedCurrency = String(currency)
+//                return cleanedCurrency.isEmpty ? "0.0" : cleanedCurrency
+//            }
+//            .distinctUntilChanged()
+//            .compactMap(Double.init)
+//            .bind(to: currencyVM.fromAmount)
+//            .disposed(by: disposeBag)
+
+//        fromCurrency.rx.text.orEmpty
+//            .map { currency in
+//                return String(currency.dropFirst(2))
+//            }
+//            .distinctUntilChanged()
+//            .bind(to: currencyVM.fromCurrency)
+//            .disposed(by: disposeBag)
+
+    }
+    //the package Doesn't support Rx
+    func subscribeToDropDown() {
+        fromCurrency.didSelect{(selectedText , index ,id) in
+            self.currencyVM.fromCurrency.accept(String(selectedText.dropFirst(2)))
+        }
+    }
+    func handleLoadingIndicator() {
+        currencyVM.showLoading
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] isLoading in
+                if isLoading {
+                    self?.activityIndicator.startAnimating()
+                    self?.convertButton.isEnabled = false
+                } else {
+                    self?.activityIndicator.stopAnimating()
+                    self?.convertButton.isEnabled = true
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    func handleErrors() {
+        currencyVM.errorSubject
+            .subscribe { error in
+                self.show(messageAlert: "Error", message: error.localizedDescription)
+            }
+            .disposed(by: disposeBag)
+    }
 }
 extension ConvertViewController {
     func setupUI() {
@@ -94,6 +180,7 @@ extension ConvertViewController {
         toAmountTextField.layer.cornerRadius = 20
         toAmountTextField.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor
         toAmountTextField.addLeftPadding(16)
+        toAmountTextField.isEnabled = false
 
         
         toCurrency.layer.borderWidth = 0.5
@@ -107,10 +194,17 @@ extension ConvertViewController {
     func fillDropDownMenus() {
         currencyVM.currenciesArray
             .subscribe { currencyArray in
-                self.fromCurrency.reloadInputViews()
                 self.fromCurrency.optionArray = self.currencyVM.fillDropDown(currencyArray: currencyArray)
                 self.toCurrency.optionArray = self.currencyVM.fillDropDown(currencyArray: currencyArray)
             }
             .disposed(by: disposeBag)
     }
+    func setupDropDown() {
+        fromCurrency.text = " " + currencyVM.getFlagEmoji(flag: "EGP") + "EGP"
+        toCurrency.text = " " + currencyVM.getFlagEmoji(flag: "USD") + "USD"
+    }
+    func manageIndicator() {
+        view.bringSubviewToFront(activityIndicator)
+    }
 }
+

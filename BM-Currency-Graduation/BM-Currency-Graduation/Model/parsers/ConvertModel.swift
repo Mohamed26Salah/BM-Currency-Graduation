@@ -23,7 +23,7 @@ struct ConvertModel: Codable {
 }
 
 // MARK: - DataClass
-struct ConvertRate: Codable {
+struct ConvertRate: Codable, Equatable {
     var baseCode: String
     var targetCode: String
     var conversionRate: Double

@@ -10,6 +10,11 @@ import RxSwift
 import RxCocoa
 
 class CurrencyViewModel {
+    
+    let apiManager: APIClientProtocol
+    init( apiManager: APIClientProtocol = APIManager()) {
+        self.apiManager = apiManager
+    }
     private let disposeBag = DisposeBag()
     var allCurrenciesModel: AllCurrencies?
     //In
@@ -26,7 +31,7 @@ class CurrencyViewModel {
     
 
     func getAllCurrenciesData() {
-        APIManager.shared().fetchGlobal(parsingType: AllCurrencies.self, baseURL: APIManager.EndPoint.getCurrencesData.stringToUrl)
+        apiManager.fetchGlobal(parsingType: AllCurrencies.self, baseURL: APIManager.EndPoint.getCurrencesData.stringToUrl)
             .subscribe(onNext: { ListOFAllCurrenciesModel in
                 self.showLoading.accept(false)
                 self.allCurrenciesModel = ListOFAllCurrenciesModel
@@ -37,7 +42,7 @@ class CurrencyViewModel {
             .disposed(by: disposeBag)
     }
     func convertCurrency(amount: String, from: String, to: String) {
-        APIManager.shared().fetchGlobal(parsingType: ConvertModel.self, baseURL: APIManager.EndPoint.convertCurrency.stringToUrl, attributes: [from, to, amount])
+        apiManager.fetchGlobal(parsingType: ConvertModel.self, baseURL: APIManager.EndPoint.convertCurrency.stringToUrl, attributes: [from, to, amount])
             .subscribe(onNext: { convertion in
                 self.showLoading.accept(false)
                 self.convertion.accept(String(format: "%.2f", convertion.data.conversionResult))
@@ -49,7 +54,8 @@ class CurrencyViewModel {
     func compareCurrency(amount: String, from: String, toFirstCurrency: String, toSecoundCurrency: String) {
         let currencyList = [toFirstCurrency, toSecoundCurrency]
         let body: [String : Any] = ["base_code":from, "target_codes":currencyList]
-        APIManager.shared().fetchGlobal(parsingType: CompareModel.self, baseURL: APIManager.EndPoint.compareCurrencies.stringToUrl, jsonBody: body)
+        let apiManager2 = APIManager()
+        apiManager2.fetchGlobal(parsingType: CompareModel.self, baseURL: APIManager.EndPoint.compareCurrencies.stringToUrl, jsonBody: body)
             .subscribe { compareModel in
                 self.showLoading.accept(false)
                 self.firstComparedCurrency.accept(String(format: "%.2f", self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toFirstCurrency, conversionRates: compareModel.data.conversionRates) ?? 1.0))
@@ -60,7 +66,7 @@ class CurrencyViewModel {
             .disposed(by: disposeBag)
     }
     func getConvertionRate(from: String, to: String, completion: @escaping (String?) -> Void) {
-        APIManager.shared().fetchGlobal(parsingType: Converstion.self, baseURL: APIManager.EndPoint.convertCurrency.stringToUrl, attributes: [from, to])
+        apiManager.fetchGlobal(parsingType: Converstion.self, baseURL: APIManager.EndPoint.convertCurrency.stringToUrl, attributes: [from, to])
             .subscribe { converstion in
                 completion(String(format: "%.2f", converstion.data.conversionRate))
             } onError: { error in

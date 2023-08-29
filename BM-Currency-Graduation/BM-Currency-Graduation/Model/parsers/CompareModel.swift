@@ -25,7 +25,7 @@ struct CompareModel: Codable {
 }
 
 // MARK: - DataClass
-struct CompareData: Codable {
+struct CompareData: Codable, Equatable {
     var result: String
     var baseCode: String
     var targetCodes: [String]

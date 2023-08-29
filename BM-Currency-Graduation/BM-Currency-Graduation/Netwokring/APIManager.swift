@@ -8,16 +8,43 @@
 import Foundation
 import RxSwift
 import RxCocoa
-class APIManager {
-    
-    private init() {}
-    
-    private static let sharedInstance = APIManager()
-    
-    static func shared() -> APIManager {
-        return APIManager.sharedInstance
+
+protocol APIClientProtocol {
+    func fetchGlobal<T: Codable>(
+        parsingType: T.Type,
+        baseURL: URL,
+        attributes: [String]?,
+        queryParameters: [String: String]?,
+        jsonBody: [String: Any]?
+    ) -> Observable<T>
+    func fetchLocalFile<T: Codable>(
+        parsingType: T.Type,
+        localFilePath: URL
+    ) -> Observable<T> 
+}
+
+extension APIClientProtocol {
+    func fetchGlobal<T: Codable>(
+        parsingType: T.Type,
+        baseURL: URL,
+        attributes: [String]? = nil,
+        queryParameters: [String: String]? = nil,
+        jsonBody: [String: Any]? = nil
+    ) -> Observable<T> {
+        return fetchGlobal(parsingType: parsingType, baseURL: baseURL, attributes: attributes, queryParameters: queryParameters, jsonBody: nil)
     }
+}
+
+class APIManager: APIClientProtocol {
     
+//    private init() {}
+//    
+//    private static let sharedInstance = APIManager()
+//    
+//    static func shared() -> APIManager {
+//        return APIManager.sharedInstance
+//    }
+//    
     
     let disposeBag = DisposeBag()
     enum EndPoint {

@@ -45,11 +45,14 @@ class CompareViewController: UIViewController {
               let secoundToCurrencyText = secoundToCurrency.text, !secoundToCurrencyText.isEmpty else {
             return
         }
-
-        var fromAmount = fromAmountTextField.text ?? "0.0"
-        if fromAmount.isEmpty {
-            fromAmount = "0.0"
+        guard let fromAmount = fromAmountTextField.text , !fromAmount.isEmpty else{
+            show(messageAlert: "Error!", message: "Please enter an amount")
+            return
         }
+//        var fromAmount = fromAmountTextField.text ?? "0.0"
+//        if fromAmount.isEmpty {
+//            fromAmount = "0.0"
+//        }
         currencyVM.showLoading.accept(true)
         currencyVM.compareCurrency(amount: fromAmount, from: String(fromCurrencyText.dropFirst(2)), toFirstCurrency: String(firstToCurrencyText.dropFirst(2)), toSecoundCurrency: String(secoundToCurrencyText.dropFirst(2)))
     }

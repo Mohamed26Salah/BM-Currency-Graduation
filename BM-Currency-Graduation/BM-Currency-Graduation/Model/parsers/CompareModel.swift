@@ -10,20 +10,6 @@ import OptionallyDecodable
 
 
 // MARK: - CompareModel
-//struct CompareModel: Codable {
-//    var result: String
-//    var baseCode: String
-//    var targetCodes: [String]
-//    var conversionRates: [String:Double]
-//
-//    enum CodingKeys: String, CodingKey {
-//        case result = "result"
-//        case baseCode = "base_code"
-//        case targetCodes = "target_codes"
-//        case conversionRates = "conversion_rates"
-//    }
-//}
-
 struct CompareModel: Codable {
     var statusCode: Int
     var status: String

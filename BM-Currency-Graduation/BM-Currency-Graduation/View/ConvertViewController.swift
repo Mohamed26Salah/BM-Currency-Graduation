@@ -48,10 +48,9 @@ class ConvertViewController: UIViewController {
               let toCurrencyText = toCurrency.text, !toCurrencyText.isEmpty else {
             return
         }
-        
-        var fromAmount = fromAmountTextField.text ?? "0.0"
-        if fromAmount.isEmpty {
-            fromAmount = "0.0"
+        guard let fromAmount = fromAmountTextField.text , !fromAmount.isEmpty else{
+            show(messageAlert: "Error!", message: "Please enter an amount")
+            return
         }
         currencyVM.showLoading.accept(true)
         currencyVM.convertCurrency(amount: fromAmount, from: String(fromCurrencyText.dropFirst(2)), to: String(toCurrencyText.dropFirst(2)))

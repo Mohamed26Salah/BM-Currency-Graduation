@@ -22,9 +22,9 @@ final class Converstion_Test: XCTestCase {
     
     func testFillDropDown() {
         // Given
-        let currencyArray: AllCurrencies = [
-            CurrenciesArray(name: "United States Dollar", code: "USD", iconURL: ""),
-            CurrenciesArray(name: "Euro", code: "EUR", iconURL: "")
+        let currencyArray: [CurrencyData] = [
+            CurrencyData(iconURL: "", name: "United States Dollar", code: "USD"),
+            CurrencyData(iconURL: "", name: "Euro", code: "EUR")
         ]
         
         let expectedOutput = [

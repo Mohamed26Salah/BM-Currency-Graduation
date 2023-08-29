@@ -49,65 +49,68 @@ final class API_Manager_Test: XCTestCase {
     
     func testFetchGlobal_Success() {
         // Given
-        var expectedData: AllCurrencies!
-        
+        var expectedData: [CurrencyData]!
+
         guard let url = Bundle(for: type(of: self)).url(forResource: "stub", withExtension: "json") else {
             XCTFail("Failed to load JSON file")
             return
         }
-        
+
         let expectation = XCTestExpectation(description: "API call")
-        
+
         getAPIData(url: url) { currencies, error in
             if let error = error {
                 XCTFail("API call failed with error: \(error)")
             } else {
-                expectedData = currencies
+                expectedData = currencies?.data
                 expectation.fulfill()
             }
         }
-        
+
         wait(for: [expectation], timeout: 10.0)
-        
+
         // Simulate a successful network response using a PublishSubject
-        let responseSubject = PublishSubject<AllCurrencies>()
-        
+        let responseSubject = PublishSubject<[CurrencyData]>()
+
         // When
         let fetchObservable = networkService.fetchGlobal(parsingType: AllCurrencies.self, baseURL: url)
-        
+
         // Then
-        let observer = scheduler.createObserver(AllCurrencies.self)
-        
+        let observer = scheduler.createObserver([CurrencyData].self)
+
         // Bind the responseSubject to the observer
         scheduler.scheduleAt(0) {
             responseSubject
                 .bind(to: observer)
                 .disposed(by: self.disposeBag)
         }
-        
+
         // Emit the expected data into the responseSubject
         scheduler.scheduleAt(5) {
             responseSubject.onNext(expectedData)
         }
-        
+
         // Subscribe to the fetchObservable
         scheduler.scheduleAt(10) {
             fetchObservable
+                .map({ currencesData in
+                    currencesData.data
+                })
                 .bind(to: responseSubject)
                 .disposed(by: self.disposeBag)
         }
-        
+
         scheduler.start()
-        
+
         // Define the expected events
-        let expectedEvents: [Recorded<Event<AllCurrencies>>] = [.next(5, expectedData)]
-        
+        let expectedEvents: [Recorded<Event<[CurrencyData]>>] = [.next(5, expectedData)]
+
         XCTAssertEqual(observer.events, expectedEvents)
     }
-    
+
     func testFetchGlobal_Success2() {
         // Given
-        var expectedData: AllCurrencies!
+        var expectedData: [CurrencyData]!
         
         guard let url = Bundle(for: type(of: self)).url(forResource: "stub", withExtension: "json") else {
             XCTFail("Failed to load JSON file")
@@ -120,7 +123,7 @@ final class API_Manager_Test: XCTestCase {
             if let error = error {
                 XCTFail("API call failed with error: \(error)")
             } else {
-                expectedData = currencies
+                expectedData = currencies?.data
                 expectation.fulfill()
             }
         }
@@ -129,10 +132,13 @@ final class API_Manager_Test: XCTestCase {
         //when
         let fetchObservable = networkService.fetchLocalFile(parsingType: AllCurrencies.self, localFilePath: url)
         // Then
-        let observer = scheduler.createObserver(AllCurrencies.self)
+        let observer = scheduler.createObserver([CurrencyData].self)
         
         scheduler.scheduleAt(5) {
             fetchObservable
+                .map({ currencesData in
+                    currencesData.data
+                })
                 .bind(to: observer)
                 .disposed(by: self.disposeBag)
         }
@@ -145,7 +151,7 @@ final class API_Manager_Test: XCTestCase {
         scheduler.start()
         
         // Define the expected events
-        let expectedEvents: [Recorded<Event<AllCurrencies>>] = [
+        let expectedEvents: [Recorded<Event<[CurrencyData]>>] = [
             .next(5, expectedData)
         ]
 

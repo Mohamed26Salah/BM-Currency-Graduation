@@ -24,7 +24,7 @@ struct AllCurrencies: Codable {
 }
 
 // MARK: - Datum
-struct CurrencyData: Codable {
+struct CurrencyData: Codable, Equatable {
     var iconURL: String
     var name: String
     var code: String

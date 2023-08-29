@@ -76,10 +76,25 @@ extension ConvertViewController {
                         cell.currencyImage.sd_setImage(with: url)
                     }
                     cell.currencyNameLabel.text = curr.currencyCode
+//                    self.currencyVM.fromCurrency
+//                        .subscribe { fromCurrency in
+//                            self.currencyVM.getConvertionRate(from: fromCurrency, to: curr.currencyCode) { converstionRate in
+//                                cell.currencyAmountLabel.text = converstionRate
+//                            }
+//                        }
+//                        .disposed(by: disposeBag)
                     self.currencyVM.fromCurrency
-                        .subscribe { fromCurrency in
-                            self.currencyVM.getConvertionRate(from: fromCurrency, to: curr.currencyCode) { converstionRate in
-                                cell.currencyAmountLabel.text = converstionRate
+                        .subscribe { [weak self] fromCurrency in
+                            guard let self = self else { return }
+                            
+                            // Check if the current object is invalidated
+                            if !curr.isInvalidated {
+                                self.currencyVM.getConvertionRate(from: fromCurrency, to: curr.currencyCode) { converstionRate in
+                                    cell.currencyAmountLabel.text = converstionRate
+                                }
+                            } else {
+                                // Handle invalid or deleted object, you can set default value or display N/A
+                                cell.currencyAmountLabel.text = "N/A"
                             }
                         }
                         .disposed(by: disposeBag)

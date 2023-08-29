@@ -31,6 +31,7 @@ Currency Conversion App is a Swift-based iOS application that allows users to co
 
 - RxSwift: Reactive programming library for Swift.
 - UIKit: Framework for building iOS user interfaces.
+- MVVM: Mode View View Model architectural pattern
 
 ## Getting Started
 

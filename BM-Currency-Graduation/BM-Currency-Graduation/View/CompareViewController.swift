@@ -33,6 +33,8 @@ class CompareViewController: UIViewController {
         fillDropDownMenus()
         setupUI()
         bindViewModelToViews()
+        subscribeToDropDown()
+        bindViewsToViewModel()
         handleLoadingIndicator()
         manageIndicator()
         handleErrors()
@@ -53,12 +55,36 @@ class CompareViewController: UIViewController {
 //        currencyVM.compareCurrency(amount: fromAmount, from: String(fromCurrencyText.dropFirst(2)), toFirstCurrency: String(firstToCurrencyText.dropFirst(2)), toSecoundCurrency: String(secoundToCurrencyText.dropFirst(2)))
     }
 }
-//MARK: RxFunctions
 extension CompareViewController {
     func bindViewModelToViews() {
-//        currencyVM.firstComparedCurrency.bind(to: firstToAmountTextField.rx.text).disposed(by: disposeBag)
-//        currencyVM.secoundComparedCurrency.bind(to: secoundToAmountTextField.rx.text).disposed(by: disposeBag)
+        currencyVM.fromCurrencyOutPutRelay.bind(to: fromAmountTextField.rx.text).disposed(by: disposeBag)
+        currencyVM.toCurrencyOutPutRelay.bind(to: firstToAmountTextField.rx.text).disposed(by: disposeBag)
+        currencyVM.toCurrencyOutPutRelaySecound.bind(to: secoundToAmountTextField.rx.text).disposed(by: disposeBag)
+//        currencyVM.placeholderOutputRelay.bind(to: toAmountTextField.rx.placeholder).disposed(by: disposeBag)
     }
+    func subscribeToDropDown() {
+        fromCurrency.didSelect{(selectedText , index ,id) in
+            self.currencyVM.fromCurrencyRelay.accept(String(selectedText.dropFirst(2)))
+        }
+        firstToCurrency.didSelect{(selectedText , index ,id) in
+            self.currencyVM.toCurrencyRelay.accept(String(selectedText.dropFirst(2)))
+        }
+        secoundToCurrency.didSelect{(selectedText , index ,id) in
+            self.currencyVM.toCurrencyRelaySecound.accept(String(selectedText.dropFirst(2)))
+        }
+    }
+    func bindViewsToViewModel() {
+        fromAmountTextField.rx.controlEvent(.editingChanged)
+            .withLatestFrom(fromAmountTextField.rx.text.orEmpty)
+            .map { $0.isEmpty ? "0.0" : $0 }
+            .distinctUntilChanged()
+            .compactMap(Double.init)
+            .bind(to: currencyVM.fromAmountRelay)
+            .disposed(by: disposeBag)
+    }
+}
+//MARK: RxFunctions
+extension CompareViewController {
     func handleLoadingIndicator() {
         currencyVM.showLoading
             .observe(on: MainScheduler.instance)
@@ -115,17 +141,18 @@ extension CompareViewController {
         secoundToAmountTextField.isEnabled = false
     }
     func fillDropDownMenus() {
-//        currencyVM.CurrencyData
-//            .subscribe { CurrencyRates in
-//                self.fromCurrency.optionArray = self.currencyVM.fillDropDown(currencyDict: CurrencyRates)
-//                self.toCurrency.optionArray = self.currencyVM.fillDropDown(currencyDict: CurrencyRates)
-//            }
-//            .disposed(by: disposeBag)
+        currencyVM.CurrencyData
+            .subscribe { CurrencyRates in
+                self.fromCurrency.optionArray = self.currencyVM.fillDropDown(currencyDict: CurrencyRates)
+                self.firstToCurrency.optionArray = self.currencyVM.fillDropDown(currencyDict: CurrencyRates)
+                self.secoundToCurrency.optionArray = self.currencyVM.fillDropDown(currencyDict: CurrencyRates)
+            }
+            .disposed(by: disposeBag)
     }
     func setupDropDown() {
         self.fromCurrency.text = " " + currencyVM.getFlagEmoji(flag: "EGP") + "EGP"
         self.firstToCurrency.text = " " + currencyVM.getFlagEmoji(flag: "USD") + "USD"
-        self.secoundToCurrency.text = " " + currencyVM.getFlagEmoji(flag: "KWD") + "KWD"
+        self.secoundToCurrency.text = " " + currencyVM.getFlagEmoji(flag: "EUR") + "EUR"
     }
     func manageIndicator() {
        view.bringSubviewToFront(activityIndicator)

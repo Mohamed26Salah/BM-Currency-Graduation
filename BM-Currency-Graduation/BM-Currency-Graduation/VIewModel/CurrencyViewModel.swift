@@ -24,13 +24,14 @@ class CurrencyViewModel {
     // In
     var fromCurrencyRelay = BehaviorRelay<String>(value: "EGP")
     var toCurrencyRelay = BehaviorRelay<String>(value: "USD")
-    var fromAmountRelay = PublishRelay<Double>.init()
+    var toCurrencyRelaySecound = BehaviorRelay<String>(value: "EUR")
+    var fromAmountRelay = BehaviorRelay<Double>(value: 1.0)
     var toAmountRelay = PublishRelay<Double>.init()
+    
     //Out
     var toCurrencyOutPutRelay = PublishRelay<String>.init()
+    var toCurrencyOutPutRelaySecound = PublishRelay<String>.init()
     var fromCurrencyOutPutRelay = PublishRelay<String>.init()
-    var placeholderOutputRelay = PublishRelay<String>.init()
-    var CurrencyRates = BehaviorRelay<[String:Double]>(value: ["EUR":0.0])
     var CurrencyData = BehaviorRelay<[String:Double]>(value: ["EUR":0.0])
     var favouritesArray = BehaviorRelay<[FavouriteItem]>(value: FavouritesManager.shared().getAllFavoriteItems())
     var errorSubject = PublishSubject<Error>()
@@ -41,10 +42,7 @@ class CurrencyViewModel {
             .subscribe(onNext: { ListOFAllCurrenciesModel in
                 self.showLoading.accept(false)
                 self.allCurrenciesModel = ListOFAllCurrenciesModel
-                self.fromCurrencyOutPutRelay.accept("1.0")
-                self.toCurrencyOutPutRelay.accept(String.init(ListOFAllCurrenciesModel.convertCurrency(amount: 1, from: "EGP", to: "USD")))
-                self.CurrencyRates.accept(ListOFAllCurrenciesModel.rates)
-                //Made Another one as the CurrencyRates changes
+                self.fromAmountRelay.accept(1.0) //To Trigger the Bindings to work
                 self.CurrencyData.accept(ListOFAllCurrenciesModel.rates)
             }, onError: { error in
                 self.errorSubject.onNext(error)
@@ -55,32 +53,28 @@ class CurrencyViewModel {
         //combineLatest waits for all the source observables to emit at least one value before it starts combining them and emitting combined results.
         let fromObserable = Observable.combineLatest(fromAmountRelay, fromCurrencyRelay, toCurrencyRelay)
         fromObserable.subscribe(onNext: { [weak self] (amount, from, to) in
-            print("Salah 1")
             guard let self = self, let model = self.allCurrenciesModel else { return }
             let convertedAmount = model.convertCurrency(amount: amount, from: from, to: to)
-            self.toCurrencyOutPutRelay.accept(String.init(convertedAmount))
-            if let newCurrenciesValue = model.convertAllCurrencies(amount: amount, from: from) {
-                self.CurrencyRates.accept(newCurrenciesValue)
-            }
+            self.toCurrencyOutPutRelay.accept(String.init(format: "%.2f", convertedAmount))
         }).disposed(by: disposeBag)
         
         let toObserable = Observable.combineLatest(toAmountRelay, toCurrencyRelay, fromCurrencyRelay)
         toObserable.subscribe(onNext: { [weak self] (amount, from, to) in
-            print("Salah 2")
             guard let self = self, let model = self.allCurrenciesModel else { return }
             let convertedAmount = model.convertCurrency(amount: amount, from: from, to: to)
-            self.fromCurrencyOutPutRelay.accept(String.init(convertedAmount))
-            if let newCurrenciesValue = model.convertAllCurrencies(amount: amount, from: from) {
-                self.CurrencyRates.accept(newCurrenciesValue)
-            }
+            self.fromCurrencyOutPutRelay.accept(String.init(format: "%.2f", convertedAmount))
+        }).disposed(by: disposeBag)
+    
+        Observable.combineLatest(fromAmountRelay, fromCurrencyRelay, toCurrencyRelay, toCurrencyRelaySecound)
+            .subscribe(onNext: { [weak self] (amount, from, to, secoundTo) in
+            guard let self = self, let model = self.allCurrenciesModel else { return }
+            let convertedAmount = model.convertCurrency(amount: amount, from: from, to: to)
+            self.toCurrencyOutPutRelay.accept(String.init(format: "%.2f", convertedAmount))
+            let convertedAmount2 = model.convertCurrency(amount: amount, from: from, to: secoundTo)
+            self.toCurrencyOutPutRelaySecound.accept(String.init(format: "%.2f", convertedAmount2))
         }).disposed(by: disposeBag)
         
-        Observable.combineLatest(fromCurrencyRelay, toCurrencyRelay).subscribe(onNext: { [weak self] (from, to) in
-            print("Salah 3")
-            guard let self = self, let model = self.allCurrenciesModel else { return }
-            let amount = model.convertCurrency(amount: 1, from: from, to: to)
-            self.placeholderOutputRelay.accept(String.init(amount))
-        }).disposed(by: disposeBag)
+        
     }
 }
 //MARK: Helping Functions

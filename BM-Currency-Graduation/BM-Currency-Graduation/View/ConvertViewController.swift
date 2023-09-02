@@ -67,7 +67,6 @@ extension ConvertViewController {
     func bindViewModelToViews() {
         currencyVM.fromCurrencyOutPutRelay.bind(to: fromAmountTextField.rx.text).disposed(by: disposeBag)
         currencyVM.toCurrencyOutPutRelay.bind(to: toAmountTextField.rx.text).disposed(by: disposeBag)
-        currencyVM.placeholderOutputRelay.bind(to: toAmountTextField.rx.placeholder).disposed(by: disposeBag)
     }
     func subscribeToDropDown() {
         fromCurrency.didSelect{(selectedText , index ,id) in
@@ -83,7 +82,6 @@ extension ConvertViewController {
         fromAmountTextField.rx.controlEvent(.editingChanged)
             .withLatestFrom(fromAmountTextField.rx.text.orEmpty)
             .map { $0.isEmpty ? "0.0" : $0 }
-            .map(String(format: <#T##String#>, <#T##arguments: CVarArg...##CVarArg#>))
             .distinctUntilChanged()
             .compactMap(Double.init)
             .bind(to: currencyVM.fromAmountRelay)
@@ -96,17 +94,6 @@ extension ConvertViewController {
             .bind(to: currencyVM.toAmountRelay)
             .disposed(by: disposeBag)
     }
-//    func showCurrencyResult() {
-//        currency.CurrencyRates
-//            .bind(to: currencyTableView
-//                .rx
-//                .items(cellIdentifier: "CurrencyTableViewCell", cellType: CurrencyTableViewCell.self)) {
-//                    (tv, curr, cell) in
-//                    cell.currencyNameLabel.text = String(curr.key)
-//                    cell.currencyPriceLabel.text = String(curr.value)
-//                }
-//                .disposed(by: disposeBag)
-//    }
 }
 extension ConvertViewController {
     func showFavouritesData() {
@@ -118,22 +105,18 @@ extension ConvertViewController {
                     guard let self = self else {
                         return
                     }
-                    if let url = URL(string: curr.imageUrl) {
-                        cell.currencyImage.sd_setImage(with: url)
-                    }
+                    cell.currencyImage.sd_setImage(with: self.currencyVM.imageURL(currecnyCode: curr.imageUrl))
                     cell.currencyNameLabel.text = curr.currencyCode
-//                    self.currencyVM.fromCurrency
-//                        .subscribe { [weak self] fromCurrency in
-//                            guard let self = self else { return }
-//                            if !curr.isInvalidated {
-//                                self.currencyVM.getConvertionRate(from: fromCurrency, to: curr.currencyCode) { converstionRate in
-//                                    cell.currencyAmountLabel.text = converstionRate
-//                                }
-//                            } else {
-//                                cell.currencyAmountLabel.text = "N/A"
-//                            }
-//                        }
-//                        .disposed(by: disposeBag)
+                    Observable.combineLatest(self.currencyVM.fromAmountRelay, self.currencyVM.fromCurrencyRelay)
+                        .subscribe { [weak self] (amount, fromCurrency) in
+                            guard let self = self else { return }
+                            if !curr.isInvalidated {
+                                cell.currencyAmountLabel.text = String.init(format: "%.2f", currencyVM.allCurrenciesModel?.convertCurrency(amount: amount, from: fromCurrency, to: curr.currencyCode) ?? "N/A" )
+                            } else {
+                                cell.currencyAmountLabel.text = "N/A"
+                            }
+                        }
+                        .disposed(by: disposeBag)
                 }
                 .disposed(by: disposeBag)
         currencyVM.favouritesArray

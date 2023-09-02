@@ -54,7 +54,7 @@ final class API_Manager_Test: XCTestCase {
     
     func testFetchGlobal_Success() {
         // Given
-        var expectedData: [CurrencyData]!
+        var expectedData: Currency!
 
         guard let url = Bundle(for: type(of: self)).url(forResource: "stub", withExtension: "json") else {
             XCTFail("Failed to load JSON file")
@@ -67,7 +67,7 @@ final class API_Manager_Test: XCTestCase {
             if let error = error {
                 XCTFail("API call failed with error: \(error)")
             } else {
-                expectedData = currencies?.data
+                expectedData = currencies
                 expectation.fulfill()
             }
         }
@@ -75,13 +75,13 @@ final class API_Manager_Test: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
 
         // Simulate a successful network response using a PublishSubject
-        let responseSubject = PublishSubject<[CurrencyData]>()
+        let responseSubject = PublishSubject<Currency>()
 
         // When
-        let fetchObservable = networkService.fetchGlobal(parsingType: AllCurrencies.self, baseURL: url)
+        let fetchObservable = networkService.fetchGlobal(parsingType: Currency.self, baseURL: url)
 
         // Then
-        let observer = scheduler.createObserver([CurrencyData].self)
+        let observer = scheduler.createObserver(Currency.self)
 
         // Bind the responseSubject to the observer
         scheduler.scheduleAt(0) {
@@ -98,9 +98,6 @@ final class API_Manager_Test: XCTestCase {
         // Subscribe to the fetchObservable
         scheduler.scheduleAt(10) {
             fetchObservable
-                .map({ currencesData in
-                    currencesData.data
-                })
                 .bind(to: responseSubject)
                 .disposed(by: self.disposeBag)
         }
@@ -108,14 +105,14 @@ final class API_Manager_Test: XCTestCase {
         scheduler.start()
 
         // Define the expected events
-        let expectedEvents: [Recorded<Event<[CurrencyData]>>] = [.next(5, expectedData)]
+        let expectedEvents: [Recorded<Event<Currency>>] = [.next(5, expectedData)]
 
         XCTAssertEqual(observer.events, expectedEvents)
     }
 
     func testFetchGlobal_Success2() {
         // Given
-        var expectedData: [CurrencyData]!
+        var expectedData: Currency!
         
         guard let url = Bundle(for: type(of: self)).url(forResource: "stub", withExtension: "json") else {
             XCTFail("Failed to load JSON file")
@@ -128,22 +125,19 @@ final class API_Manager_Test: XCTestCase {
             if let error = error {
                 XCTFail("API call failed with error: \(error)")
             } else {
-                expectedData = currencies?.data
+                expectedData = currencies
                 expectation.fulfill()
             }
         }
         
         wait(for: [expectation], timeout: 10.0)
         //when
-        let fetchObservable = networkService.fetchLocalFile(parsingType: AllCurrencies.self, localFilePath: url)
+        let fetchObservable = networkService.fetchLocalFile(parsingType: Currency.self, localFilePath: url)
         // Then
-        let observer = scheduler.createObserver([CurrencyData].self)
+        let observer = scheduler.createObserver(Currency.self)
         
         scheduler.scheduleAt(5) {
             fetchObservable
-                .map({ currencesData in
-                    currencesData.data
-                })
                 .bind(to: observer)
                 .disposed(by: self.disposeBag)
         }
@@ -156,7 +150,7 @@ final class API_Manager_Test: XCTestCase {
         scheduler.start()
         
         // Define the expected events
-        let expectedEvents: [Recorded<Event<[CurrencyData]>>] = [
+        let expectedEvents: [Recorded<Event<Currency>>] = [
             .next(5, expectedData)
         ]
 
@@ -164,7 +158,7 @@ final class API_Manager_Test: XCTestCase {
         
     }
     
-    func getAPIData(url: URL, completion: @escaping (AllCurrencies?, Error?) -> Void) {
+    func getAPIData(url: URL, completion: @escaping (Currency?, Error?) -> Void) {
         let session = URLSession.shared //--> htft7 google Chrome
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
@@ -176,7 +170,7 @@ final class API_Manager_Test: XCTestCase {
                 return
             }
             do {
-                let decodedCurrencies = try JSONDecoder().decode(AllCurrencies.self, from: data)
+                let decodedCurrencies = try JSONDecoder().decode(Currency.self, from: data)
                 completion(decodedCurrencies, nil)
                 
             } catch {

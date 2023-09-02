@@ -30,28 +30,28 @@ final class CurrencyViewModelTest: XCTestCase {
         sut = nil
     }
 
-        
-    
+
+
     
     func test_Fetch_Global() {
-        let expectedCurrencies = AllCurrencies(statusCode: 200, status: "Good", message: "Done", data: [CurrencyData(iconURL: "", name: "", code: "")])
+        let expectedCurrencies = Currency(success: true, timestamp: 1, base: "EUR", date: "today", rates: ["USD":25, "EUR":26])
         apiServiceMock.fetchGlobalResult = Observable.just(expectedCurrencies)
         
-        var actualCurrencies: [CurrencyData]?
-        apiServiceMock.fetchGlobal(parsingType: AllCurrencies.self, baseURL: APIManager.EndPoint.getCurrencesData.stringToUrl)
+        var actualCurrencies: Currency?
+        apiServiceMock.fetchGlobal(parsingType: Currency.self, baseURL: APIManager.EndPoint.rates.stringToUrl)
             .subscribe(onNext: { currencies in
-                actualCurrencies = currencies.data
+                actualCurrencies = currencies
             })
             .disposed(by: disposeBag)
 
-        XCTAssertEqual(actualCurrencies, expectedCurrencies.data)
+        XCTAssertEqual(actualCurrencies, expectedCurrencies)
     }
     func test_Fetch_Fails() {
         let expectedError = NSError(domain: "TestError", code: -1, userInfo: nil)
-        apiServiceMock.fetchGlobalResult = Observable<AllCurrencies>.error(expectedError)
+        apiServiceMock.fetchGlobalResult = Observable<Currency>.error(expectedError)
         
         var actualError: Error?
-        apiServiceMock.fetchGlobal(parsingType: AllCurrencies.self, baseURL: APIManager.EndPoint.getCurrencesData.stringToUrl)
+        apiServiceMock.fetchGlobal(parsingType: Currency.self, baseURL: APIManager.EndPoint.rates.stringToUrl)
             .subscribe(onError: { error in
                 actualError = error
             })
@@ -60,39 +60,33 @@ final class CurrencyViewModelTest: XCTestCase {
         XCTAssertEqual(actualError as NSError?, expectedError)
     }
     func test_Get_All_Currencies_Data() {
-        let expectedCurrencies = AllCurrencies(statusCode: 200, status: "Good", message: "Done", data: [CurrencyData(iconURL: "", name: "", code: "")])
+        let expectedCurrencies =  Currency(success: true, timestamp: 1, base: "EUR", date: "today", rates: ["USD":25, "EUR":26])
         apiServiceMock.fetchGlobalResult = Observable.just(expectedCurrencies)
         sut.getAllCurrenciesData()
         XCTAssert(apiServiceMock!.fetchGlobalCalled)
     }
+    
+    func testFetchGlobal() {
+        let sampleResponse = Currency(success: true, timestamp: 1, base: "EUR", date: "today", rates: ["USD":25, "EUR":26])
+        apiServiceMock.fetchGlobalResult = Observable.just(sampleResponse)
 
-    func test_convert_Currency() {
-        let expectedConvertCurrency = ConvertModel(statusCode: 200, status: "Good", message: "Done", data: ConvertRate(baseCode: "USD", targetCode: "EGP", conversionRate: 1, conversionResult: 31))
-        apiServiceMock.fetchGlobalResult = Observable.just(expectedConvertCurrency)
-        sut.convertCurrency(amount: "20", from: "USD", to: "EGP")
-        XCTAssert(apiServiceMock!.fetchGlobalCalled)
-    }
+        let resultObservable: Observable<Currency> = apiServiceMock.fetchGlobal(
+            parsingType: Currency.self,
+            baseURL: URL(string: "https://example.com")!
+        )
 
-    func test_Compare_Currency() {
-        let expectedCompareCurrency = CompareModel(statusCode: 200, status: "Good", message: "Done", data: CompareData(result: "", baseCode: "", targetCodes: [""], conversionRates: ["":0.0]))
-        apiServiceMock.fetchGlobalResult = Observable.just(expectedCompareCurrency)
-        sut.compareCurrency(amount: "10", from: "USD", toFirstCurrency: "EGP", toSecoundCurrency: "KWD")
-        XCTAssert(apiServiceMock!.fetchGlobalCalled)
-    }
-    func test_Get_ConvertionRate() {
-        let expectedConverstionRate = Converstion(statusCode: 200, status: "Good", message: "Done", data: ConverstionRate(baseCode: "USD", targetCode: "EGP", conversionRate: 1053450))
-        apiServiceMock.fetchGlobalResult = Observable.just(expectedConverstionRate)
-        sut.getConvertionRate(from: "USD", to: "EGP") { converstionRate in
-            XCTAssertEqual(String(format: "%.2f", expectedConverstionRate.data.conversionRate), converstionRate)
-        }
-        XCTAssert(apiServiceMock!.fetchGlobalCalled)
+        let scheduler = TestScheduler(initialClock: 0)
+        let observer = scheduler.createObserver(Currency.self)
+
+        resultObservable.subscribe(observer).disposed(by: DisposeBag())
+
+        XCTAssertTrue(apiServiceMock.fetchGlobalCalled)
+
+        XCTAssertNotEqual(observer.events, [Recorded.next(0, sampleResponse)])
     }
     func testFillDropDown() {
         // Given
-        let currencyArray: [CurrencyData] = [
-            CurrencyData(iconURL: "", name: "United States Dollar", code: "USD"),
-            CurrencyData(iconURL: "", name: "Euro", code: "EUR")
-        ]
+        let currencyDict: [String:Double] = ["USD":25, "EUR":26]
         
         let expectedOutput = [
             " 🇺🇸USD",
@@ -100,7 +94,7 @@ final class CurrencyViewModelTest: XCTestCase {
         ]
         
         // When
-        let result = sut.fillDropDown(currencyArray: currencyArray)
+        let result = sut.fillDropDown(currencyDict: currencyDict)
         
         // Then
         XCTAssertEqual(result, expectedOutput)
@@ -134,5 +128,11 @@ final class CurrencyViewModelTest: XCTestCase {
         
         // Then
         XCTAssertEqual(convertedAmount, expectedConvertedAmount)
+    }
+    func testImageLink() {
+        let currencyCode = "EGP"
+        let expectedImageFlag = URL(string: "https://flagsapi.com/EG/flat/64.png")
+        let convertedCurrecnyCodeToFlag = sut.imageURL(currecnyCode: currencyCode)
+        XCTAssertEqual(expectedImageFlag, convertedCurrecnyCodeToFlag)
     }
 }

@@ -8,33 +8,19 @@
 import Foundation
 import OptionallyDecodable
 
-struct Currency: Codable {
+struct Currency: Codable, Equatable {
     var success: Bool
-//    var timestamp: Date
+    var timestamp: Int
     var base: String
     var date: String
     var rates: [String: Double]
-
+    
     enum CodingKeys: String, CodingKey {
         case success = "success"
-//        case timestamp = "timestamp"
+        case timestamp = "timestamp"
         case base = "base"
         case date = "date"
         case rates = "rates"
-    }
-    
-    // Custom date decoding strategy
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        success = try container.decode(Bool.self, forKey: .success)
-        base = try container.decode(String.self, forKey: .base)
-        date = try container.decode(String.self, forKey: .date)
-        rates = try container.decode([String: Double].self, forKey: .rates)
-        
-        // Decode timestamp as an integer and convert it to Date
-//        let timestampInt = try container.decode(Int.self, forKey: .timestamp)
-//        timestamp = Date(timeIntervalSince1970: TimeInterval(timestampInt))
     }
 }
 

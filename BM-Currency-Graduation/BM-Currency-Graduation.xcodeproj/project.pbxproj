@@ -32,7 +32,6 @@
 		AB09FE3E2A9D63B000D0F192 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE3D2A9D63B000D0F192 /* RxCocoa */; };
 		AB09FE402A9D63B000D0F192 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE3F2A9D63B000D0F192 /* RxRelay */; };
 		AB09FE422A9D63B000D0F192 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE412A9D63B000D0F192 /* RxSwift */; };
-		AB09FE472A9D6CBE00D0F192 /* Converstion_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FE462A9D6CBE00D0F192 /* Converstion_Test.swift */; };
 		AB09FE492A9DF2B500D0F192 /* RxTest-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE482A9DF2B500D0F192 /* RxTest-Dynamic */; };
 		AB09FE4B2A9DF2B500D0F192 /* RxTest-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AB09FE482A9DF2B500D0F192 /* RxTest-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AB09FE4D2A9E32C200D0F192 /* APIManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FE4C2A9E32C200D0F192 /* APIManagerMock.swift */; };
@@ -96,7 +95,6 @@
 		AB09FE2C2A9D22C800D0F192 /* Bundle + unitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle + unitTest.swift"; sourceTree = "<group>"; };
 		AB09FE2E2A9D266300D0F192 /* stub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stub.json; sourceTree = "<group>"; };
 		AB09FE452A9D65DB00D0F192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		AB09FE462A9D6CBE00D0F192 /* Converstion_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converstion_Test.swift; sourceTree = "<group>"; };
 		AB09FE4C2A9E32C200D0F192 /* APIManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerMock.swift; sourceTree = "<group>"; };
 		AB09FE4E2A9E38CA00D0F192 /* CurrencyViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModelTest.swift; sourceTree = "<group>"; };
 		AB0FD1272A9667EE00E75270 /* BM-Currency-Graduation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BM-Currency-Graduation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,7 +191,6 @@
 			children = (
 				AB09FE452A9D65DB00D0F192 /* Info.plist */,
 				AB09FE0C2A9D1A1200D0F192 /* BM_Currency_GraduationTests.swift */,
-				AB09FE462A9D6CBE00D0F192 /* Converstion_Test.swift */,
 				AB09FE4E2A9E38CA00D0F192 /* CurrencyViewModelTest.swift */,
 				AB09FE132A9D1A8400D0F192 /* API-Manager-Test.swift */,
 				AB09FE4C2A9E32C200D0F192 /* APIManagerMock.swift */,
@@ -485,7 +482,6 @@
 				AB09FE4F2A9E38CA00D0F192 /* CurrencyViewModelTest.swift in Sources */,
 				AB09FE142A9D1A8400D0F192 /* API-Manager-Test.swift in Sources */,
 				AB09FE0D2A9D1A1200D0F192 /* BM_Currency_GraduationTests.swift in Sources */,
-				AB09FE472A9D6CBE00D0F192 /* Converstion_Test.swift in Sources */,
 				AB09FE2D2A9D22C800D0F192 /* Bundle + unitTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

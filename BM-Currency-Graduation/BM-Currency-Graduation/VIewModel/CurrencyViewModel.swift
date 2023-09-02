@@ -17,11 +17,12 @@ class CurrencyViewModel {
     }
     private let disposeBag = DisposeBag()
     var allCurrenciesModel: AllCurrencies?
+   
     //In
-    var errorSubject = PublishSubject<Error>()
     var fromCurrency = BehaviorRelay<String>(value: "EGP")
 
     //Out
+    var errorSubject = PublishSubject<Error>()
     var showLoading = BehaviorRelay<Bool>(value: false)
     var convertion = PublishRelay<String>.init()
     var firstComparedCurrency = PublishRelay<String>.init()

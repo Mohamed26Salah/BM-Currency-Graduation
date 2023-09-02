@@ -280,9 +280,9 @@
 				AB0FD12E2A9667EE00E75270 /* ViewController.swift */,
 				AB0FD1442A9699BE00E75270 /* ConvertViewController.swift */,
 				AB0FD1462A9699CA00E75270 /* CompareViewController.swift */,
+				AB0093E02A9910AF00BF0BD9 /* Favourites Screen */,
 				AB0FD14B2A96A75800E75270 /* Customs */,
 				ABE8D6952A97A4E800ED898C /* Cells */,
-				AB0093E02A9910AF00BF0BD9 /* Favourites Screen */,
 				AB0FD1302A9667EE00E75270 /* Main.storyboard */,
 			);
 			path = View;

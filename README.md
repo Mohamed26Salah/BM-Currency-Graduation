@@ -2,7 +2,7 @@
 # Currency Conversion App
 
 
-<img src="/ScreenShots/1.PNG" alt="Screenshot 1" width="200">
+<img src="/ScreenShots/1.png" alt="Screenshot 1" width="200">
 
 ## Description
 
@@ -17,9 +17,9 @@ Currency Conversion App is a Swift-based iOS application that allows users to co
 
 ## Screenshots
 <div style="display: flex;">
-<img src="/ScreenShots/2.PNG" alt="Screenshot 1" width="200">
-<img src="/ScreenShots/3.PNG" alt="Screenshot 1" width="200">
-<img src="/ScreenShots/4.PNG" alt="Screenshot 1" width="200">
+<img src="/ScreenShots/2.png" alt="Screenshot 1" width="200">
+<img src="/ScreenShots/3.png" alt="Screenshot 1" width="200">
+<img src="/ScreenShots/4.png" alt="Screenshot 1" width="200">
 </div>
 
 ## How to use

@@ -317,7 +317,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="w5c-Ig-l6z"/>
                                 </constraints>
-                                <buttonConfiguration key="configuration" style="plain" title="Convert">
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.counterclockwise" catalog="system" title="  Refresh">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
@@ -373,6 +373,12 @@
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zam-XL-lHB">
+                                <rect key="frame" x="126" y="103.66666666666667" width="74" height="50.333333333333329"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="rectangle.2.swap" catalog="system" buttonSize="large"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="o7P-MK-dAz"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -395,7 +401,9 @@
                             <constraint firstAttribute="bottom" secondItem="hVB-lB-smy" secondAttribute="bottom" constant="0.33000000000000002" id="a8n-EA-3Wo"/>
                             <constraint firstItem="zRs-cd-aLe" firstAttribute="top" secondItem="5Vt-OB-H7a" secondAttribute="bottom" constant="38" id="aXn-Mt-hMk"/>
                             <constraint firstItem="K9N-lK-gw0" firstAttribute="top" secondItem="5Vt-OB-H7a" secondAttribute="bottom" constant="51.329999999999998" id="af3-gT-ESl"/>
+                            <constraint firstItem="5Vt-OB-H7a" firstAttribute="top" secondItem="zam-XL-lHB" secondAttribute="bottom" constant="0.67000000000000004" id="b9Y-th-Zuj"/>
                             <constraint firstItem="CdS-i0-bYF" firstAttribute="top" secondItem="oeE-cx-6kw" secondAttribute="top" constant="21.539999999999999" id="bBo-9H-36Q"/>
+                            <constraint firstItem="zam-XL-lHB" firstAttribute="leading" secondItem="jwj-OP-QSg" secondAttribute="trailing" constant="79" id="bPs-ug-F4N"/>
                             <constraint firstItem="AS4-h4-QnU" firstAttribute="top" secondItem="uoM-EZ-Ncn" secondAttribute="bottom" constant="19" id="f7c-1R-KFt"/>
                             <constraint firstItem="jwj-OP-QSg" firstAttribute="top" secondItem="AS4-h4-QnU" secondAttribute="bottom" constant="14" id="ffe-gd-PB1"/>
                             <constraint firstItem="uoM-EZ-Ncn" firstAttribute="top" secondItem="oeE-cx-6kw" secondAttribute="top" constant="21.539999999999999" id="h4a-sQ-Tr0"/>
@@ -408,6 +416,7 @@
                             <constraint firstAttribute="trailing" secondItem="Cd0-ud-NFG" secondAttribute="trailing" constant="20" id="pUm-0f-9DP"/>
                             <constraint firstItem="5Vt-OB-H7a" firstAttribute="leading" secondItem="oeE-cx-6kw" secondAttribute="leading" constant="30" id="prw-m4-IP8"/>
                             <constraint firstItem="OsW-Sp-V48" firstAttribute="top" secondItem="AS4-h4-QnU" secondAttribute="bottom" constant="14" id="vgp-DQ-tnU"/>
+                            <constraint firstItem="OsW-Sp-V48" firstAttribute="leading" secondItem="zam-XL-lHB" secondAttribute="trailing" constant="24" id="xcg-s1-uPt"/>
                             <constraint firstItem="zRs-cd-aLe" firstAttribute="leading" secondItem="o7P-MK-dAz" secondAttribute="leading" constant="30" id="ySM-bq-v9X"/>
                             <constraint firstItem="4It-Zo-fGY" firstAttribute="top" secondItem="zRs-cd-aLe" secondAttribute="bottom" constant="37" id="ygg-WL-iub"/>
                             <constraint firstItem="AS4-h4-QnU" firstAttribute="leading" secondItem="oeE-cx-6kw" secondAttribute="leading" constant="30" id="zIH-qm-vfy"/>
@@ -433,7 +442,7 @@
             <objects>
                 <viewController id="9ok-yP-2v3" customClass="CompareViewController" customModule="BM_Currency_Graduation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QIC-R6-Meu">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="348.66666666666669"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="349"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Pm2-Co-gzW">
@@ -447,7 +456,7 @@
                                     <constraint firstAttribute="height" constant="48" id="Zd5-QK-5Di"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Compare">
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.counterclockwise" catalog="system" title="  Refresh">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
@@ -665,7 +674,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.counterclockwise" catalog="system" width="113" height="128"/>
         <image name="glowing-chart-shows-successful-financial-growth-generated-by-ai 1" width="1728" height="1111"/>
         <image name="plus 1" width="18" height="19"/>
+        <image name="rectangle.2.swap" catalog="system" width="128" height="102"/>
     </resources>
 </document>

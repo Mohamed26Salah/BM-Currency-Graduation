@@ -46,6 +46,7 @@ class CurrencyViewModel {
                 self.CurrencyData.accept(ListOFAllCurrenciesModel.rates)
             }, onError: { error in
                 self.errorSubject.onNext(error)
+                self.showLoading.accept(false)
             })
             .disposed(by: disposeBag)
     }

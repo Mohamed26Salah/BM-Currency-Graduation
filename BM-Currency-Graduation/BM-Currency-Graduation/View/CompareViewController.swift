@@ -42,17 +42,8 @@ class CompareViewController: UIViewController {
     
     
     @IBAction func compareButtonTapped(_ sender: UIButton) {
-//        guard let fromCurrencyText = fromCurrency.text, !fromCurrencyText.isEmpty,
-//              let firstToCurrencyText = firstToCurrency.text, !firstToCurrencyText.isEmpty,
-//              let secoundToCurrencyText = secoundToCurrency.text, !secoundToCurrencyText.isEmpty else {
-//            return
-//        }
-//        guard let fromAmount = fromAmountTextField.text , !fromAmount.isEmpty else{
-//            show(messageAlert: "Error!", message: "Please enter an amount")
-//            return
-//        }
-//        currencyVM.showLoading.accept(true)
-//        currencyVM.compareCurrency(amount: fromAmount, from: String(fromCurrencyText.dropFirst(2)), toFirstCurrency: String(firstToCurrencyText.dropFirst(2)), toSecoundCurrency: String(secoundToCurrencyText.dropFirst(2)))
+        currencyVM.showLoading.accept(true)
+        currencyVM.getAllCurrenciesData()
     }
 }
 extension CompareViewController {

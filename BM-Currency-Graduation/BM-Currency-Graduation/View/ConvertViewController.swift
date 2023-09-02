@@ -44,16 +44,8 @@ class ConvertViewController: UIViewController {
 
     
     @IBAction func convertButtonTapped(_ sender: UIButton) {
-//        guard let fromCurrencyText = fromCurrency.text, !fromCurrencyText.isEmpty,
-//              let toCurrencyText = toCurrency.text, !toCurrencyText.isEmpty else {
-//            return
-//        }
-//        guard let fromAmount = fromAmountTextField.text , !fromAmount.isEmpty else{
-//            show(messageAlert: "Error!", message: "Please enter an amount")
-//            return
-//        }
-//        currencyVM.showLoading.accept(true)
-//        currencyVM.convertCurrency(amount: fromAmount, from: String(fromCurrencyText.dropFirst(2)), to: String(toCurrencyText.dropFirst(2)))
+        currencyVM.showLoading.accept(true)
+        currencyVM.getAllCurrenciesData()
     }
     
     @IBAction func addToFavouritesTapped(_ sender: UIButton) {

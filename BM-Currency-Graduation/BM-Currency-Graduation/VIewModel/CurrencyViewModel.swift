@@ -39,6 +39,7 @@ class CurrencyViewModel {
                 self.currenciesArray.accept(ListOFAllCurrenciesModel.data)
             }, onError: { error in
                 self.errorSubject.onNext(error)
+                self.showLoading.accept(false)
             })
             .disposed(by: disposeBag)
     }
@@ -49,6 +50,7 @@ class CurrencyViewModel {
                 self.convertion.accept(String(format: "%.2f", convertion.data.conversionResult))
             }, onError: { error in
                 self.errorSubject.onNext(error)
+                self.showLoading.accept(false)
             })
             .disposed(by: disposeBag)
     }
@@ -63,6 +65,7 @@ class CurrencyViewModel {
                 self.secoundComparedCurrency.accept(String(format: "%.2f", self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toSecoundCurrency, conversionRates: compareModel.data.conversionRates) ?? 1.0))
             } onError: { error in
                 self.errorSubject.onNext(error)
+                self.showLoading.accept(false)
             }
             .disposed(by: disposeBag)
     }
@@ -72,6 +75,7 @@ class CurrencyViewModel {
                 completion(String(format: "%.2f", converstion.data.conversionRate))
             } onError: { error in
                 self.errorSubject.onNext(error)
+                self.showLoading.accept(false)
             }
             .disposed(by: disposeBag)
     }

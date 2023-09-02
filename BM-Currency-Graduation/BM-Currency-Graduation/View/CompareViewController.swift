@@ -51,7 +51,6 @@ extension CompareViewController {
         currencyVM.fromCurrencyOutPutRelay.bind(to: fromAmountTextField.rx.text).disposed(by: disposeBag)
         currencyVM.toCurrencyOutPutRelay.bind(to: firstToAmountTextField.rx.text).disposed(by: disposeBag)
         currencyVM.toCurrencyOutPutRelaySecound.bind(to: secoundToAmountTextField.rx.text).disposed(by: disposeBag)
-//        currencyVM.placeholderOutputRelay.bind(to: toAmountTextField.rx.placeholder).disposed(by: disposeBag)
     }
     func subscribeToDropDown() {
         fromCurrency.didSelect{(selectedText , index ,id) in

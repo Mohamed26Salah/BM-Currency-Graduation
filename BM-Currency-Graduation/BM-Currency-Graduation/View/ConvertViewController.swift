@@ -54,6 +54,17 @@ class ConvertViewController: UIViewController {
         present(favouritesController, animated: true, completion: nil)
     }
     
+    @IBAction func swapButtonPressed(_ sender: UIButton) {
+        guard let fCurrecny = fromCurrency.text, !fCurrecny.isEmpty,
+              let tCurrency = toCurrency.text, !tCurrency.isEmpty else {
+            return
+        }
+        fromCurrency.text = tCurrency
+        toCurrency.text = fCurrecny
+        currencyVM.fromCurrencyRelay.accept(String(tCurrency.dropFirst(2)))
+        currencyVM.toCurrencyRelay.accept(String(fCurrecny.dropFirst(2)))
+    }
+    
 }
 extension ConvertViewController {
     func bindViewModelToViews() {

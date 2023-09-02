@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import UIKit
 
 class CurrencyViewModel {
     
@@ -18,7 +19,7 @@ class CurrencyViewModel {
     }
     private let disposeBag = DisposeBag()
     var allCurrenciesModel: Currency?
-   
+    let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
     
     //New
     // In

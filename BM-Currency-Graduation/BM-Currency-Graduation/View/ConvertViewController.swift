@@ -59,6 +59,7 @@ class ConvertViewController: UIViewController {
               let tCurrency = toCurrency.text, !tCurrency.isEmpty else {
             return
         }
+        currencyVM.feedbackGenerator.impactOccurred()
         fromCurrency.text = tCurrency
         toCurrency.text = fCurrecny
         currencyVM.fromCurrencyRelay.accept(String(tCurrency.dropFirst(2)))

@@ -31,7 +31,6 @@ class FavouritesScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupSVG()
         currencyVM.getAllCurrenciesData()
         showCurrenciesData()
     }
@@ -72,9 +71,5 @@ extension FavouritesScreenVC {
         backgroundView.isOpaque = false
         backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         favTableView.register(UINib(nibName: K.cellsResuable.InSideFTVCell, bundle: nil), forCellReuseIdentifier: K.cellsResuable.InSideFTVCell)
-    }
-    func setupSVG() {
-        let SVGCoder = SDImageSVGCoder.shared
-        SDImageCodersManager.shared.addCoder(SVGCoder)
     }
 }

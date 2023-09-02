@@ -9,8 +9,8 @@ import Foundation
 
 struct K {
     struct Links {
-        static let baseURL = "http://www.amrcurrencyconversion.site/api/"
-        static let newBaseURL = "https://concurrency-api.onrender.com/api/v1/currencies"
+        static let baseUrl = "http://data.fixer.io/api/"
+        static let apiKey = "186ae7c2f82e18c99010440083889b49"
     }
     struct cellsResuable {
         static let InSideFTVCell = "InSideFTVCell"

@@ -33,6 +33,7 @@ class ConvertViewController: UIViewController {
         setupDropDown()
         fillDropDownMenus()
         bindViewModelToViews()
+        bindViewsToViewModel()
         showFavouritesData()
         subscribeToDropDown()
         handleLoadingIndicator()
@@ -43,16 +44,16 @@ class ConvertViewController: UIViewController {
 
     
     @IBAction func convertButtonTapped(_ sender: UIButton) {
-        guard let fromCurrencyText = fromCurrency.text, !fromCurrencyText.isEmpty,
-              let toCurrencyText = toCurrency.text, !toCurrencyText.isEmpty else {
-            return
-        }
-        guard let fromAmount = fromAmountTextField.text , !fromAmount.isEmpty else{
-            show(messageAlert: "Error!", message: "Please enter an amount")
-            return
-        }
-        currencyVM.showLoading.accept(true)
-        currencyVM.convertCurrency(amount: fromAmount, from: String(fromCurrencyText.dropFirst(2)), to: String(toCurrencyText.dropFirst(2)))
+//        guard let fromCurrencyText = fromCurrency.text, !fromCurrencyText.isEmpty,
+//              let toCurrencyText = toCurrency.text, !toCurrencyText.isEmpty else {
+//            return
+//        }
+//        guard let fromAmount = fromAmountTextField.text , !fromAmount.isEmpty else{
+//            show(messageAlert: "Error!", message: "Please enter an amount")
+//            return
+//        }
+//        currencyVM.showLoading.accept(true)
+//        currencyVM.convertCurrency(amount: fromAmount, from: String(fromCurrencyText.dropFirst(2)), to: String(toCurrencyText.dropFirst(2)))
     }
     
     @IBAction func addToFavouritesTapped(_ sender: UIButton) {
@@ -61,6 +62,51 @@ class ConvertViewController: UIViewController {
         present(favouritesController, animated: true, completion: nil)
     }
     
+}
+extension ConvertViewController {
+    func bindViewModelToViews() {
+        currencyVM.fromCurrencyOutPutRelay.bind(to: fromAmountTextField.rx.text).disposed(by: disposeBag)
+        currencyVM.toCurrencyOutPutRelay.bind(to: toAmountTextField.rx.text).disposed(by: disposeBag)
+        currencyVM.placeholderOutputRelay.bind(to: toAmountTextField.rx.placeholder).disposed(by: disposeBag)
+    }
+    func subscribeToDropDown() {
+        fromCurrency.didSelect{(selectedText , index ,id) in
+            self.currencyVM.fromCurrencyRelay.accept(String(selectedText.dropFirst(2)))
+        }
+        toCurrency.didSelect{(selectedText , index ,id) in
+            self.currencyVM.toCurrencyRelay.accept(String(selectedText.dropFirst(2)))
+        }
+    }
+    func bindViewsToViewModel() {
+        //Whenever sourceObservable emits an event, withLatestFrom takes the latest value emitted by otherObservable at that moment.
+        //withLatest is comining the event with the value
+        fromAmountTextField.rx.controlEvent(.editingChanged)
+            .withLatestFrom(fromAmountTextField.rx.text.orEmpty)
+            .map { $0.isEmpty ? "0.0" : $0 }
+            .map(String(format: <#T##String#>, <#T##arguments: CVarArg...##CVarArg#>))
+            .distinctUntilChanged()
+            .compactMap(Double.init)
+            .bind(to: currencyVM.fromAmountRelay)
+            .disposed(by: disposeBag)
+        toAmountTextField.rx.controlEvent(.editingChanged)
+            .withLatestFrom(toAmountTextField.rx.text.orEmpty)
+            .map { $0.isEmpty ? "0.0" : $0 }
+            .distinctUntilChanged()
+            .compactMap(Double.init)
+            .bind(to: currencyVM.toAmountRelay)
+            .disposed(by: disposeBag)
+    }
+//    func showCurrencyResult() {
+//        currency.CurrencyRates
+//            .bind(to: currencyTableView
+//                .rx
+//                .items(cellIdentifier: "CurrencyTableViewCell", cellType: CurrencyTableViewCell.self)) {
+//                    (tv, curr, cell) in
+//                    cell.currencyNameLabel.text = String(curr.key)
+//                    cell.currencyPriceLabel.text = String(curr.value)
+//                }
+//                .disposed(by: disposeBag)
+//    }
 }
 extension ConvertViewController {
     func showFavouritesData() {
@@ -76,18 +122,18 @@ extension ConvertViewController {
                         cell.currencyImage.sd_setImage(with: url)
                     }
                     cell.currencyNameLabel.text = curr.currencyCode
-                    self.currencyVM.fromCurrency
-                        .subscribe { [weak self] fromCurrency in
-                            guard let self = self else { return }
-                            if !curr.isInvalidated {
-                                self.currencyVM.getConvertionRate(from: fromCurrency, to: curr.currencyCode) { converstionRate in
-                                    cell.currencyAmountLabel.text = converstionRate
-                                }
-                            } else {
-                                cell.currencyAmountLabel.text = "N/A"
-                            }
-                        }
-                        .disposed(by: disposeBag)
+//                    self.currencyVM.fromCurrency
+//                        .subscribe { [weak self] fromCurrency in
+//                            guard let self = self else { return }
+//                            if !curr.isInvalidated {
+//                                self.currencyVM.getConvertionRate(from: fromCurrency, to: curr.currencyCode) { converstionRate in
+//                                    cell.currencyAmountLabel.text = converstionRate
+//                                }
+//                            } else {
+//                                cell.currencyAmountLabel.text = "N/A"
+//                            }
+//                        }
+//                        .disposed(by: disposeBag)
                 }
                 .disposed(by: disposeBag)
         currencyVM.favouritesArray
@@ -114,15 +160,6 @@ extension ConvertViewController {
 }
 //MARK: RxFunctions
 extension ConvertViewController {
-    func bindViewModelToViews() {
-        currencyVM.convertion.bind(to: toAmountTextField.rx.text).disposed(by: disposeBag)
-    }
-    //the package Doesn't support Rx
-    func subscribeToDropDown() {
-        fromCurrency.didSelect{(selectedText , index ,id) in
-            self.currencyVM.fromCurrency.accept(String(selectedText.dropFirst(2)))
-        }
-    }
     func handleLoadingIndicator() {
         currencyVM.showLoading
             .observe(on: MainScheduler.instance)
@@ -163,7 +200,6 @@ extension ConvertViewController {
         toAmountTextField.layer.cornerRadius = 20
         toAmountTextField.layer.borderColor = UIColor(red: 197/255.0, green: 197/255.0, blue: 197/255.0, alpha: 1.0).cgColor
         toAmountTextField.addLeftPadding(16)
-        toAmountTextField.isEnabled = false
 
         
         toCurrency.layer.borderWidth = 0.5
@@ -175,10 +211,10 @@ extension ConvertViewController {
         addToFavourites.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0).cgColor
     }
     func fillDropDownMenus() {
-        currencyVM.currenciesArray
-            .subscribe { currencyArray in
-                self.fromCurrency.optionArray = self.currencyVM.fillDropDown(currencyArray: currencyArray)
-                self.toCurrency.optionArray = self.currencyVM.fillDropDown(currencyArray: currencyArray)
+        currencyVM.CurrencyData
+            .subscribe { CurrencyRates in
+                self.fromCurrency.optionArray = self.currencyVM.fillDropDown(currencyDict: CurrencyRates)
+                self.toCurrency.optionArray = self.currencyVM.fillDropDown(currencyDict: CurrencyRates)
             }
             .disposed(by: disposeBag)
     }

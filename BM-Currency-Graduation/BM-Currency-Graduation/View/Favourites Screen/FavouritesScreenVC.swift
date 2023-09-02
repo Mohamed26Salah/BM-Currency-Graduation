@@ -44,16 +44,14 @@ class FavouritesScreenVC: UIViewController {
 extension FavouritesScreenVC {
     
     func showCurrenciesData () {
-        currencyVM.currenciesArray
+        currencyVM.CurrencyData
             .bind(to: favTableView
                 .rx
                 .items(cellIdentifier: K.cellsResuable.InSideFTVCell, cellType: InSideFTVCell.self)) {
                     (tv, curr, cell) in
-                    let favouriteItem = FavouriteItem(currencyCode: curr.code, imageUrl: curr.iconURL)
-                    if let url = URL(string: curr.iconURL) {
-                        cell.currencyImage.sd_setImage(with: url)
-                    }
-                    cell.currencyNameLabel.text = curr.code
+                    let favouriteItem = FavouriteItem(currencyCode: curr.key, imageUrl: curr.key)
+                    cell.currencyImage.sd_setImage(with: self.currencyVM.imageURL(currecnyCode: curr.key))
+                    cell.currencyNameLabel.text = curr.key
                     cell.favRadioButton.isChecked = FavouritesManager.shared().isItemFavorited(item: favouriteItem)
                     cell.onFavButtonTapped = {
                         if cell.favRadioButton.isChecked {

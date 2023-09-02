@@ -40,24 +40,24 @@ class CompareViewController: UIViewController {
     
     
     @IBAction func compareButtonTapped(_ sender: UIButton) {
-        guard let fromCurrencyText = fromCurrency.text, !fromCurrencyText.isEmpty,
-              let firstToCurrencyText = firstToCurrency.text, !firstToCurrencyText.isEmpty,
-              let secoundToCurrencyText = secoundToCurrency.text, !secoundToCurrencyText.isEmpty else {
-            return
-        }
-        guard let fromAmount = fromAmountTextField.text , !fromAmount.isEmpty else{
-            show(messageAlert: "Error!", message: "Please enter an amount")
-            return
-        }
-        currencyVM.showLoading.accept(true)
-        currencyVM.compareCurrency(amount: fromAmount, from: String(fromCurrencyText.dropFirst(2)), toFirstCurrency: String(firstToCurrencyText.dropFirst(2)), toSecoundCurrency: String(secoundToCurrencyText.dropFirst(2)))
+//        guard let fromCurrencyText = fromCurrency.text, !fromCurrencyText.isEmpty,
+//              let firstToCurrencyText = firstToCurrency.text, !firstToCurrencyText.isEmpty,
+//              let secoundToCurrencyText = secoundToCurrency.text, !secoundToCurrencyText.isEmpty else {
+//            return
+//        }
+//        guard let fromAmount = fromAmountTextField.text , !fromAmount.isEmpty else{
+//            show(messageAlert: "Error!", message: "Please enter an amount")
+//            return
+//        }
+//        currencyVM.showLoading.accept(true)
+//        currencyVM.compareCurrency(amount: fromAmount, from: String(fromCurrencyText.dropFirst(2)), toFirstCurrency: String(firstToCurrencyText.dropFirst(2)), toSecoundCurrency: String(secoundToCurrencyText.dropFirst(2)))
     }
 }
 //MARK: RxFunctions
 extension CompareViewController {
     func bindViewModelToViews() {
-        currencyVM.firstComparedCurrency.bind(to: firstToAmountTextField.rx.text).disposed(by: disposeBag)
-        currencyVM.secoundComparedCurrency.bind(to: secoundToAmountTextField.rx.text).disposed(by: disposeBag)
+//        currencyVM.firstComparedCurrency.bind(to: firstToAmountTextField.rx.text).disposed(by: disposeBag)
+//        currencyVM.secoundComparedCurrency.bind(to: secoundToAmountTextField.rx.text).disposed(by: disposeBag)
     }
     func handleLoadingIndicator() {
         currencyVM.showLoading
@@ -115,12 +115,12 @@ extension CompareViewController {
         secoundToAmountTextField.isEnabled = false
     }
     func fillDropDownMenus() {
-        currencyVM.currenciesArray
-            .subscribe { currency in
-                self.fromCurrency.optionArray = self.currencyVM.fillDropDown(currencyArray: currency)
-                self.firstToCurrency.optionArray = self.currencyVM.fillDropDown(currencyArray: currency)
-                self.secoundToCurrency.optionArray = self.currencyVM.fillDropDown(currencyArray: currency)
-            }.disposed(by: disposeBag)
+//        currencyVM.CurrencyData
+//            .subscribe { CurrencyRates in
+//                self.fromCurrency.optionArray = self.currencyVM.fillDropDown(currencyDict: CurrencyRates)
+//                self.toCurrency.optionArray = self.currencyVM.fillDropDown(currencyDict: CurrencyRates)
+//            }
+//            .disposed(by: disposeBag)
     }
     func setupDropDown() {
         self.fromCurrency.text = " " + currencyVM.getFlagEmoji(flag: "EGP") + "EGP"

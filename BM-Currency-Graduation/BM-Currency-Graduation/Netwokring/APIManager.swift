@@ -37,29 +37,15 @@ extension APIClientProtocol {
 
 class APIManager: APIClientProtocol {
     
-//    private init() {}
-//    
-//    private static let sharedInstance = APIManager()
-//    
-//    static func shared() -> APIManager {
-//        return APIManager.sharedInstance
-//    }
-//    
-    
     let disposeBag = DisposeBag()
     enum EndPoint {
-        case getCurrencesData
-        case convertCurrency
-        case compareCurrencies
         
+        case rates
+    
         var stringValue: String {
             switch self {
-            case .getCurrencesData:
-                return K.Links.newBaseURL
-            case .convertCurrency:
-                return K.Links.newBaseURL + "/convert"
-            case .compareCurrencies:
-                return K.Links.newBaseURL + "/compare"
+            case .rates:
+                return K.Links.baseUrl + "latest?access_key=" + K.Links.apiKey
             }
         }
         var stringToUrl: URL {

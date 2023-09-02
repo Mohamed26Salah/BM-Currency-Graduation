@@ -14,74 +14,81 @@ class CurrencyViewModel {
     let apiManager: APIClientProtocol
     init( apiManager: APIClientProtocol = APIManager()) {
         self.apiManager = apiManager
+        setupBinding()
     }
     private let disposeBag = DisposeBag()
-    var allCurrenciesModel: AllCurrencies?
+    var allCurrenciesModel: Currency?
    
-    //In
-    var fromCurrency = BehaviorRelay<String>(value: "EGP")
-
+    
+    //New
+    // In
+    var fromCurrencyRelay = BehaviorRelay<String>(value: "EGP")
+    var toCurrencyRelay = BehaviorRelay<String>(value: "USD")
+    var fromAmountRelay = PublishRelay<Double>.init()
+    var toAmountRelay = PublishRelay<Double>.init()
     //Out
+    var toCurrencyOutPutRelay = PublishRelay<String>.init()
+    var fromCurrencyOutPutRelay = PublishRelay<String>.init()
+    var placeholderOutputRelay = PublishRelay<String>.init()
+    var CurrencyRates = BehaviorRelay<[String:Double]>(value: ["EUR":0.0])
+    var CurrencyData = BehaviorRelay<[String:Double]>(value: ["EUR":0.0])
+    var favouritesArray = BehaviorRelay<[FavouriteItem]>(value: FavouritesManager.shared().getAllFavoriteItems())
     var errorSubject = PublishSubject<Error>()
     var showLoading = BehaviorRelay<Bool>(value: false)
-    var convertion = PublishRelay<String>.init()
-    var firstComparedCurrency = PublishRelay<String>.init()
-    var secoundComparedCurrency = PublishRelay<String>.init()
-    var currenciesArray = PublishRelay<[CurrencyData]>.init()
-    var favouritesArray = BehaviorRelay<[FavouriteItem]>(value: FavouritesManager.shared().getAllFavoriteItems())
-    
 
     func getAllCurrenciesData() {
-        apiManager.fetchGlobal(parsingType: AllCurrencies.self, baseURL: APIManager.EndPoint.getCurrencesData.stringToUrl)
+        apiManager.fetchGlobal(parsingType: Currency.self, baseURL: APIManager.EndPoint.rates.stringToUrl)
             .subscribe(onNext: { ListOFAllCurrenciesModel in
                 self.showLoading.accept(false)
                 self.allCurrenciesModel = ListOFAllCurrenciesModel
-                self.currenciesArray.accept(ListOFAllCurrenciesModel.data)
+                self.fromCurrencyOutPutRelay.accept("1.0")
+                self.toCurrencyOutPutRelay.accept(String.init(ListOFAllCurrenciesModel.convertCurrency(amount: 1, from: "EGP", to: "USD")))
+                self.CurrencyRates.accept(ListOFAllCurrenciesModel.rates)
+                //Made Another one as the CurrencyRates changes
+                self.CurrencyData.accept(ListOFAllCurrenciesModel.rates)
             }, onError: { error in
                 self.errorSubject.onNext(error)
             })
             .disposed(by: disposeBag)
     }
-    func convertCurrency(amount: String, from: String, to: String) {
-        apiManager.fetchGlobal(parsingType: ConvertModel.self, baseURL: APIManager.EndPoint.convertCurrency.stringToUrl, attributes: [from, to, amount])
-            .subscribe(onNext: { convertion in
-                self.showLoading.accept(false)
-                self.convertion.accept(String(format: "%.2f", convertion.data.conversionResult))
-            }, onError: { error in
-                self.errorSubject.onNext(error)
-            })
-            .disposed(by: disposeBag)
-    }
-    func compareCurrency(amount: String, from: String, toFirstCurrency: String, toSecoundCurrency: String) {
-        let currencyList = [toFirstCurrency, toSecoundCurrency]
-        let body: [String : Any] = ["base_code":from, "target_codes":currencyList]
-        let apiManager2 = APIManager()
-        apiManager2.fetchGlobal(parsingType: CompareModel.self, baseURL: APIManager.EndPoint.compareCurrencies.stringToUrl, jsonBody: body)
-            .subscribe { compareModel in
-                self.showLoading.accept(false)
-                self.firstComparedCurrency.accept(String(format: "%.2f", self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toFirstCurrency, conversionRates: compareModel.data.conversionRates) ?? 1.0))
-                self.secoundComparedCurrency.accept(String(format: "%.2f", self.calculateConvertedAmount(baseAmount: Double(amount) ?? 1.0, targetCurrency: toSecoundCurrency, conversionRates: compareModel.data.conversionRates) ?? 1.0))
-            } onError: { error in
-                self.errorSubject.onNext(error)
+    private func setupBinding() {
+        //combineLatest waits for all the source observables to emit at least one value before it starts combining them and emitting combined results.
+        let fromObserable = Observable.combineLatest(fromAmountRelay, fromCurrencyRelay, toCurrencyRelay)
+        fromObserable.subscribe(onNext: { [weak self] (amount, from, to) in
+            print("Salah 1")
+            guard let self = self, let model = self.allCurrenciesModel else { return }
+            let convertedAmount = model.convertCurrency(amount: amount, from: from, to: to)
+            self.toCurrencyOutPutRelay.accept(String.init(convertedAmount))
+            if let newCurrenciesValue = model.convertAllCurrencies(amount: amount, from: from) {
+                self.CurrencyRates.accept(newCurrenciesValue)
             }
-            .disposed(by: disposeBag)
-    }
-    func getConvertionRate(from: String, to: String, completion: @escaping (String?) -> Void) {
-        apiManager.fetchGlobal(parsingType: Converstion.self, baseURL: APIManager.EndPoint.convertCurrency.stringToUrl, attributes: [from, to])
-            .subscribe { converstion in
-                completion(String(format: "%.2f", converstion.data.conversionRate))
-            } onError: { error in
-                self.errorSubject.onNext(error)
+        }).disposed(by: disposeBag)
+        
+        let toObserable = Observable.combineLatest(toAmountRelay, toCurrencyRelay, fromCurrencyRelay)
+        toObserable.subscribe(onNext: { [weak self] (amount, from, to) in
+            print("Salah 2")
+            guard let self = self, let model = self.allCurrenciesModel else { return }
+            let convertedAmount = model.convertCurrency(amount: amount, from: from, to: to)
+            self.fromCurrencyOutPutRelay.accept(String.init(convertedAmount))
+            if let newCurrenciesValue = model.convertAllCurrencies(amount: amount, from: from) {
+                self.CurrencyRates.accept(newCurrenciesValue)
             }
-            .disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
+        
+        Observable.combineLatest(fromCurrencyRelay, toCurrencyRelay).subscribe(onNext: { [weak self] (from, to) in
+            print("Salah 3")
+            guard let self = self, let model = self.allCurrenciesModel else { return }
+            let amount = model.convertCurrency(amount: 1, from: from, to: to)
+            self.placeholderOutputRelay.accept(String.init(amount))
+        }).disposed(by: disposeBag)
     }
 }
 //MARK: Helping Functions
 extension CurrencyViewModel {
-    func fillDropDown(currencyArray: [CurrencyData]) -> [String] {
+    func fillDropDown(currencyDict: [String:Double]) -> [String] {
         var arr = [String]()
-        for flag in currencyArray {
-            arr.append(" " + getFlagEmoji(flag: flag.code) + flag.code)
+        for (key,_) in currencyDict {
+            arr.append(" " + getFlagEmoji(flag: key) + key)
         }
         
         return arr
@@ -100,5 +107,9 @@ extension CurrencyViewModel {
             return baseAmount * rate
         }
         return nil
+    }
+    func imageURL(currecnyCode: String) -> URL {
+        let currCode = currecnyCode.dropLast()
+        return URL(string: "https://flagsapi.com/\(currCode)/flat/64.png") ?? URL(string: "https://flagsapi.com/EG/flat/64.png")!
     }
 }

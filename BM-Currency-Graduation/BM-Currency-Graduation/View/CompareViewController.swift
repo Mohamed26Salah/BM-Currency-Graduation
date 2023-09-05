@@ -73,7 +73,6 @@ extension CompareViewController {
             .disposed(by: disposeBag)
     }
 }
-//MARK: RxFunctions
 extension CompareViewController {
     func handleLoadingIndicator() {
         currencyVM.showLoading

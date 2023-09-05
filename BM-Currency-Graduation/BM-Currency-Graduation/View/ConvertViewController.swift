@@ -145,7 +145,6 @@ extension ConvertViewController {
     }
     
 }
-//MARK: RxFunctions
 extension ConvertViewController {
     func handleLoadingIndicator() {
         currencyVM.showLoading
